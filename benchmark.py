@@ -589,7 +589,7 @@ def generate_report(results: list[BenchmarkResult], output_path: Path, image_bas
         lines.append("| Model | Result | Output |")
         lines.append("|-------|--------|--------|")
         
-        for r in size_results[:6]:  # Limit to top 6 models
+        for r in size_results[:10]:  # Limit to top 10 models
             status = "✅ 100%" if r.accuracy == 1.0 else f"🔴 {r.accuracy:.0%}"
             model_safe = r.model.replace(".", "_").replace("-", "_")
             img_filename = f"output_{width}x{height}_{model_safe}.png"
@@ -651,7 +651,7 @@ def generate_report(results: list[BenchmarkResult], output_path: Path, image_bas
         lines.append("| Model | Result | Output |")
         lines.append("|-------|--------|--------|")
         
-        for r in willy_results[:6]:
+        for r in willy_results[:10]:  # Limit to top 10 models
             status = "✅ 100%" if r.accuracy == 1.0 else f"🔴 {r.accuracy:.0%}"
             model_safe = r.model.replace(".", "_").replace("-", "_")
             img_filename = f"output_willy_{model_safe}.png"
