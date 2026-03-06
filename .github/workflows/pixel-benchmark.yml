@@ -118,13 +118,17 @@ jobs:
           git add images/
           git diff --staged --quiet || git commit -m "Update benchmark images [skip ci]"
           git push origin results --force
+          
+          # Capture commit SHA for permalinks
+          echo "RESULTS_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
       
       - name: Regenerate report with image URLs
         run: |
+          # Use commit SHA for permalink (immutable URLs)
           python benchmark.py \
             --regenerate \
             --output-dir benchmark_results \
-            --image-base-url "https://raw.githubusercontent.com/${{ github.repository }}/results/images"
+            --image-base-url "https://raw.githubusercontent.com/${{ github.repository }}/${{ env.RESULTS_SHA }}/images"
       
       - name: Generate job summary
         run: |
