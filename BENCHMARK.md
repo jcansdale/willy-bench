@@ -4,25 +4,26 @@ A benchmark suite for testing vision models' ability to extract pixel-level colo
 
 ## Overview
 
-This benchmark tests how accurately various AI vision models can identify individual pixel colors in small images (4x4, 8x8, 8x16, 16x16). It uses the GitHub Copilot API to test multiple models including:
+This benchmark tests how accurately various AI vision models can identify individual pixel colors in small images (4x4, 8x8, 8x16). It uses the GitHub Copilot API to test multiple models including:
 
-- Gemini 3.x (gemini-3.1-pro-preview, gemini-3-pro-preview)
-- Gemini 2.5 (gemini-2.5-pro)
-- GPT models (gpt-4o, gpt-5.1, gpt-5.2)
-- Claude models (claude-sonnet-4, claude-opus-4.5, etc.)
+- **Gemini 3.x** (gemini-3.1-pro-preview, gemini-3-pro-preview) — Best performers
+- **Gemini 2.5** (gemini-2.5-pro)
+- **GPT models** (gpt-4o, gpt-5.4) — gpt-5.4 requires Responses API
+- **Claude models** (claude-sonnet-4, claude-opus-4.6)
 
 ## Key Findings
 
 Based on extensive testing:
 
-| Model | Best Accuracy | Notes |
-|-------|---------------|-------|
-| gemini-3.1-pro-preview | **100%** | Perfect on 4x4, 8x8 with 8x zoom |
-| gemini-3-pro-preview | **100%** | Perfect on 4x4, 8x8 with 8x zoom |
-| gemini-2.5-pro | 68-87% | Good but not perfect |
-| gpt-5.1 | 26-87% | Varies by image size |
-| gpt-4o | 21-81% | Better on smaller images |
-| Claude models | 10-31% | Generate patterns, not actual pixels |
+| Model | API | Best Accuracy | Notes |
+|-------|-----|---------------|-------|
+| gemini-3.1-pro-preview | Chat | **100%** | Perfect on 4x4, 8x8 with 8x zoom |
+| gemini-3-pro-preview | Chat | **100%** | Perfect on 4x4, 8x8 with 8x zoom |
+| gemini-2.5-pro | Chat | ~78% | Good but not perfect |
+| claude-sonnet-4 | Chat | ~66% | Improved with proper prompting |
+| claude-opus-4.6 | Chat | ~66% | Similar to sonnet |
+| gpt-5.4 | Responses | ~63% | Requires Responses API |
+| gpt-4o | Chat | ~62% | Better on smaller images |
 
 ### Critical Settings for Best Results
 
@@ -34,8 +35,8 @@ Based on extensive testing:
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/codespaces-blank.git
-cd codespaces-blank
+git clone https://github.com/jcansdale/willy-bench.git
+cd willy-bench
 
 # Install dependencies
 pip install -e .
@@ -50,67 +51,85 @@ pip install Pillow
 # Quick test (3 top models, 4x4 only)
 python benchmark.py --quick
 
-# Full benchmark
-python benchmark.py --models "gemini-3.1-pro-preview,gemini-3-pro-preview,gpt-4o" \
-                    --sizes "4x4,8x8,8x16" \
+# Full benchmark with Willy sprite
+python benchmark.py --models "gemini-3.1-pro-preview,gpt-4o,claude-sonnet-4" \
+                    --sizes "4x4,8x8" \
                     --zoom 8 \
-                    --seed 42
+                    --willy
 
-# Test without zoom
-python benchmark.py --zoom 0
+# Regenerate report with image URLs (for CI)
+python benchmark.py --regenerate --image-base-url "https://example.com/images"
 ```
+
+### Miner Willy Sprite Test
+
+The benchmark includes an 8x16 classic retro game sprite challenge:
+
+```bash
+python benchmark.py --willy --zoom 8
+```
+
+This tests models on a 2-color (Red/White) Miner Willy sprite — a more complex pixel extraction task.
 
 ### Authentication
 
 The benchmark requires GitHub Copilot access. Authentication options:
 
 1. **Interactive (local)**: Run `cop login` first
-2. **Environment variable (CI/CD)**: Set `COPILOT_GITHUB_TOKEN` or `GH_TOKEN`
+2. **Environment variable (CI/CD)**: Set `COPILOT_GITHUB_TOKEN`
 
 ### GitHub Actions
 
-The benchmark can run as a GitHub Actions workflow:
+The benchmark runs as a GitHub Actions workflow:
 
 1. **Set up secrets**:
    - Go to Settings → Secrets → Actions
-   - Add `COPILOT_GITHUB_TOKEN` with a GitHub PAT that has Copilot access
+   - Add `COPILOT_GITHUB_TOKEN` with your Copilot credentials
 
 2. **Run manually**:
    - Go to Actions → Pixel Extraction Benchmark
    - Click "Run workflow"
    - Configure models, sizes, zoom, seed
 
-3. **Automated runs**:
-   - Runs weekly on Sunday at midnight UTC
-   - Runs on push to main (quick mode)
+3. **View results**:
+   - Job summary shows emoji visual comparison
+   - Download artifacts for PNG images with error highlighting
 
 ## Output
 
 Results are saved to `benchmark_results/`:
 
-- `RESULTS.md` - Markdown report with tables and rankings
+- `RESULTS.md` - Markdown report with tables and visual comparison
 - `results.json` - Detailed JSON data for analysis
-- `test_*.png` - Generated test images
-- `ground_truth_*.json` - Ground truth pixel data
+- `images/` - PNG images showing ground truth vs model output
+  - Red X marks on incorrect pixels
+  - Ground truth images for reference
 
-## Example Results
+### Visual Comparison
 
-```
-Model                   | 8x Zoom | No Zoom | Δ
-------------------------|---------|---------|----
-gemini-3.1-pro-preview  | 64/64 100% | 34/64 53% | +30
-gemini-3-pro-preview    | 64/64 100% | 35/64 54% | +29
-gemini-2.5-pro          | 44/64 68% | 20/64 31% | +24
-gpt-4o                  | 14/64 21% | 12/64 18% | +2
-claude-sonnet-4         | 10/64 15% |  7/64 10% | +3
-```
+The benchmark generates visual comparisons showing:
+- **Ground truth** — The actual pixel colors
+- **Model output** — What each model extracted
+- **Error highlighting** — Red X on incorrect pixels
+
+## APIs
+
+The benchmark supports two Copilot APIs:
+
+| API | Endpoint | Models |
+|-----|----------|--------|
+| Chat Completions | `/chat/completions` | Most models (Gemini, Claude, gpt-4o) |
+| Responses | `/responses` | gpt-5.4, gpt-5.x-codex models |
+
+The `cop` CLI auto-detects which API to use based on model name.
 
 ## How It Works
 
 1. **Image Generation**: Creates random colored images using 8 distinct colors (R, G, B, Y, M, C, O, P)
 2. **Prompt Engineering**: Asks models to output a JSON 2D array of color letters
 3. **Accuracy Measurement**: Compares model output against ground truth pixel-by-pixel
-4. **Zoom**: Optionally scales images up (8x) before sending to improve model accuracy
+4. **Zoom**: Scales images up (8x) before sending to improve model accuracy
+5. **Visual Output**: Generates PNG images showing errors
 
 ## License
 
