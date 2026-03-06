@@ -76,6 +76,7 @@ DEFAULT_MODELS = [
     "gpt-4o",
     "gpt-5.1",
     "gpt-5.2",
+    "gpt-5.4",
     "claude-sonnet-4",
     "claude-sonnet-4.5",
     "claude-opus-4.5",

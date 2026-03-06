@@ -80,7 +80,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           python benchmark.py \
-            --models "${{ github.event.inputs.models || 'gemini-3.1-pro-preview,gemini-3-pro-preview,gemini-2.5-pro,gpt-4o,claude-sonnet-4' }}" \
+            --models "${{ github.event.inputs.models || 'gemini-3.1-pro-preview,gemini-3-pro-preview,gemini-2.5-pro,gpt-4o,gpt-5.4,claude-sonnet-4' }}" \
             --sizes "${{ github.event.inputs.sizes || '4x4,8x8' }}" \
             --zoom "${{ github.event.inputs.zoom || '8' }}" \
             --seed "${{ github.event.inputs.seed || '42' }}" \
