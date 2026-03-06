@@ -192,29 +192,32 @@ def load_or_login() -> dict:
     # Check for environment variable token (for CI/CD)
     env_token = os.environ.get("COPILOT_GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
     if env_token:
-        print("Using GitHub token from environment variable…")
-        try:
-            creds = get_copilot_token(env_token)
-            return creds
-        except Exception as exc:
-            print(f"Environment token failed ({exc}); trying cached credentials.")
+        print("Using GitHub token from environment variable…", file=sys.stderr)
+        # In CI, fail fast if the token doesn't work
+        creds = get_copilot_token(env_token)
+        return creds
 
     creds = _load_credentials()
 
     if creds and not _is_expired(creds):
-        print("Using cached Copilot credentials.")
+        print("Using cached Copilot credentials.", file=sys.stderr)
         return creds
 
     if creds and _is_expired(creds):
-        print("Copilot session expired — refreshing via stored GitHub token…")
+        print("Copilot session expired — refreshing via stored GitHub token…", file=sys.stderr)
         try:
             creds = get_copilot_token(creds["github_token"])
             _save_credentials(creds)
             return creds
         except Exception as exc:
-            print(f"Refresh failed ({exc}); starting fresh login.")
+            print(f"Refresh failed ({exc}); starting fresh login.", file=sys.stderr)
 
-    # Full device-flow login
+    # Full device-flow login (only works interactively)
+    if not sys.stdin.isatty():
+        raise RuntimeError(
+            "No valid credentials and running non-interactively. "
+            "Set COPILOT_GITHUB_TOKEN environment variable."
+        )
     github_token = github_device_login()
     creds = get_copilot_token(github_token)
     _save_credentials(creds)
