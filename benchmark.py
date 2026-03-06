@@ -53,6 +53,19 @@ COLOR_CSS = {
     "?": "#888888",  # Unknown/error
 }
 
+# Colored emoji squares for GitHub markdown (GitHub strips inline CSS)
+COLOR_EMOJI = {
+    "R": "🟥",
+    "G": "🟩",
+    "B": "🟦",
+    "Y": "🟨",
+    "M": "🟪",  # Purple square for magenta
+    "C": "🩵",  # Light blue heart for cyan (no cyan square)
+    "O": "🟧",
+    "P": "🟪",
+    "?": "⬛",
+}
+
 COLOR_KEYS = list(COLORS.keys())
 
 # Models to test
@@ -162,39 +175,29 @@ def parse_json_output(output: str, width: int, height: int) -> Optional[list[lis
 
 def render_grid_html(grid: Optional[list[list[str]]], ground_truth: Optional[list[list[str]]] = None, cell_size: int = 16) -> str:
     """
-    Render a color grid as HTML table.
-    If ground_truth is provided, shows errors with X marks.
+    Render a color grid as emoji squares for GitHub markdown.
+    If ground_truth is provided, shows errors with ❌ overlay.
     """
     if grid is None:
-        return '<span style="color:#888">⚠️ No output</span>'
+        return "⚠️ No output"
     
-    lines = [f'<table style="border-collapse:collapse;font-family:monospace;font-size:10px;">']
-    
+    lines = []
     for i, row in enumerate(grid):
-        lines.append("<tr>")
+        row_chars = []
         for j, cell in enumerate(row):
             color_key = cell.upper() if isinstance(cell, str) and len(cell) == 1 else "?"
-            bg_color = COLOR_CSS.get(color_key, COLOR_CSS["?"])
+            emoji = COLOR_EMOJI.get(color_key, COLOR_EMOJI["?"])
             
             # Check if this pixel is wrong
-            is_error = False
             if ground_truth and i < len(ground_truth) and j < len(ground_truth[i]):
                 if color_key != ground_truth[i][j]:
-                    is_error = True
+                    emoji = "❌"
             
-            # Use contrasting text color
-            text_color = "#000" if color_key in ("Y", "C", "G") else "#fff"
-            
-            cell_content = "✗" if is_error else ""
-            lines.append(
-                f'<td style="width:{cell_size}px;height:{cell_size}px;'
-                f'background:{bg_color};color:{text_color};text-align:center;'
-                f'border:1px solid #333;">{cell_content}</td>'
-            )
-        lines.append("</tr>")
+            row_chars.append(emoji)
+        lines.append("".join(row_chars))
     
-    lines.append("</table>")
-    return "".join(lines)
+    # Use code block style for fixed-width rendering
+    return "<br>".join(lines)
 
 
 def calculate_accuracy(ground_truth: list[list[str]], output: list[list[str]]) -> tuple[int, int]:
