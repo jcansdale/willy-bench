@@ -7,7 +7,7 @@ on:
       models:
         description: 'Comma-separated list of models to test'
         required: false
-        default: 'gemini-3.1-pro-preview,gemini-3-pro-preview,gemini-2.5-pro,gpt-4o,claude-sonnet-4'
+        default: 'gemini-3.1-pro-preview,gemini-3-pro-preview,gemini-2.5-pro,gpt-4o,gpt-5.4,claude-sonnet-4,claude-opus-4.6'
       sizes:
         description: 'Image sizes to test (e.g., 4x4,8x8,8x16)'
         required: false
