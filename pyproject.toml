@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "copilot-chat"
+version = "0.1.0"
+description = "GitHub Copilot CLI — chat with any Copilot model from your terminal"
+requires-python = ">=3.11"
+dependencies = ["requests>=2.31.0"]
+
+[project.scripts]
+cop = "copilot_chat:main"
+
+[tool.setuptools]
+py-modules = ["copilot_chat"]

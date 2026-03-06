@@ -1,0 +1,127 @@
+name: Pixel Extraction Benchmark
+
+on:
+  # Run manually from Actions tab
+  workflow_dispatch:
+    inputs:
+      models:
+        description: 'Comma-separated list of models to test'
+        required: false
+        default: 'gemini-3.1-pro-preview,gemini-3-pro-preview,gemini-2.5-pro,gpt-4o,claude-sonnet-4'
+      sizes:
+        description: 'Image sizes to test (e.g., 4x4,8x8,8x16)'
+        required: false
+        default: '4x4,8x8'
+      zoom:
+        description: 'Zoom factor (0 for no zoom)'
+        required: false
+        default: '8'
+      seed:
+        description: 'Random seed for reproducibility'
+        required: false
+        default: '42'
+  
+  # Run on schedule (weekly on Sunday)
+  schedule:
+    - cron: '0 0 * * 0'
+  
+  # Run on push to main (optional)
+  push:
+    branches:
+      - main
+    paths:
+      - 'benchmark.py'
+      - 'copilot_chat.py'
+      - '.github/workflows/pixel-benchmark.yml'
+
+# Permissions needed
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -e .
+          pip install Pillow requests
+      
+      - name: Verify cop CLI is available
+        run: |
+          which cop || echo "cop not found in PATH"
+          cop --help || echo "cop --help failed"
+      
+      - name: Run quick test (dry run)
+        if: github.event_name == 'push'
+        env:
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          python benchmark.py --quick --output-dir benchmark_results
+      
+      - name: Run full benchmark (manual/scheduled)
+        if: github.event_name != 'push'
+        env:
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          python benchmark.py \
+            --models "${{ github.event.inputs.models || 'gemini-3.1-pro-preview,gemini-3-pro-preview,gemini-2.5-pro,gpt-4o,claude-sonnet-4' }}" \
+            --sizes "${{ github.event.inputs.sizes || '4x4,8x8' }}" \
+            --zoom "${{ github.event.inputs.zoom || '8' }}" \
+            --seed "${{ github.event.inputs.seed || '42' }}" \
+            --output-dir benchmark_results
+      
+      - name: Upload benchmark results
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-results-${{ github.run_number }}
+          path: benchmark_results/
+          retention-days: 90
+      
+      - name: Generate job summary
+        run: |
+          echo "## Pixel Extraction Benchmark Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Run:** #${{ github.run_number }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Date:** $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f benchmark_results/RESULTS.md ]; then
+            cat benchmark_results/RESULTS.md >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ No results file found" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Commit results (scheduled runs only)
+        if: github.event_name == 'schedule'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Create results directory if needed
+          mkdir -p results/history
+          
+          # Copy latest results
+          cp benchmark_results/RESULTS.md results/LATEST.md
+          cp benchmark_results/results.json results/history/results-$(date +%Y%m%d).json
+          
+          # Commit if there are changes
+          git add results/
+          git diff --staged --quiet || git commit -m "Update benchmark results [skip ci]"
+          git push

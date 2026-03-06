@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+ENV/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Credentials (IMPORTANT - never commit)
+.copilot_chat_creds.json
+*.pem
+*.key
+
+# Benchmark outputs (commit selectively)
+benchmark_results/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test images (can be regenerated)
+images/test*.png
