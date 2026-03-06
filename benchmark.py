@@ -10,6 +10,8 @@ Usage:
 """
 
 import argparse
+import base64
+import io
 import json
 import os
 import random
@@ -252,7 +254,7 @@ def render_grid_image(
     scale: int = 16,
     ground_truth: Optional[list[list[str]]] = None,
     show_errors: bool = True
-) -> bool:
+) -> Optional[str]:
     """
     Render a color grid as a PNG image.
     
@@ -265,10 +267,10 @@ def render_grid_image(
         show_errors: Whether to mark incorrect pixels
     
     Returns:
-        True if image was created successfully
+        Data URI string for the image, or None if grid is invalid
     """
     if grid is None:
-        return False
+        return None
     
     if color_map is None:
         color_map = COLORS
@@ -277,7 +279,7 @@ def render_grid_image(
     width = len(grid[0]) if grid else 0
     
     if width == 0 or height == 0:
-        return False
+        return None
     
     # Create image
     img = Image.new("RGB", (width * scale, height * scale), (128, 128, 128))
@@ -321,7 +323,12 @@ def render_grid_image(
                 img.putpixel((x * scale, y), (64, 64, 64))
     
     img.save(output_path)
-    return True
+    
+    # Also return data URI for inline embedding
+    buffer = io.BytesIO()
+    img.save(buffer, format="PNG")
+    b64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
+    return f"data:image/png;base64,{b64}"
 
 
 def calculate_accuracy(ground_truth: list[list[str]], output: list[list[str]]) -> tuple[int, int]:
@@ -567,11 +574,12 @@ def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
         gt = size_results[0].ground_truth if size_results else None
         if gt:
             gt_filename = f"gt_{width}x{height}.png"
-            render_grid_image(gt, images_dir / gt_filename, COLORS, scale=16)
-            lines.append(f"**Ground Truth:**")
-            lines.append("")
-            lines.append(f"![Ground Truth](images/{gt_filename})")
-            lines.append("")
+            gt_data_uri = render_grid_image(gt, images_dir / gt_filename, COLORS, scale=16)
+            if gt_data_uri:
+                lines.append(f"**Ground Truth:**")
+                lines.append("")
+                lines.append(f"<img src=\"{gt_data_uri}\" alt=\"Ground Truth\">")
+                lines.append("")
         
         # Generate each model's output image
         lines.append("| Model | Result | Output |")
@@ -583,8 +591,11 @@ def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
             img_filename = f"output_{width}x{height}_{model_safe}.png"
             
             if r.parsed_output:
-                render_grid_image(r.parsed_output, images_dir / img_filename, COLORS, scale=16, ground_truth=r.ground_truth)
-                lines.append(f"| {r.model} | {status} | ![{r.model}](images/{img_filename}) |")
+                data_uri = render_grid_image(r.parsed_output, images_dir / img_filename, COLORS, scale=16, ground_truth=r.ground_truth)
+                if data_uri:
+                    lines.append(f"| {r.model} | {status} | <img src=\"{data_uri}\" alt=\"{r.model}\"> |")
+                else:
+                    lines.append(f"| {r.model} | {status} | ⚠️ No output |")
             else:
                 lines.append(f"| {r.model} | {status} | ⚠️ No output |")
         
@@ -617,13 +628,14 @@ def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
         gt = willy_results[0].ground_truth if willy_results else None
         if gt:
             gt_filename = "gt_willy.png"
-            render_grid_image(gt, images_dir / gt_filename, willy_colors, scale=8)
-            lines.append("#### Visual Comparison")
-            lines.append("")
-            lines.append(f"**Ground Truth:**")
-            lines.append("")
-            lines.append(f"![Ground Truth](images/{gt_filename})")
-            lines.append("")
+            gt_data_uri = render_grid_image(gt, images_dir / gt_filename, willy_colors, scale=8)
+            if gt_data_uri:
+                lines.append("#### Visual Comparison")
+                lines.append("")
+                lines.append(f"**Ground Truth:**")
+                lines.append("")
+                lines.append(f"<img src=\"{gt_data_uri}\" alt=\"Ground Truth\">")
+                lines.append("")
         
         # Generate each model's output image
         lines.append("| Model | Result | Output |")
@@ -635,8 +647,11 @@ def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
             img_filename = f"output_willy_{model_safe}.png"
             
             if r.parsed_output:
-                render_grid_image(r.parsed_output, images_dir / img_filename, willy_colors, scale=8, ground_truth=r.ground_truth)
-                lines.append(f"| {r.model} | {status} | ![{r.model}](images/{img_filename}) |")
+                data_uri = render_grid_image(r.parsed_output, images_dir / img_filename, willy_colors, scale=8, ground_truth=r.ground_truth)
+                if data_uri:
+                    lines.append(f"| {r.model} | {status} | <img src=\"{data_uri}\" alt=\"{r.model}\"> |")
+                else:
+                    lines.append(f"| {r.model} | {status} | ⚠️ No output |")
             else:
                 lines.append(f"| {r.model} | {status} | ⚠️ No output |")
         
