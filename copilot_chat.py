@@ -393,6 +393,82 @@ def copilot_chat(
         raise RuntimeError(f"Unexpected response shape: {data}") from exc
 
 
+def copilot_responses(
+    creds: dict,
+    prompt: str,
+    model: str = "gpt-4o",
+    images: list[str] | None = None,
+    zoom: int = 1,
+    instructions: str | None = None,
+) -> str:
+    """Send a prompt using the Responses API and return the assistant's reply.
+    
+    The Responses API is OpenAI's newer API format that supports:
+    - Native tool use
+    - Structured outputs
+    - Multi-turn conversations
+    - Some models only available here (e.g., gpt-5.4)
+    """
+    base_url = creds.get("base_url", DEFAULT_BASE_URL)
+    url = f"{base_url}/responses"
+
+    # Build input content - Responses API uses different format
+    if images:
+        # Multi-part input with images using message format
+        content = [{"type": "input_text", "text": prompt}]
+        for img in images:
+            content.append({
+                "type": "input_image",
+                "image_url": _image_to_data_url(img, zoom=zoom),
+            })
+        # Wrap in message structure
+        input_content = [{
+            "type": "message",
+            "role": "user",
+            "content": content,
+        }]
+    else:
+        # Simple text input - just a string
+        input_content = prompt
+
+    payload = {
+        "model": model,
+        "input": input_content,
+    }
+    
+    if instructions:
+        payload["instructions"] = instructions
+
+    resp = requests.post(
+        url,
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {creds['access']}",
+            **COPILOT_HEADERS,
+        },
+        json=payload,
+        timeout=120,  # Responses API may take longer
+    )
+
+    if not resp.ok:
+        raise RuntimeError(f"Copilot Responses API error {resp.status_code}: {resp.text}")
+
+    data = resp.json()
+    try:
+        # Responses API returns output array with content blocks
+        output = data.get("output", [])
+        for item in output:
+            if item.get("type") == "message":
+                content = item.get("content", [])
+                for block in content:
+                    if block.get("type") == "output_text":
+                        return block.get("text", "")
+        # Fallback: try to find any text
+        raise RuntimeError(f"No text output found in response: {data}")
+    except (KeyError, IndexError) as exc:
+        raise RuntimeError(f"Unexpected response shape: {data}") from exc
+
+
 # ---------------------------------------------------------------------------
 # Extra commands
 # ---------------------------------------------------------------------------
@@ -485,6 +561,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="Write reply to FILE instead of (or in addition to) stdout. "
              "With multiple -m models the stem gets _{model} appended.",
     )
+    chat_p.add_argument(
+        "--api",
+        choices=["chat", "responses", "auto"],
+        default="auto",
+        help="API to use: 'chat' (completions), 'responses', or 'auto' (default: auto)",
+    )
 
     # models
     sub.add_parser("models", help="List available models")
@@ -545,6 +627,11 @@ def main() -> None:
     zoom = getattr(args, "zoom", 1)
     grid = getattr(args, "grid", False)
     output = getattr(args, "output", None)
+    api_choice = getattr(args, "api", "auto")
+    
+    # Models that require Responses API
+    RESPONSES_ONLY_MODELS = {"gpt-5.4", "gpt-5.3-codex", "gpt-5.2-codex", "gpt-5.1-codex", "gpt-5.1-codex-max", "gpt-5.1-codex-mini"}
+    
     if grid and images:
         print("(grid text mode)")
     elif zoom > 1 and images:
@@ -554,8 +641,23 @@ def main() -> None:
     for model in models:
         if multi:
             print(f"\n{sep}\n[{model}]\n{sep}")
+        
+        # Determine which API to use
+        if api_choice == "auto":
+            use_responses = model in RESPONSES_ONLY_MODELS
+        else:
+            use_responses = (api_choice == "responses")
+        
+        if use_responses and grid:
+            print("Warning: --grid not supported with Responses API, ignoring", file=sys.stderr)
+        
         try:
-            reply = copilot_chat(creds, prompt, model=model, images=images, zoom=zoom, grid=grid)
+            if use_responses:
+                if multi or api_choice == "auto":
+                    print(f"(using Responses API)", file=sys.stderr)
+                reply = copilot_responses(creds, prompt, model=model, images=images, zoom=zoom)
+            else:
+                reply = copilot_chat(creds, prompt, model=model, images=images, zoom=zoom, grid=grid)
             print(reply)
             if output:
                 if multi:
