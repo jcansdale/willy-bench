@@ -40,6 +40,19 @@ COLORS = {
     "P": (128, 0, 255),    # Purple
 }
 
+# CSS color names for HTML visualization
+COLOR_CSS = {
+    "R": "#ff0000",
+    "G": "#00ff00",
+    "B": "#0000ff",
+    "Y": "#ffff00",
+    "M": "#ff00ff",
+    "C": "#00ffff",
+    "O": "#ff8000",
+    "P": "#8000ff",
+    "?": "#888888",  # Unknown/error
+}
+
 COLOR_KEYS = list(COLORS.keys())
 
 # Models to test
@@ -71,6 +84,7 @@ class BenchmarkResult:
     accuracy: float
     raw_output: str
     parsed_output: Optional[list[list[str]]]
+    ground_truth: Optional[list[list[str]]] = None
     error: Optional[str] = None
 
 
@@ -146,6 +160,43 @@ def parse_json_output(output: str, width: int, height: int) -> Optional[list[lis
         return None
 
 
+def render_grid_html(grid: Optional[list[list[str]]], ground_truth: Optional[list[list[str]]] = None, cell_size: int = 16) -> str:
+    """
+    Render a color grid as HTML table.
+    If ground_truth is provided, shows errors with X marks.
+    """
+    if grid is None:
+        return '<span style="color:#888">⚠️ No output</span>'
+    
+    lines = [f'<table style="border-collapse:collapse;font-family:monospace;font-size:10px;">']
+    
+    for i, row in enumerate(grid):
+        lines.append("<tr>")
+        for j, cell in enumerate(row):
+            color_key = cell.upper() if isinstance(cell, str) and len(cell) == 1 else "?"
+            bg_color = COLOR_CSS.get(color_key, COLOR_CSS["?"])
+            
+            # Check if this pixel is wrong
+            is_error = False
+            if ground_truth and i < len(ground_truth) and j < len(ground_truth[i]):
+                if color_key != ground_truth[i][j]:
+                    is_error = True
+            
+            # Use contrasting text color
+            text_color = "#000" if color_key in ("Y", "C", "G") else "#fff"
+            
+            cell_content = "✗" if is_error else ""
+            lines.append(
+                f'<td style="width:{cell_size}px;height:{cell_size}px;'
+                f'background:{bg_color};color:{text_color};text-align:center;'
+                f'border:1px solid #333;">{cell_content}</td>'
+            )
+        lines.append("</tr>")
+    
+    lines.append("</table>")
+    return "".join(lines)
+
+
 def calculate_accuracy(ground_truth: list[list[str]], output: list[list[str]]) -> tuple[int, int]:
     """Calculate pixel accuracy between ground truth and model output."""
     if output is None:
@@ -205,6 +256,7 @@ def run_benchmark(
                     accuracy=0.0,
                     raw_output=raw_output,
                     parsed_output=None,
+                    ground_truth=ground_truth,
                     error=raw_output
                 )
             else:
@@ -221,6 +273,7 @@ def run_benchmark(
                     accuracy=accuracy,
                     raw_output=raw_output,
                     parsed_output=parsed,
+                    ground_truth=ground_truth,
                     error=None if parsed else "Failed to parse JSON output"
                 )
             
@@ -277,6 +330,24 @@ def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
             status = "✅" if r.accuracy == 1.0 else "🟡" if r.accuracy >= 0.8 else "🔴"
             lines.append(f"| {r.model} | {zoom_str} | {r.correct_pixels}/{r.total_pixels} | {status} {r.accuracy:.1%} |")
         
+        lines.append("")
+        
+        # Add visual comparison grid
+        lines.append("#### Visual Comparison")
+        lines.append("")
+        lines.append("<table><tr>")
+        
+        # Ground truth (use first result's ground truth)
+        gt = size_results[0].ground_truth if size_results else None
+        lines.append(f"<td><strong>Ground Truth</strong><br>{render_grid_html(gt)}</td>")
+        
+        # Each model's output
+        for r in size_results[:6]:  # Limit to top 6 models for readability
+            status = "✅" if r.accuracy == 1.0 else f"🔴 {r.accuracy:.0%}"
+            grid_html = render_grid_html(r.parsed_output, r.ground_truth)
+            lines.append(f"<td><strong>{r.model}</strong><br>{status}<br>{grid_html}</td>")
+        
+        lines.append("</tr></table>")
         lines.append("")
     
     # Overall rankings
