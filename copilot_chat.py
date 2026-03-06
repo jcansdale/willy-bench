@@ -630,7 +630,7 @@ def main() -> None:
     api_choice = getattr(args, "api", "auto")
     
     # Models that require Responses API
-    RESPONSES_ONLY_MODELS = {"gpt-5.4", "gpt-5.3-codex", "gpt-5.2-codex", "gpt-5.1-codex", "gpt-5.1-codex-max", "gpt-5.1-codex-mini"}
+    RESPONSES_ONLY_MODELS = {"gpt-5.4", "gpt-5.3-codex", "gpt-5.2-codex", "gpt-5.1-codex", "gpt-5.1-codex-max", "gpt-5.1-codex-mini", "goldeneye"}
     
     if grid and images:
         print("(grid text mode)")
