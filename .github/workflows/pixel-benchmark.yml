@@ -94,6 +94,37 @@ jobs:
           path: benchmark_results/
           retention-days: 90
       
+      - name: Push images to results branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Fetch or create results branch
+          git fetch origin results:results 2>/dev/null || git checkout --orphan results
+          
+          # Create worktree for results branch
+          git worktree add ../results-branch results 2>/dev/null || true
+          
+          # Copy images to results branch
+          mkdir -p ../results-branch/images
+          cp -r benchmark_results/images/* ../results-branch/images/ 2>/dev/null || true
+          
+          # Commit and push
+          cd ../results-branch
+          git add images/
+          git diff --staged --quiet || git commit -m "Update benchmark images [skip ci]"
+          git push origin results || git push --set-upstream origin results
+          
+          cd ../codespaces-blank
+          git worktree remove ../results-branch 2>/dev/null || true
+      
+      - name: Regenerate report with image URLs
+        run: |
+          python benchmark.py \
+            --regenerate \
+            --output-dir benchmark_results \
+            --image-base-url "https://raw.githubusercontent.com/${{ github.repository }}/results/images"
+      
       - name: Generate job summary
         run: |
           echo "## Pixel Extraction Benchmark Results" >> $GITHUB_STEP_SUMMARY
@@ -101,8 +132,6 @@ jobs:
           echo "**Run:** #${{ github.run_number }}" >> $GITHUB_STEP_SUMMARY
           echo "**Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
           echo "**Date:** $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "📦 **[Download PNG images with error highlighting](../../../actions/runs/${{ github.run_id }}/artifacts)**" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
           if [ -f benchmark_results/RESULTS.md ]; then

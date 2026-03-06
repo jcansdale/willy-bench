@@ -506,8 +506,14 @@ def run_willy_benchmark(
     return results
 
 
-def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
-    """Generate a markdown report from benchmark results with PNG images."""
+def generate_report(results: list[BenchmarkResult], output_path: Path, image_base_url: str = "") -> str:
+    """Generate a markdown report from benchmark results with PNG images.
+    
+    Args:
+        results: List of benchmark results
+        output_path: Path to save the markdown report
+        image_base_url: Base URL for images (if provided, embeds img tags)
+    """
     output_dir = output_path.parent
     images_dir = output_dir / "images"
     images_dir.mkdir(parents=True, exist_ok=True)
@@ -517,7 +523,12 @@ def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
         "",
         f"Generated on: {__import__('datetime').datetime.now().isoformat()}",
         "",
-        "> 📦 **PNG images** with error highlighting are available in the workflow artifacts download.",
+    ]
+    
+    if not image_base_url:
+        lines.append("> 📦 **PNG images** with error highlighting are available in the workflow artifacts download.")
+    
+    lines.extend([
         "",
         "## Summary",
         "",
@@ -530,7 +541,7 @@ def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
         "",
         "## Results by Image Size",
         "",
-    ]
+    ])
     
     # Separate random and Willy results
     random_results = [r for r in results if r.image_name == "random"]
@@ -561,14 +572,17 @@ def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
         lines.append("#### Visual Comparison")
         lines.append("")
         
-        # Generate ground truth image (save to file, show emoji inline)
+        # Generate ground truth image (save to file, show emoji or img inline)
         gt = size_results[0].ground_truth if size_results else None
         if gt:
             gt_filename = f"gt_{width}x{height}.png"
             render_grid_image(gt, images_dir / gt_filename, COLORS, scale=16)
             lines.append(f"**Ground Truth:**")
             lines.append("")
-            lines.append(render_grid_html(gt))
+            if image_base_url:
+                lines.append(f'<img src="{image_base_url}/{gt_filename}" alt="Ground Truth {width}x{height}">')
+            else:
+                lines.append(render_grid_html(gt))
             lines.append("")
         
         # Generate each model's output
@@ -583,9 +597,13 @@ def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
             if r.parsed_output:
                 # Save image file for artifact
                 render_grid_image(r.parsed_output, images_dir / img_filename, COLORS, scale=16, ground_truth=r.ground_truth)
-                # Use emoji for inline display
-                emoji_grid = render_grid_html(r.parsed_output, r.ground_truth)
-                lines.append(f"| {r.model} | {status} | {emoji_grid} |")
+                # Use img tag if URL provided, otherwise emoji
+                if image_base_url:
+                    img_tag = f'<img src="{image_base_url}/{img_filename}" alt="{r.model}" width="64">'
+                    lines.append(f"| {r.model} | {status} | {img_tag} |")
+                else:
+                    emoji_grid = render_grid_html(r.parsed_output, r.ground_truth)
+                    lines.append(f"| {r.model} | {status} | {emoji_grid} |")
             else:
                 lines.append(f"| {r.model} | {status} | ⚠️ No output |")
         
@@ -618,14 +636,16 @@ def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
         gt = willy_results[0].ground_truth if willy_results else None
         if gt:
             gt_filename = "gt_willy.png"
-            gt_data_uri = render_grid_image(gt, images_dir / gt_filename, willy_colors, scale=8)
-            if gt_data_uri:
-                lines.append("#### Visual Comparison")
-                lines.append("")
-                lines.append(f"**Ground Truth:**")
-                lines.append("")
-                lines.append(f"<img src=\"{gt_data_uri}\" alt=\"Ground Truth\">")
-                lines.append("")
+            render_grid_image(gt, images_dir / gt_filename, willy_colors, scale=8)
+            lines.append("#### Visual Comparison")
+            lines.append("")
+            lines.append(f"**Ground Truth:**")
+            lines.append("")
+            if image_base_url:
+                lines.append(f'<img src="{image_base_url}/{gt_filename}" alt="Ground Truth Willy">')
+            else:
+                lines.append(render_grid_html(gt))
+            lines.append("")
         
         # Generate each model's output image
         lines.append("| Model | Result | Output |")
@@ -637,11 +657,13 @@ def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
             img_filename = f"output_willy_{model_safe}.png"
             
             if r.parsed_output:
-                data_uri = render_grid_image(r.parsed_output, images_dir / img_filename, willy_colors, scale=8, ground_truth=r.ground_truth)
-                if data_uri:
-                    lines.append(f"| {r.model} | {status} | <img src=\"{data_uri}\" alt=\"{r.model}\"> |")
+                render_grid_image(r.parsed_output, images_dir / img_filename, willy_colors, scale=8, ground_truth=r.ground_truth)
+                if image_base_url:
+                    img_tag = f'<img src="{image_base_url}/{img_filename}" alt="{r.model}" width="64">'
+                    lines.append(f"| {r.model} | {status} | {img_tag} |")
                 else:
-                    lines.append(f"| {r.model} | {status} | ⚠️ No output |")
+                    emoji_grid = render_grid_html(r.parsed_output, r.ground_truth)
+                    lines.append(f"| {r.model} | {status} | {emoji_grid} |")
             else:
                 lines.append(f"| {r.model} | {status} | ⚠️ No output |")
         
@@ -703,10 +725,35 @@ def save_json_results(results: list[BenchmarkResult], output_path: Path):
             "accuracy": r.accuracy,
             "error": r.error,
             "parsed_output": r.parsed_output,
+            "ground_truth": r.ground_truth,
+            "image_name": r.image_name,
         })
     
     with open(output_path, "w") as f:
         json.dump(data, f, indent=2)
+
+
+def load_json_results(input_path: Path) -> list[BenchmarkResult]:
+    """Load results from JSON file."""
+    with open(input_path, "r") as f:
+        data = json.load(f)
+    
+    results = []
+    for item in data:
+        w, h = map(int, item["size"].split("x"))
+        results.append(BenchmarkResult(
+            model=item["model"],
+            size=(w, h),
+            zoom=item["zoom"],
+            correct_pixels=item["correct_pixels"],
+            total_pixels=item["total_pixels"],
+            accuracy=item["accuracy"],
+            error=item.get("error"),
+            parsed_output=item.get("parsed_output"),
+            ground_truth=item.get("ground_truth"),
+            image_name=item.get("image_name", "random"),
+        ))
+    return results
 
 
 def main():
@@ -753,8 +800,34 @@ def main():
         action="store_true",
         help="Include the 8x16 Miner Willy sprite test"
     )
+    parser.add_argument(
+        "--image-base-url",
+        type=str,
+        default="",
+        help="Base URL for images (e.g., https://raw.githubusercontent.com/user/repo/results/images)"
+    )
+    parser.add_argument(
+        "--regenerate",
+        action="store_true",
+        help="Regenerate RESULTS.md from existing results.json (skip running tests)"
+    )
     
     args = parser.parse_args()
+    
+    output_dir = Path(args.output_dir)
+    
+    # Regenerate mode: just regenerate RESULTS.md from existing results.json
+    if args.regenerate:
+        results_json_path = output_dir / "results.json"
+        if not results_json_path.exists():
+            print(f"Error: {results_json_path} not found. Run benchmark first.")
+            sys.exit(1)
+        
+        print(f"Regenerating RESULTS.md from {results_json_path}")
+        results = load_json_results(results_json_path)
+        report = generate_report(results, output_dir / "RESULTS.md", args.image_base_url)
+        print(f"Generated: {output_dir / 'RESULTS.md'}")
+        return
     
     # Parse models
     models = [m.strip() for m in args.models.split(",") if m.strip()]
@@ -793,7 +866,7 @@ def main():
         results.extend(willy_results)
     
     # Generate reports
-    report = generate_report(results, output_dir / "RESULTS.md")
+    report = generate_report(results, output_dir / "RESULTS.md", args.image_base_url)
     save_json_results(results, output_dir / "results.json")
     
     print("\n" + "=" * 60)
