@@ -244,6 +244,85 @@ def render_grid_html(grid: Optional[list[list[str]]], ground_truth: Optional[lis
     return "<br>".join(lines)
 
 
+def render_grid_image(
+    grid: Optional[list[list[str]]],
+    output_path: Path,
+    color_map: dict = None,
+    scale: int = 16,
+    ground_truth: Optional[list[list[str]]] = None,
+    show_errors: bool = True
+) -> bool:
+    """
+    Render a color grid as a PNG image.
+    
+    Args:
+        grid: 2D array of color keys
+        output_path: Path to save the PNG
+        color_map: Dict mapping color keys to RGB tuples
+        scale: Pixel size for each cell
+        ground_truth: If provided and show_errors=True, overlay X on wrong pixels
+        show_errors: Whether to mark incorrect pixels
+    
+    Returns:
+        True if image was created successfully
+    """
+    if grid is None:
+        return False
+    
+    if color_map is None:
+        color_map = COLORS
+    
+    height = len(grid)
+    width = len(grid[0]) if grid else 0
+    
+    if width == 0 or height == 0:
+        return False
+    
+    # Create image
+    img = Image.new("RGB", (width * scale, height * scale), (128, 128, 128))
+    
+    for y, row in enumerate(grid):
+        for x, cell in enumerate(row):
+            color_key = cell.upper() if isinstance(cell, str) and len(cell) == 1 else "?"
+            
+            # Get color, default to gray for unknown
+            if color_key in color_map:
+                color = color_map[color_key]
+            elif color_key == "W":
+                color = (189, 189, 189)  # White/gray for Willy sprite
+            else:
+                color = (128, 128, 128)  # Unknown
+            
+            # Fill the cell
+            for dy in range(scale):
+                for dx in range(scale):
+                    img.putpixel((x * scale + dx, y * scale + dy), color)
+            
+            # Check for errors and draw X
+            if show_errors and ground_truth:
+                if y < len(ground_truth) and x < len(ground_truth[y]):
+                    if color_key != ground_truth[y][x]:
+                        # Draw red X for error
+                        for d in range(scale):
+                            # Diagonal lines
+                            if 0 <= d < scale:
+                                img.putpixel((x * scale + d, y * scale + d), (255, 0, 0))
+                                img.putpixel((x * scale + scale - 1 - d, y * scale + d), (255, 0, 0))
+    
+    # Add grid lines
+    for y in range(height + 1):
+        for x in range(width * scale):
+            if y * scale < height * scale:
+                img.putpixel((x, y * scale), (64, 64, 64))
+    for x in range(width + 1):
+        for y in range(height * scale):
+            if x * scale < width * scale:
+                img.putpixel((x * scale, y), (64, 64, 64))
+    
+    img.save(output_path)
+    return True
+
+
 def calculate_accuracy(ground_truth: list[list[str]], output: list[list[str]]) -> tuple[int, int]:
     """Calculate pixel accuracy between ground truth and model output."""
     if output is None:
@@ -431,7 +510,11 @@ def run_willy_benchmark(
 
 
 def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
-    """Generate a markdown report from benchmark results."""
+    """Generate a markdown report from benchmark results with PNG images."""
+    output_dir = output_path.parent
+    images_dir = output_dir / "images"
+    images_dir.mkdir(parents=True, exist_ok=True)
+    
     lines = [
         "# Pixel Extraction Benchmark Results",
         "",
@@ -475,22 +558,35 @@ def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
         
         lines.append("")
         
-        # Add visual comparison grid
+        # Add visual comparison with images
         lines.append("#### Visual Comparison")
         lines.append("")
-        lines.append("<table><tr>")
         
-        # Ground truth (use first result's ground truth)
+        # Generate ground truth image
         gt = size_results[0].ground_truth if size_results else None
-        lines.append(f"<td><strong>Ground Truth</strong><br>{render_grid_html(gt)}</td>")
+        if gt:
+            gt_filename = f"gt_{width}x{height}.png"
+            render_grid_image(gt, images_dir / gt_filename, COLORS, scale=16)
+            lines.append(f"**Ground Truth:**")
+            lines.append("")
+            lines.append(f"![Ground Truth](images/{gt_filename})")
+            lines.append("")
         
-        # Each model's output
-        for r in size_results[:6]:  # Limit to top 6 models for readability
-            status = "✅" if r.accuracy == 1.0 else f"🔴 {r.accuracy:.0%}"
-            grid_html = render_grid_html(r.parsed_output, r.ground_truth)
-            lines.append(f"<td><strong>{r.model}</strong><br>{status}<br>{grid_html}</td>")
+        # Generate each model's output image
+        lines.append("| Model | Result | Output |")
+        lines.append("|-------|--------|--------|")
         
-        lines.append("</tr></table>")
+        for r in size_results[:6]:  # Limit to top 6 models
+            status = "✅ 100%" if r.accuracy == 1.0 else f"🔴 {r.accuracy:.0%}"
+            model_safe = r.model.replace(".", "_").replace("-", "_")
+            img_filename = f"output_{width}x{height}_{model_safe}.png"
+            
+            if r.parsed_output:
+                render_grid_image(r.parsed_output, images_dir / img_filename, COLORS, scale=16, ground_truth=r.ground_truth)
+                lines.append(f"| {r.model} | {status} | ![{r.model}](images/{img_filename}) |")
+            else:
+                lines.append(f"| {r.model} | {status} | ⚠️ No output |")
+        
         lines.append("")
     
     # Willy sprite results (if any)
@@ -498,6 +594,9 @@ def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
         willy_results.sort(key=lambda r: -r.accuracy)
         width, height = willy_results[0].size
         total_pixels = width * height
+        
+        # Willy color map
+        willy_colors = {"R": (189, 0, 0), "W": (189, 189, 189)}
         
         lines.append(f"### Miner Willy Sprite ({width}x{height}, {total_pixels} pixels)")
         lines.append("")
@@ -513,22 +612,33 @@ def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
         
         lines.append("")
         
-        # Add visual comparison grid for Willy
-        lines.append("#### Visual Comparison")
-        lines.append("")
-        lines.append("<table><tr>")
-        
-        # Ground truth
+        # Generate ground truth image for Willy
         gt = willy_results[0].ground_truth if willy_results else None
-        lines.append(f"<td><strong>Ground Truth</strong><br>{render_grid_html(gt, emoji_map=WILLY_COLOR_EMOJI)}</td>")
+        if gt:
+            gt_filename = "gt_willy.png"
+            render_grid_image(gt, images_dir / gt_filename, willy_colors, scale=8)
+            lines.append("#### Visual Comparison")
+            lines.append("")
+            lines.append(f"**Ground Truth:**")
+            lines.append("")
+            lines.append(f"![Ground Truth](images/{gt_filename})")
+            lines.append("")
         
-        # Each model's output
+        # Generate each model's output image
+        lines.append("| Model | Result | Output |")
+        lines.append("|-------|--------|--------|")
+        
         for r in willy_results[:6]:
-            status = "✅" if r.accuracy == 1.0 else f"🔴 {r.accuracy:.0%}"
-            grid_html = render_grid_html(r.parsed_output, r.ground_truth, emoji_map=WILLY_COLOR_EMOJI)
-            lines.append(f"<td><strong>{r.model}</strong><br>{status}<br>{grid_html}</td>")
+            status = "✅ 100%" if r.accuracy == 1.0 else f"🔴 {r.accuracy:.0%}"
+            model_safe = r.model.replace(".", "_").replace("-", "_")
+            img_filename = f"output_willy_{model_safe}.png"
+            
+            if r.parsed_output:
+                render_grid_image(r.parsed_output, images_dir / img_filename, willy_colors, scale=8, ground_truth=r.ground_truth)
+                lines.append(f"| {r.model} | {status} | ![{r.model}](images/{img_filename}) |")
+            else:
+                lines.append(f"| {r.model} | {status} | ⚠️ No output |")
         
-        lines.append("</tr></table>")
         lines.append("")
     
     # Overall rankings
