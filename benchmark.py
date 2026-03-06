@@ -10,8 +10,6 @@ Usage:
 """
 
 import argparse
-import base64
-import io
 import json
 import os
 import random
@@ -254,7 +252,7 @@ def render_grid_image(
     scale: int = 16,
     ground_truth: Optional[list[list[str]]] = None,
     show_errors: bool = True
-) -> Optional[str]:
+) -> None:
     """
     Render a color grid as a PNG image.
     
@@ -265,12 +263,9 @@ def render_grid_image(
         scale: Pixel size for each cell
         ground_truth: If provided and show_errors=True, overlay X on wrong pixels
         show_errors: Whether to mark incorrect pixels
-    
-    Returns:
-        Data URI string for the image, or None if grid is invalid
     """
     if grid is None:
-        return None
+        return
     
     if color_map is None:
         color_map = COLORS
@@ -279,7 +274,7 @@ def render_grid_image(
     width = len(grid[0]) if grid else 0
     
     if width == 0 or height == 0:
-        return None
+        return
     
     # Create image
     img = Image.new("RGB", (width * scale, height * scale), (128, 128, 128))
@@ -323,12 +318,6 @@ def render_grid_image(
                 img.putpixel((x * scale, y), (64, 64, 64))
     
     img.save(output_path)
-    
-    # Also return data URI for inline embedding
-    buffer = io.BytesIO()
-    img.save(buffer, format="PNG")
-    b64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
-    return f"data:image/png;base64,{b64}"
 
 
 def calculate_accuracy(ground_truth: list[list[str]], output: list[list[str]]) -> tuple[int, int]:
@@ -566,22 +555,21 @@ def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
         
         lines.append("")
         
-        # Add visual comparison with images
+        # Add visual comparison with emoji (GitHub strips data URIs)
         lines.append("#### Visual Comparison")
         lines.append("")
         
-        # Generate ground truth image
+        # Generate ground truth image (save to file, show emoji inline)
         gt = size_results[0].ground_truth if size_results else None
         if gt:
             gt_filename = f"gt_{width}x{height}.png"
-            gt_data_uri = render_grid_image(gt, images_dir / gt_filename, COLORS, scale=16)
-            if gt_data_uri:
-                lines.append(f"**Ground Truth:**")
-                lines.append("")
-                lines.append(f"<img src=\"{gt_data_uri}\" alt=\"Ground Truth\">")
-                lines.append("")
+            render_grid_image(gt, images_dir / gt_filename, COLORS, scale=16)
+            lines.append(f"**Ground Truth:**")
+            lines.append("")
+            lines.append(render_grid_html(gt))
+            lines.append("")
         
-        # Generate each model's output image
+        # Generate each model's output
         lines.append("| Model | Result | Output |")
         lines.append("|-------|--------|--------|")
         
@@ -591,11 +579,11 @@ def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
             img_filename = f"output_{width}x{height}_{model_safe}.png"
             
             if r.parsed_output:
-                data_uri = render_grid_image(r.parsed_output, images_dir / img_filename, COLORS, scale=16, ground_truth=r.ground_truth)
-                if data_uri:
-                    lines.append(f"| {r.model} | {status} | <img src=\"{data_uri}\" alt=\"{r.model}\"> |")
-                else:
-                    lines.append(f"| {r.model} | {status} | ⚠️ No output |")
+                # Save image file for artifact
+                render_grid_image(r.parsed_output, images_dir / img_filename, COLORS, scale=16, ground_truth=r.ground_truth)
+                # Use emoji for inline display
+                emoji_grid = render_grid_html(r.parsed_output, r.ground_truth)
+                lines.append(f"| {r.model} | {status} | {emoji_grid} |")
             else:
                 lines.append(f"| {r.model} | {status} | ⚠️ No output |")
         
