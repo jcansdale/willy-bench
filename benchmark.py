@@ -99,6 +99,7 @@ class BenchmarkResult:
     parsed_output: Optional[list[list[str]]]
     ground_truth: Optional[list[list[str]]] = None
     error: Optional[str] = None
+    image_name: str = "random"  # "random" or "willy"
 
 
 def generate_random_image(width: int, height: int, seed: int) -> tuple[Image.Image, list[list[str]]]:
@@ -118,14 +119,54 @@ def generate_random_image(width: int, height: int, seed: int) -> tuple[Image.Ima
     return img, ground_truth
 
 
-def run_cop_chat(image_path: str, model: str, width: int, height: int, zoom: int = 0) -> str:
+# Willy sprite color mapping (dark red and gray)
+WILLY_COLORS = {
+    (189, 0, 0): "R",      # Dark red -> R
+    (189, 189, 189): "W",  # Gray/white -> W
+}
+
+WILLY_COLOR_EMOJI = {
+    "R": "🟥",
+    "W": "⬜",
+    "?": "⬛",
+}
+
+
+def load_willy_sprite(image_path: str) -> tuple[Image.Image, list[list[str]]]:
+    """Load the Willy sprite and extract ground truth."""
+    img = Image.open(image_path).convert("RGB")
+    ground_truth = []
+    
+    for y in range(img.height):
+        row = []
+        for x in range(img.width):
+            pixel = img.getpixel((x, y))
+            # Find closest color
+            color_key = WILLY_COLORS.get(pixel, "?")
+            if color_key == "?":
+                # Try to match approximately
+                r, g, b = pixel
+                if r > 100 and g < 50 and b < 50:
+                    color_key = "R"
+                else:
+                    color_key = "W"
+            row.append(color_key)
+        ground_truth.append(row)
+    
+    return img, ground_truth
+
+
+def run_cop_chat(image_path: str, model: str, width: int, height: int, zoom: int = 0, custom_prompt: str = None) -> str:
     """Run the cop CLI tool and return the output."""
-    prompt = (
-        f"{width}x{height} pixel image with 8 colors: "
-        f"R=Red, G=Green, B=Blue, Y=Yellow, M=Magenta, C=Cyan, O=Orange, P=Purple. "
-        f"Output a JSON 2D array: {height} rows, each row is an array of {width} single-letter strings. "
-        f"ONLY output the JSON array, nothing else."
-    )
+    if custom_prompt:
+        prompt = custom_prompt
+    else:
+        prompt = (
+            f"{width}x{height} pixel image with 8 colors: "
+            f"R=Red, G=Green, B=Blue, Y=Yellow, M=Magenta, C=Cyan, O=Orange, P=Purple. "
+            f"Output a JSON 2D array: {height} rows, each row is an array of {width} single-letter strings. "
+            f"ONLY output the JSON array, nothing else."
+        )
     
     cmd = ["cop", "chat", "-m", model, "-i", image_path]
     if zoom > 0:
@@ -173,7 +214,7 @@ def parse_json_output(output: str, width: int, height: int) -> Optional[list[lis
         return None
 
 
-def render_grid_html(grid: Optional[list[list[str]]], ground_truth: Optional[list[list[str]]] = None, cell_size: int = 16) -> str:
+def render_grid_html(grid: Optional[list[list[str]]], ground_truth: Optional[list[list[str]]] = None, emoji_map: dict = None) -> str:
     """
     Render a color grid as emoji squares for GitHub markdown.
     If ground_truth is provided, shows ✓ for correct pixels, actual color for wrong.
@@ -181,12 +222,15 @@ def render_grid_html(grid: Optional[list[list[str]]], ground_truth: Optional[lis
     if grid is None:
         return "⚠️ No output"
     
+    if emoji_map is None:
+        emoji_map = COLOR_EMOJI
+    
     lines = []
     for i, row in enumerate(grid):
         row_chars = []
         for j, cell in enumerate(row):
             color_key = cell.upper() if isinstance(cell, str) and len(cell) == 1 else "?"
-            emoji = COLOR_EMOJI.get(color_key, COLOR_EMOJI["?"])
+            emoji = emoji_map.get(color_key, emoji_map.get("?", "⬛"))
             
             # Check if this pixel is correct
             if ground_truth and i < len(ground_truth) and j < len(ground_truth[i]):
@@ -294,6 +338,98 @@ def run_benchmark(
     return results
 
 
+def run_willy_benchmark(
+    models: list[str],
+    zoom: int,
+    output_dir: Path
+) -> list[BenchmarkResult]:
+    """Run the Willy sprite benchmark."""
+    results = []
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Find the Willy sprite
+    willy_path = Path(__file__).parent / "images" / "willy.png"
+    if not willy_path.exists():
+        print(f"Warning: Willy sprite not found at {willy_path}")
+        return results
+    
+    img, ground_truth = load_willy_sprite(str(willy_path))
+    width, height = img.size
+    
+    # Copy image to output dir
+    output_image = output_dir / "willy_test.png"
+    img.save(output_image)
+    
+    # Save ground truth
+    gt_path = output_dir / "ground_truth_willy.json"
+    with open(gt_path, "w") as f:
+        json.dump(ground_truth, f)
+    
+    print(f"\n{'='*60}")
+    print(f"Testing Willy sprite ({width}x{height}, zoom={zoom}x)")
+    print(f"{'='*60}")
+    
+    # Custom prompt for 2-color Willy sprite
+    willy_prompt = (
+        f"This is an {width}x{height} pixel sprite with 2 colors: R=Red, W=White/Gray. "
+        f"Output a JSON 2D array: {height} rows, each row is an array of {width} single-letter strings (R or W). "
+        f"ONLY output the JSON array, nothing else."
+    )
+    
+    for model in models:
+        print(f"\n  Testing {model}...", end=" ", flush=True)
+        
+        raw_output = run_cop_chat(str(willy_path), model, width, height, zoom, custom_prompt=willy_prompt)
+        
+        if raw_output.startswith("ERROR:"):
+            result = BenchmarkResult(
+                model=model,
+                size=(width, height),
+                zoom=zoom,
+                correct_pixels=0,
+                total_pixels=width * height,
+                accuracy=0.0,
+                raw_output=raw_output,
+                parsed_output=None,
+                ground_truth=ground_truth,
+                error=raw_output,
+                image_name="willy"
+            )
+        else:
+            parsed = parse_json_output(raw_output, width, height)
+            correct, total = calculate_accuracy(ground_truth, parsed)
+            accuracy = correct / total if total > 0 else 0.0
+            
+            result = BenchmarkResult(
+                model=model,
+                size=(width, height),
+                zoom=zoom,
+                correct_pixels=correct,
+                total_pixels=total,
+                accuracy=accuracy,
+                raw_output=raw_output,
+                parsed_output=parsed,
+                ground_truth=ground_truth,
+                error=None if parsed else "Failed to parse JSON output",
+                image_name="willy"
+            )
+        
+        results.append(result)
+        status = f"{result.correct_pixels}/{result.total_pixels} ({result.accuracy:.0%})"
+        if result.error:
+            print(f"❌ {status} - {result.error[:50]}")
+        elif result.accuracy == 1.0:
+            print(f"✅ {status}")
+        elif result.accuracy >= 0.8:
+            print(f"🟡 {status}")
+        else:
+            print(f"🔴 {status}")
+    
+    return results
+    
+    return results
+
+
 def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
     """Generate a markdown report from benchmark results."""
     lines = [
@@ -314,13 +450,17 @@ def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
         "",
     ]
     
-    # Group results by size
-    sizes = sorted(set(r.size for r in results))
+    # Separate random and Willy results
+    random_results = [r for r in results if r.image_name == "random"]
+    willy_results = [r for r in results if r.image_name == "willy"]
+    
+    # Group random results by size
+    sizes = sorted(set(r.size for r in random_results))
     
     for size in sizes:
         width, height = size
         total_pixels = width * height
-        size_results = [r for r in results if r.size == size]
+        size_results = [r for r in random_results if r.size == size]
         size_results.sort(key=lambda r: -r.accuracy)
         
         lines.append(f"### {width}x{height} ({total_pixels} pixels)")
@@ -348,6 +488,44 @@ def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
         for r in size_results[:6]:  # Limit to top 6 models for readability
             status = "✅" if r.accuracy == 1.0 else f"🔴 {r.accuracy:.0%}"
             grid_html = render_grid_html(r.parsed_output, r.ground_truth)
+            lines.append(f"<td><strong>{r.model}</strong><br>{status}<br>{grid_html}</td>")
+        
+        lines.append("</tr></table>")
+        lines.append("")
+    
+    # Willy sprite results (if any)
+    if willy_results:
+        willy_results.sort(key=lambda r: -r.accuracy)
+        width, height = willy_results[0].size
+        total_pixels = width * height
+        
+        lines.append(f"### Miner Willy Sprite ({width}x{height}, {total_pixels} pixels)")
+        lines.append("")
+        lines.append("A classic 2-color retro game sprite (R=Red, W=White).")
+        lines.append("")
+        lines.append("| Model | Zoom | Correct | Accuracy |")
+        lines.append("|-------|------|---------|----------|")
+        
+        for r in willy_results:
+            zoom_str = f"{r.zoom}x" if r.zoom > 0 else "none"
+            status = "✅" if r.accuracy == 1.0 else "🟡" if r.accuracy >= 0.8 else "🔴"
+            lines.append(f"| {r.model} | {zoom_str} | {r.correct_pixels}/{r.total_pixels} | {status} {r.accuracy:.1%} |")
+        
+        lines.append("")
+        
+        # Add visual comparison grid for Willy
+        lines.append("#### Visual Comparison")
+        lines.append("")
+        lines.append("<table><tr>")
+        
+        # Ground truth
+        gt = willy_results[0].ground_truth if willy_results else None
+        lines.append(f"<td><strong>Ground Truth</strong><br>{render_grid_html(gt, emoji_map=WILLY_COLOR_EMOJI)}</td>")
+        
+        # Each model's output
+        for r in willy_results[:6]:
+            status = "✅" if r.accuracy == 1.0 else f"🔴 {r.accuracy:.0%}"
+            grid_html = render_grid_html(r.parsed_output, r.ground_truth, emoji_map=WILLY_COLOR_EMOJI)
             lines.append(f"<td><strong>{r.model}</strong><br>{status}<br>{grid_html}</td>")
         
         lines.append("</tr></table>")
@@ -454,6 +632,11 @@ def main():
         action="store_true",
         help="Quick mode: test only top 3 models on 4x4"
     )
+    parser.add_argument(
+        "--willy",
+        action="store_true",
+        help="Include the 8x16 Miner Willy sprite test"
+    )
     
     args = parser.parse_args()
     
@@ -487,6 +670,11 @@ def main():
     
     # Run benchmark
     results = run_benchmark(models, sizes, args.zoom, args.seed, output_dir)
+    
+    # Run Willy benchmark if requested
+    if args.willy:
+        willy_results = run_willy_benchmark(models, args.zoom, output_dir)
+        results.extend(willy_results)
     
     # Generate reports
     report = generate_report(results, output_dir / "RESULTS.md")

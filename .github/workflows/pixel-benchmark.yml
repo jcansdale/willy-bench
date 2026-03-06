@@ -84,6 +84,7 @@ jobs:
             --sizes "${{ github.event.inputs.sizes || '4x4,8x8' }}" \
             --zoom "${{ github.event.inputs.zoom || '8' }}" \
             --seed "${{ github.event.inputs.seed || '42' }}" \
+            --willy \
             --output-dir benchmark_results
       
       - name: Upload benchmark results
