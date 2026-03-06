@@ -1,21 +1,32 @@
-# cop — GitHub Copilot CLI
+# Willy Bench — Pixel Extraction Benchmark
 
-A command-line interface for GitHub Copilot with vision model support.
+A benchmark suite for testing vision models' ability to extract pixel-level color data from small images, using the GitHub Copilot API.
 
 ## Features
 
-- **Chat with Copilot models** — Access GPT, Claude, and Gemini models
-- **Image support** — Send images with prompts for vision analysis
-- **Zoom mode** — Automatically scale images for better pixel-level extraction
-- **Multiple models** — Switch between models with `-m` flag
+- **Pixel extraction benchmark** — Tests how accurately AI models can identify individual pixel colors
+- **Visual comparison** — PNG images showing ground truth vs model output with error highlighting
+- **Miner Willy sprite test** — Classic 8x16 retro game sprite challenge
+- **Multiple APIs** — Supports both Chat Completions and Responses API
+- **GitHub Actions** — Automated benchmarking with results in job summary
 
-## Installation
+## Quick Start
 
 ```bash
+# Install
 pip install -e .
+pip install Pillow
+
+# Run quick benchmark
+python benchmark.py --quick
+
+# Run full benchmark with Willy sprite
+python benchmark.py --willy --zoom 8
 ```
 
-## Usage
+## cop CLI
+
+A command-line interface for GitHub Copilot with vision model support.
 
 ```bash
 # Chat with default model
@@ -27,43 +38,54 @@ cop chat -m gemini-3.1-pro-preview "Explain quantum computing"
 # Send an image for analysis
 cop chat -i image.png "Describe this image"
 
-# Use zoom for pixel-level extraction
+# Use zoom for pixel-level extraction  
 cop chat -i sprite.png -z 8 "Extract pixel colors as JSON"
+
+# Force Responses API (for gpt-5.4 etc.)
+cop chat -m gpt-5.4 --api responses "Hello"
 
 # List available models
 cop models
-
-# Login (if needed)
-cop login
 ```
 
-## Available Models
+## Supported Models
 
-- `gpt-4o`, `gpt-5.1`, `gpt-5.2`
-- `claude-sonnet-4`, `claude-sonnet-4.5`, `claude-opus-4.5`, `claude-opus-4.6`
-- `gemini-2.5-pro`, `gemini-3-pro-preview`, `gemini-3.1-pro-preview`
+| Model | API | Best Pixel Accuracy |
+|-------|-----|---------------------|
+| gemini-3.1-pro-preview | Chat Completions | **100%** |
+| gemini-3-pro-preview | Chat Completions | **100%** |
+| gemini-2.5-pro | Chat Completions | ~78% |
+| gpt-4o | Chat Completions | ~62% |
+| gpt-5.4 | Responses | ~63% |
+| claude-sonnet-4 | Chat Completions | ~66% |
+| claude-opus-4.6 | Chat Completions | ~66% |
 
-## Pixel Extraction Benchmark
+## Benchmark Results
 
-This repo includes a benchmark for testing vision models' ability to extract pixel-level data. See [BENCHMARK.md](BENCHMARK.md) for details.
+See latest results: [GitHub Actions](../../actions/workflows/pixel-benchmark.yml)
 
-```bash
-# Run quick benchmark
-python benchmark.py --quick
+The benchmark generates:
+- **Visual comparison** with emoji grids in job summary
+- **PNG images** with error highlighting (red X on wrong pixels)
+- **JSON results** for further analysis
 
-# Run full benchmark
-python benchmark.py --models "gemini-3.1-pro-preview,gpt-4o" --sizes "4x4,8x8"
+### Example Output
+
+```
+Testing gemini-3.1-pro-preview... ✅ 16/16 (100%)
+Testing gpt-4o... 🔴 12/16 (75%)
+Testing claude-sonnet-4... 🔴 10/16 (62%)
 ```
 
 ## Authentication
 
-The CLI uses GitHub's device flow for authentication:
+### Interactive (local)
+```bash
+cop login
+```
 
-1. Run `cop login`
-2. Open the URL and enter the code shown
-3. Credentials are cached in `~/.copilot_chat_creds.json`
-
-For CI/CD, set `COPILOT_GITHUB_TOKEN` or `GH_TOKEN` environment variable.
+### CI/CD
+Set `COPILOT_GITHUB_TOKEN` environment variable with a GitHub token that has Copilot access.
 
 ## License
 
