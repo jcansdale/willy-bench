@@ -517,6 +517,8 @@ def generate_report(results: list[BenchmarkResult], output_path: Path) -> str:
         "",
         f"Generated on: {__import__('datetime').datetime.now().isoformat()}",
         "",
+        "> 📦 **PNG images** with error highlighting are available in the workflow artifacts download.",
+        "",
         "## Summary",
         "",
         "This benchmark tests the ability of vision models to extract pixel-level color data from small images.",

@@ -102,6 +102,8 @@ jobs:
           echo "**Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
           echo "**Date:** $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📦 **[Download PNG images with error highlighting](../../../actions/runs/${{ github.run_id }}/artifacts)**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
           
           if [ -f benchmark_results/RESULTS.md ]; then
             cat benchmark_results/RESULTS.md >> $GITHUB_STEP_SUMMARY
