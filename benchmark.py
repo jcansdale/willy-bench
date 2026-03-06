@@ -60,7 +60,7 @@ COLOR_EMOJI = {
     "B": "🟦",
     "Y": "🟨",
     "M": "🟪",  # Purple square for magenta
-    "C": "🩵",  # Light blue heart for cyan (no cyan square)
+    "C": "🟦",  # Blue square for cyan (no cyan square emoji exists)
     "O": "🟧",
     "P": "🟪",
     "?": "⬛",
@@ -176,7 +176,7 @@ def parse_json_output(output: str, width: int, height: int) -> Optional[list[lis
 def render_grid_html(grid: Optional[list[list[str]]], ground_truth: Optional[list[list[str]]] = None, cell_size: int = 16) -> str:
     """
     Render a color grid as emoji squares for GitHub markdown.
-    If ground_truth is provided, shows errors with ❌ overlay.
+    If ground_truth is provided, shows ✓ for correct pixels, actual color for wrong.
     """
     if grid is None:
         return "⚠️ No output"
@@ -188,10 +188,10 @@ def render_grid_html(grid: Optional[list[list[str]]], ground_truth: Optional[lis
             color_key = cell.upper() if isinstance(cell, str) and len(cell) == 1 else "?"
             emoji = COLOR_EMOJI.get(color_key, COLOR_EMOJI["?"])
             
-            # Check if this pixel is wrong
+            # Check if this pixel is correct
             if ground_truth and i < len(ground_truth) and j < len(ground_truth[i]):
-                if color_key != ground_truth[i][j]:
-                    emoji = "❌"
+                if color_key == ground_truth[i][j]:
+                    emoji = "✓"  # Correct pixel
             
             row_chars.append(emoji)
         lines.append("".join(row_chars))
