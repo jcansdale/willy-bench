@@ -21,11 +21,7 @@ on:
         required: false
         default: '42'
   
-  # Run on schedule (weekly on Sunday)
-  schedule:
-    - cron: '0 0 * * 0'
-  
-  # Run on push to main (optional)
+  # Run on push to main
   push:
     branches:
       - main
@@ -65,16 +61,7 @@ jobs:
           which cop || echo "cop not found in PATH"
           cop --help || echo "cop --help failed"
       
-      - name: Run quick test (dry run)
-        if: github.event_name == 'push'
-        env:
-          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          python benchmark.py --quick --output-dir benchmark_results
-      
-      - name: Run full benchmark (manual/scheduled)
-        if: github.event_name != 'push'
+      - name: Run full benchmark
         env:
           COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -145,8 +132,8 @@ jobs:
             echo "⚠️ No results file found" >> $GITHUB_STEP_SUMMARY
           fi
       
-      - name: Commit results (scheduled runs only)
-        if: github.event_name == 'schedule'
+      - name: Commit results
+        if: github.event_name == 'push'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
