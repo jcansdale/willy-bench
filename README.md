@@ -59,6 +59,7 @@ cop models
 | gpt-5.4 | Responses | ~63% |
 | claude-sonnet-4 | Chat Completions | ~66% |
 | claude-opus-4.6 | Chat Completions | ~66% |
+| claude-opus-4.7 | Chat Completions | TBD |
 
 ## Benchmark Results
 

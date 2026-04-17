@@ -9,7 +9,7 @@ This benchmark tests how accurately various AI vision models can identify indivi
 - **Gemini 3.x** (gemini-3.1-pro-preview, gemini-3-pro-preview) — Best performers
 - **Gemini 2.5** (gemini-2.5-pro)
 - **GPT models** (gpt-4o, gpt-5.4) — gpt-5.4 requires Responses API
-- **Claude models** (claude-sonnet-4, claude-opus-4.6)
+- **Claude models** (claude-sonnet-4, claude-opus-4.6, claude-opus-4.7)
 
 ## Key Findings
 
@@ -22,6 +22,7 @@ Based on extensive testing:
 | gemini-2.5-pro | Chat | ~78% | Good but not perfect |
 | claude-sonnet-4 | Chat | ~66% | Improved with proper prompting |
 | claude-opus-4.6 | Chat | ~66% | Similar to sonnet |
+| claude-opus-4.7 | Chat | TBD | Newly added |
 | gpt-5.4 | Responses | ~63% | Requires Responses API |
 | gpt-4o | Chat | ~62% | Better on smaller images |
 
