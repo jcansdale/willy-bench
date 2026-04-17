@@ -71,7 +71,6 @@ COLOR_KEYS = list(COLORS.keys())
 # Models to test
 DEFAULT_MODELS = [
     "gemini-3.1-pro-preview",
-    "gemini-3-pro-preview",
     "gemini-2.5-pro",
     "gpt-4o",
     "gpt-5.1",
@@ -183,7 +182,20 @@ def run_cop_chat(image_path: str, model: str, width: int, height: int, zoom: int
             timeout=120,
             env={**os.environ, "PYTHONUNBUFFERED": "1"}
         )
-        return result.stdout + result.stderr
+        output = result.stdout + result.stderr
+        # Surface API errors and non-zero exits with a clear ERROR: prefix
+        # so the caller's startswith("ERROR:") check catches them.
+        if result.returncode != 0 or "Copilot API error" in output or "model_not_supported" in output:
+            # Extract the most informative line
+            for line in output.splitlines():
+                if "ERROR" in line or "error" in line:
+                    line = line.strip()
+                    # Avoid double "ERROR: ERROR:" when the line already has the prefix
+                    if line.startswith("ERROR:"):
+                        return line
+                    return f"ERROR: {line}"
+            return f"ERROR: cop exited {result.returncode}: {output.strip()[:200]}"
+        return output
     except subprocess.TimeoutExpired:
         return "ERROR: Command timed out after 120 seconds"
     except Exception as e:
@@ -845,7 +857,7 @@ def main():
     
     # Quick mode overrides
     if args.quick:
-        models = ["gemini-3.1-pro-preview", "gemini-3-pro-preview", "gemini-3-flash-preview", "gemini-2.5-pro", "gpt-4o", "gpt-5-mini", "gpt-5.4", "claude-sonnet-4", "claude-sonnet-4.5", "claude-opus-4.6", "claude-opus-4.7"]
+        models = ["gemini-3.1-pro-preview", "gemini-3-flash-preview", "gemini-2.5-pro", "gpt-4o", "gpt-5-mini", "gpt-5.4", "claude-sonnet-4", "claude-sonnet-4.5", "claude-opus-4.6", "claude-opus-4.7"]
         sizes = [(4, 4)]
         print("Running in quick mode (3 models, 4x4 only)")
     
