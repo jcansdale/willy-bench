@@ -85,7 +85,7 @@ DEFAULT_MODELS = [
 ]
 
 # Default image sizes to test (width x height)
-DEFAULT_SIZES = [(4, 4), (8, 8), (8, 16)]
+DEFAULT_SIZES = [(4, 4), (8, 8), (8, 16), (16, 16)]
 
 
 @dataclass
@@ -785,7 +785,7 @@ def main():
     parser.add_argument(
         "--sizes",
         type=str,
-        default="4x4,8x8,8x16",
+        default="4x4,8x8,8x16,16x16",
         help="Comma-separated list of image sizes (WxH)"
     )
     parser.add_argument(
