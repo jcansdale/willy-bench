@@ -63,120 +63,6 @@
     "image_name": "random"
   },
   {
-    "model": "gemini-3.1-pro-preview",
-    "size": "4x4",
-    "zoom": 8,
-    "correct_pixels": 0,
-    "total_pixels": 16,
-    "accuracy": 0.0,
-    "raw_output": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not available for integrator \\\"vscode-chat\\\". Available models: [chamomile gpt-4.1 claude-fable-5.1 claude-fable-5 claude-opus-4.6 claude-opus-4.7 claude-opus-4.8-fast claude-opus-4.8 claude-opus-5 claude-sonnet-4.6 claude-sonnet-5 copilot-search-a copilot-search-b copilot-search-c exec-agent-a exec-agent-b exec-agent-c gemini-3.5-flash gemini-3.6-flash gemini-3.7-flash gemini-3.8-flash gpt-5.3-codex gpt-5.4-mini gpt-5.4 gpt-5.5 gpt-5.6-luna gpt-5.6-sol-fast gpt-5.6-sol gpt-5.6-terra gpt-6-astra grok-4.5 grok-4.6 kimi-k2.7-code kimi-k3 mai-code-1.1-flash mai-code-1-flash-4th mai-code-1-flash-picker mai-code-1-flash-secondary mai-code-1-flash-tertiary mai-code-1-flash trajectory-compaction gpt-5-mini gpt-3.5-turbo gpt-3.5-turbo-0613 gpt-4o-mini gpt-4o-mini-2024-07-18 copilot-preview-4o-mini-a1cfd608 gpt-4 gpt-4-0613 gpt-4-0125-preview copilot-preview-gpt4-centralus gpt-4o gpt-4o-2024-11-20 gpt-4o-2024-05-13 gpt-4-o-preview gpt-4o-japanwest copilot-preview-gpt4o-centralus gpt-4o-2024-08-06 claude-sonnet-4.5 claude-opus-4.5 claude-haiku-4.5 gpt-4.1-2025-04-14 goldeneye-secondary gpt-5.2]. Verify the correct Copilot-Integration-Id header is being sent.\",\"code\":\"model_not_available_for_integrator\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "error": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not available for integrator \\\"vscode-chat\\\". Available models: [chamomile gpt-4.1 claude-fable-5.1 claude-fable-5 claude-opus-4.6 claude-opus-4.7 claude-opus-4.8-fast claude-opus-4.8 claude-opus-5 claude-sonnet-4.6 claude-sonnet-5 copilot-search-a copilot-search-b copilot-search-c exec-agent-a exec-agent-b exec-agent-c gemini-3.5-flash gemini-3.6-flash gemini-3.7-flash gemini-3.8-flash gpt-5.3-codex gpt-5.4-mini gpt-5.4 gpt-5.5 gpt-5.6-luna gpt-5.6-sol-fast gpt-5.6-sol gpt-5.6-terra gpt-6-astra grok-4.5 grok-4.6 kimi-k2.7-code kimi-k3 mai-code-1.1-flash mai-code-1-flash-4th mai-code-1-flash-picker mai-code-1-flash-secondary mai-code-1-flash-tertiary mai-code-1-flash trajectory-compaction gpt-5-mini gpt-3.5-turbo gpt-3.5-turbo-0613 gpt-4o-mini gpt-4o-mini-2024-07-18 copilot-preview-4o-mini-a1cfd608 gpt-4 gpt-4-0613 gpt-4-0125-preview copilot-preview-gpt4-centralus gpt-4o gpt-4o-2024-11-20 gpt-4o-2024-05-13 gpt-4-o-preview gpt-4o-japanwest copilot-preview-gpt4o-centralus gpt-4o-2024-08-06 claude-sonnet-4.5 claude-opus-4.5 claude-haiku-4.5 gpt-4.1-2025-04-14 goldeneye-secondary gpt-5.2]. Verify the correct Copilot-Integration-Id header is being sent.\",\"code\":\"model_not_available_for_integrator\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "parsed_output": null,
-    "ground_truth": [
-      [
-        "G",
-        "R",
-        "M",
-        "Y"
-      ],
-      [
-        "Y",
-        "B",
-        "G",
-        "G"
-      ],
-      [
-        "O",
-        "R",
-        "R",
-        "G"
-      ],
-      [
-        "Y",
-        "Y",
-        "R",
-        "Y"
-      ]
-    ],
-    "image_name": "random"
-  },
-  {
-    "model": "gemini-3-flash-preview",
-    "size": "4x4",
-    "zoom": 8,
-    "correct_pixels": 0,
-    "total_pixels": 16,
-    "accuracy": 0.0,
-    "raw_output": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "error": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "parsed_output": null,
-    "ground_truth": [
-      [
-        "G",
-        "R",
-        "M",
-        "Y"
-      ],
-      [
-        "Y",
-        "B",
-        "G",
-        "G"
-      ],
-      [
-        "O",
-        "R",
-        "R",
-        "G"
-      ],
-      [
-        "Y",
-        "Y",
-        "R",
-        "Y"
-      ]
-    ],
-    "image_name": "random"
-  },
-  {
-    "model": "gemini-2.5-pro",
-    "size": "4x4",
-    "zoom": 8,
-    "correct_pixels": 0,
-    "total_pixels": 16,
-    "accuracy": 0.0,
-    "raw_output": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "error": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "parsed_output": null,
-    "ground_truth": [
-      [
-        "G",
-        "R",
-        "M",
-        "Y"
-      ],
-      [
-        "Y",
-        "B",
-        "G",
-        "G"
-      ],
-      [
-        "O",
-        "R",
-        "R",
-        "G"
-      ],
-      [
-        "Y",
-        "Y",
-        "R",
-        "Y"
-      ]
-    ],
-    "image_name": "random"
-  },
-  {
     "model": "gpt-4o",
     "size": "4x4",
     "zoom": 8,
@@ -218,10 +104,10 @@
     "model": "gpt-5-mini",
     "size": "4x4",
     "zoom": 8,
-    "correct_pixels": 1,
+    "correct_pixels": 2,
     "total_pixels": 16,
-    "accuracy": 0.0625,
-    "raw_output": "(zoom \u00d78)\n[\n  [\"R\",\"G\",\"B\",\"Y\"],\n  [\"M\",\"C\",\"O\",\"P\"],\n  [\"G\",\"B\",\"Y\",\"R\"],\n  [\"C\",\"O\",\"P\",\"M\"]\n]\nUsing GitHub token from environment variable\u2026\n",
+    "accuracy": 0.125,
+    "raw_output": "(zoom \u00d78)\n[[\"R\",\"G\",\"B\",\"Y\"],[\"M\",\"C\",\"O\",\"P\"],[\"G\",\"R\",\"Y\",\"B\"],[\"C\",\"M\",\"P\",\"O\"]]\nUsing GitHub token from environment variable\u2026\n",
     "error": null,
     "parsed_output": [
       [
@@ -238,15 +124,15 @@
       ],
       [
         "G",
-        "B",
+        "R",
         "Y",
-        "R"
+        "B"
       ],
       [
         "C",
-        "O",
+        "M",
         "P",
-        "M"
+        "O"
       ]
     ],
     "ground_truth": [
@@ -281,35 +167,35 @@
     "model": "gpt-5.4",
     "size": "4x4",
     "zoom": 8,
-    "correct_pixels": 1,
+    "correct_pixels": 3,
     "total_pixels": 16,
-    "accuracy": 0.0625,
-    "raw_output": "(zoom \u00d78)\n[[\"G\",\"G\",\"Y\",\"R\"],[\"G\",\"G\",\"Y\",\"R\"],[\"C\",\"C\",\"O\",\"M\"],[\"C\",\"C\",\"B\",\"P\"] ]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.1875,
+    "raw_output": "(zoom \u00d78)\n[[\"G\",\"G\",\"G\",\"G\"],[\"Y\",\"G\",\"M\",\"C\"],[\"Y\",\"O\",\"R\",\"P\"],[\"R\",\"R\",\"B\",\"B\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
         "G",
         "G",
-        "Y",
-        "R"
+        "G",
+        "G"
       ],
       [
-        "G",
-        "G",
         "Y",
-        "R"
+        "G",
+        "M",
+        "C"
       ],
       [
-        "C",
-        "C",
+        "Y",
         "O",
-        "M"
+        "R",
+        "P"
       ],
       [
-        "C",
-        "C",
+        "R",
+        "R",
         "B",
-        "P"
+        "B"
       ]
     ],
     "ground_truth": [
@@ -344,93 +230,29 @@
     "model": "gpt-6-astra",
     "size": "4x4",
     "zoom": 8,
-    "correct_pixels": 4,
+    "correct_pixels": 7,
     "total_pixels": 16,
-    "accuracy": 0.25,
-    "raw_output": "(zoom \u00d78)\n[[\"Y\",\"G\",\"M\",\"Y\"],[\"G\",\"C\",\"Y\",\"Y\"],[\"R\",\"R\",\"G\",\"Y\"],[\"Y\",\"R\",\"G\",\"O\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.4375,
+    "raw_output": "(zoom \u00d78)\n[[\"Y\",\"G\",\"M\",\"R\"],[\"O\",\"R\",\"M\",\"M\"],[\"R\",\"R\",\"R\",\"Y\"],[\"Y\",\"Y\",\"R\",\"Y\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
         "Y",
         "G",
         "M",
-        "Y"
-      ],
-      [
-        "G",
-        "C",
-        "Y",
-        "Y"
-      ],
-      [
-        "R",
-        "R",
-        "G",
-        "Y"
-      ],
-      [
-        "Y",
-        "R",
-        "G",
-        "O"
-      ]
-    ],
-    "ground_truth": [
-      [
-        "G",
-        "R",
-        "M",
-        "Y"
-      ],
-      [
-        "Y",
-        "B",
-        "G",
-        "G"
+        "R"
       ],
       [
         "O",
         "R",
-        "R",
-        "G"
-      ],
-      [
-        "Y",
-        "Y",
-        "R",
-        "Y"
-      ]
-    ],
-    "image_name": "random"
-  },
-  {
-    "model": "claude-sonnet-4",
-    "size": "4x4",
-    "zoom": 8,
-    "correct_pixels": 0,
-    "total_pixels": 16,
-    "accuracy": 0.0,
-    "raw_output": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "error": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "parsed_output": null,
-    "ground_truth": [
-      [
-        "G",
-        "R",
         "M",
+        "M"
+      ],
+      [
+        "R",
+        "R",
+        "R",
         "Y"
-      ],
-      [
-        "Y",
-        "B",
-        "G",
-        "G"
-      ],
-      [
-        "O",
-        "R",
-        "R",
-        "G"
       ],
       [
         "Y",
@@ -439,56 +261,6 @@
         "Y"
       ]
     ],
-    "image_name": "random"
-  },
-  {
-    "model": "claude-sonnet-4.5",
-    "size": "4x4",
-    "zoom": 8,
-    "correct_pixels": 0,
-    "total_pixels": 16,
-    "accuracy": 0.0,
-    "raw_output": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "error": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "parsed_output": null,
-    "ground_truth": [
-      [
-        "G",
-        "R",
-        "M",
-        "Y"
-      ],
-      [
-        "Y",
-        "B",
-        "G",
-        "G"
-      ],
-      [
-        "O",
-        "R",
-        "R",
-        "G"
-      ],
-      [
-        "Y",
-        "Y",
-        "R",
-        "Y"
-      ]
-    ],
-    "image_name": "random"
-  },
-  {
-    "model": "claude-opus-4.6",
-    "size": "4x4",
-    "zoom": 8,
-    "correct_pixels": 0,
-    "total_pixels": 16,
-    "accuracy": 0.0,
-    "raw_output": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "error": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "parsed_output": null,
     "ground_truth": [
       [
         "G",
@@ -521,34 +293,34 @@
     "model": "claude-opus-4.7",
     "size": "4x4",
     "zoom": 8,
-    "correct_pixels": 4,
+    "correct_pixels": 3,
     "total_pixels": 16,
-    "accuracy": 0.25,
-    "raw_output": "(zoom \u00d78)\n[[\"R\",\"P\",\"G\",\"G\"],[\"Y\",\"R\",\"G\",\"G\"],[\"B\",\"M\",\"R\",\"Y\"],[\"G\",\"G\",\"Y\",\"G\"]]\nUsing GitHub token from environment variable\u2026\n",
+    "accuracy": 0.1875,
+    "raw_output": "(zoom \u00d78)\n[[\"R\",\"G\",\"R\",\"G\"],[\"M\",\"R\",\"Y\",\"G\"],[\"B\",\"M\",\"G\",\"G\"],[\"P\",\"G\",\"R\",\"G\"]]\nUsing GitHub token from environment variable\u2026\n",
     "error": null,
     "parsed_output": [
       [
         "R",
-        "P",
         "G",
+        "R",
         "G"
       ],
       [
-        "Y",
+        "M",
         "R",
-        "G",
+        "Y",
         "G"
       ],
       [
         "B",
         "M",
-        "R",
-        "Y"
+        "G",
+        "G"
       ],
       [
+        "P",
         "G",
-        "G",
-        "Y",
+        "R",
         "G"
       ]
     ],
@@ -756,288 +528,6 @@
     "image_name": "random"
   },
   {
-    "model": "gemini-3.1-pro-preview",
-    "size": "8x8",
-    "zoom": 8,
-    "correct_pixels": 0,
-    "total_pixels": 64,
-    "accuracy": 0.0,
-    "raw_output": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not available for integrator \\\"vscode-chat\\\". Available models: [chamomile gpt-4.1 claude-fable-5.1 claude-fable-5 claude-opus-4.6 claude-opus-4.7 claude-opus-4.8-fast claude-opus-4.8 claude-opus-5 claude-sonnet-4.6 claude-sonnet-5 copilot-search-a copilot-search-b copilot-search-c exec-agent-a exec-agent-b exec-agent-c gemini-3.5-flash gemini-3.6-flash gemini-3.7-flash gemini-3.8-flash gpt-5.3-codex gpt-5.4-mini gpt-5.4 gpt-5.5 gpt-5.6-luna gpt-5.6-sol-fast gpt-5.6-sol gpt-5.6-terra gpt-6-astra grok-4.5 grok-4.6 kimi-k2.7-code kimi-k3 mai-code-1.1-flash mai-code-1-flash-4th mai-code-1-flash-picker mai-code-1-flash-secondary mai-code-1-flash-tertiary mai-code-1-flash trajectory-compaction gpt-5-mini gpt-3.5-turbo gpt-3.5-turbo-0613 gpt-4o-mini gpt-4o-mini-2024-07-18 copilot-preview-4o-mini-a1cfd608 gpt-4 gpt-4-0613 gpt-4-0125-preview copilot-preview-gpt4-centralus gpt-4o gpt-4o-2024-11-20 gpt-4o-2024-05-13 gpt-4-o-preview gpt-4o-japanwest copilot-preview-gpt4o-centralus gpt-4o-2024-08-06 claude-sonnet-4.5 claude-opus-4.5 claude-haiku-4.5 gpt-4.1-2025-04-14 goldeneye-secondary gpt-5.2]. Verify the correct Copilot-Integration-Id header is being sent.\",\"code\":\"model_not_available_for_integrator\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "error": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not available for integrator \\\"vscode-chat\\\". Available models: [chamomile gpt-4.1 claude-fable-5.1 claude-fable-5 claude-opus-4.6 claude-opus-4.7 claude-opus-4.8-fast claude-opus-4.8 claude-opus-5 claude-sonnet-4.6 claude-sonnet-5 copilot-search-a copilot-search-b copilot-search-c exec-agent-a exec-agent-b exec-agent-c gemini-3.5-flash gemini-3.6-flash gemini-3.7-flash gemini-3.8-flash gpt-5.3-codex gpt-5.4-mini gpt-5.4 gpt-5.5 gpt-5.6-luna gpt-5.6-sol-fast gpt-5.6-sol gpt-5.6-terra gpt-6-astra grok-4.5 grok-4.6 kimi-k2.7-code kimi-k3 mai-code-1.1-flash mai-code-1-flash-4th mai-code-1-flash-picker mai-code-1-flash-secondary mai-code-1-flash-tertiary mai-code-1-flash trajectory-compaction gpt-5-mini gpt-3.5-turbo gpt-3.5-turbo-0613 gpt-4o-mini gpt-4o-mini-2024-07-18 copilot-preview-4o-mini-a1cfd608 gpt-4 gpt-4-0613 gpt-4-0125-preview copilot-preview-gpt4-centralus gpt-4o gpt-4o-2024-11-20 gpt-4o-2024-05-13 gpt-4-o-preview gpt-4o-japanwest copilot-preview-gpt4o-centralus gpt-4o-2024-08-06 claude-sonnet-4.5 claude-opus-4.5 claude-haiku-4.5 gpt-4.1-2025-04-14 goldeneye-secondary gpt-5.2]. Verify the correct Copilot-Integration-Id header is being sent.\",\"code\":\"model_not_available_for_integrator\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "parsed_output": null,
-    "ground_truth": [
-      [
-        "G",
-        "R",
-        "M",
-        "Y",
-        "Y",
-        "B",
-        "G",
-        "G"
-      ],
-      [
-        "O",
-        "R",
-        "R",
-        "G",
-        "Y",
-        "Y",
-        "R",
-        "Y"
-      ],
-      [
-        "O",
-        "Y",
-        "P",
-        "M",
-        "R",
-        "B",
-        "O",
-        "C"
-      ],
-      [
-        "M",
-        "B",
-        "Y",
-        "C",
-        "G",
-        "G",
-        "O",
-        "G"
-      ],
-      [
-        "C",
-        "C",
-        "M",
-        "R",
-        "P",
-        "G",
-        "O",
-        "G"
-      ],
-      [
-        "M",
-        "C",
-        "Y",
-        "G",
-        "R",
-        "Y",
-        "M",
-        "G"
-      ],
-      [
-        "Y",
-        "G",
-        "O",
-        "M",
-        "P",
-        "C",
-        "B",
-        "C"
-      ],
-      [
-        "C",
-        "Y",
-        "M",
-        "G",
-        "B",
-        "Y",
-        "B",
-        "P"
-      ]
-    ],
-    "image_name": "random"
-  },
-  {
-    "model": "gemini-3-flash-preview",
-    "size": "8x8",
-    "zoom": 8,
-    "correct_pixels": 0,
-    "total_pixels": 64,
-    "accuracy": 0.0,
-    "raw_output": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "error": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "parsed_output": null,
-    "ground_truth": [
-      [
-        "G",
-        "R",
-        "M",
-        "Y",
-        "Y",
-        "B",
-        "G",
-        "G"
-      ],
-      [
-        "O",
-        "R",
-        "R",
-        "G",
-        "Y",
-        "Y",
-        "R",
-        "Y"
-      ],
-      [
-        "O",
-        "Y",
-        "P",
-        "M",
-        "R",
-        "B",
-        "O",
-        "C"
-      ],
-      [
-        "M",
-        "B",
-        "Y",
-        "C",
-        "G",
-        "G",
-        "O",
-        "G"
-      ],
-      [
-        "C",
-        "C",
-        "M",
-        "R",
-        "P",
-        "G",
-        "O",
-        "G"
-      ],
-      [
-        "M",
-        "C",
-        "Y",
-        "G",
-        "R",
-        "Y",
-        "M",
-        "G"
-      ],
-      [
-        "Y",
-        "G",
-        "O",
-        "M",
-        "P",
-        "C",
-        "B",
-        "C"
-      ],
-      [
-        "C",
-        "Y",
-        "M",
-        "G",
-        "B",
-        "Y",
-        "B",
-        "P"
-      ]
-    ],
-    "image_name": "random"
-  },
-  {
-    "model": "gemini-2.5-pro",
-    "size": "8x8",
-    "zoom": 8,
-    "correct_pixels": 0,
-    "total_pixels": 64,
-    "accuracy": 0.0,
-    "raw_output": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "error": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "parsed_output": null,
-    "ground_truth": [
-      [
-        "G",
-        "R",
-        "M",
-        "Y",
-        "Y",
-        "B",
-        "G",
-        "G"
-      ],
-      [
-        "O",
-        "R",
-        "R",
-        "G",
-        "Y",
-        "Y",
-        "R",
-        "Y"
-      ],
-      [
-        "O",
-        "Y",
-        "P",
-        "M",
-        "R",
-        "B",
-        "O",
-        "C"
-      ],
-      [
-        "M",
-        "B",
-        "Y",
-        "C",
-        "G",
-        "G",
-        "O",
-        "G"
-      ],
-      [
-        "C",
-        "C",
-        "M",
-        "R",
-        "P",
-        "G",
-        "O",
-        "G"
-      ],
-      [
-        "M",
-        "C",
-        "Y",
-        "G",
-        "R",
-        "Y",
-        "M",
-        "G"
-      ],
-      [
-        "Y",
-        "G",
-        "O",
-        "M",
-        "P",
-        "C",
-        "B",
-        "C"
-      ],
-      [
-        "C",
-        "Y",
-        "M",
-        "G",
-        "B",
-        "Y",
-        "B",
-        "P"
-      ]
-    ],
-    "image_name": "random"
-  },
-  {
     "model": "gpt-4o",
     "size": "8x8",
     "zoom": 8,
@@ -1135,91 +625,91 @@
     "model": "gpt-5-mini",
     "size": "8x8",
     "zoom": 8,
-    "correct_pixels": 6,
+    "correct_pixels": 10,
     "total_pixels": 64,
-    "accuracy": 0.09375,
-    "raw_output": "(zoom \u00d78)\n[[\"R\",\"Y\",\"G\",\"B\",\"M\",\"C\",\"O\",\"P\"],[\"Y\",\"G\",\"C\",\"R\",\"O\",\"M\",\"B\",\"P\"],[\"B\",\"C\",\"R\",\"G\",\"Y\",\"P\",\"M\",\"O\"],[\"G\",\"R\",\"M\",\"C\",\"B\",\"O\",\"P\",\"Y\"],[\"M\",\"O\",\"P\",\"Y\",\"C\",\"B\",\"G\",\"R\"],[\"C\",\"B\",\"Y\",\"P\",\"M\",\"R\",\"O\",\"G\"],[\"O\",\"P\",\"B\",\"M\",\"R\",\"G\",\"Y\",\"C\"],[\"P\",\"M\",\"O\",\"B\",\"G\",\"Y\",\"R\",\"C\"]]\nUsing GitHub token from environment variable\u2026\n",
+    "accuracy": 0.15625,
+    "raw_output": "(zoom \u00d78)\n[[\"B\",\"Y\",\"R\",\"M\",\"G\",\"C\",\"O\",\"B\"],\n [\"G\",\"C\",\"Y\",\"B\",\"M\",\"P\",\"R\",\"Y\"],\n [\"R\",\"M\",\"C\",\"G\",\"B\",\"Y\",\"O\",\"M\"],\n [\"Y\",\"R\",\"G\",\"C\",\"P\",\"O\",\"B\",\"C\"],\n [\"C\",\"P\",\"O\",\"R\",\"Y\",\"G\",\"M\",\"R\"],\n [\"M\",\"O\",\"B\",\"P\",\"C\",\"R\",\"Y\",\"G\"],\n [\"P\",\"B\",\"M\",\"O\",\"R\",\"Y\",\"C\",\"O\"],\n [\"O\",\"G\",\"P\",\"C\",\"M\",\"B\",\"G\",\"P\"]]\nUsing GitHub token from environment variable\u2026\n",
     "error": null,
     "parsed_output": [
       [
-        "R",
-        "Y",
-        "G",
         "B",
+        "Y",
+        "R",
         "M",
+        "G",
         "C",
         "O",
-        "P"
+        "B"
       ],
       [
-        "Y",
         "G",
         "C",
-        "R",
-        "O",
+        "Y",
+        "B",
         "M",
-        "B",
-        "P"
-      ],
-      [
-        "B",
-        "C",
-        "R",
-        "G",
-        "Y",
         "P",
-        "M",
-        "O"
-      ],
-      [
-        "G",
         "R",
-        "M",
-        "C",
-        "B",
-        "O",
-        "P",
         "Y"
       ],
       [
+        "R",
         "M",
-        "O",
-        "P",
-        "Y",
         "C",
-        "B",
         "G",
+        "B",
+        "Y",
+        "O",
+        "M"
+      ],
+      [
+        "Y",
+        "R",
+        "G",
+        "C",
+        "P",
+        "O",
+        "B",
+        "C"
+      ],
+      [
+        "C",
+        "P",
+        "O",
+        "R",
+        "Y",
+        "G",
+        "M",
         "R"
       ],
       [
-        "C",
-        "B",
-        "Y",
-        "P",
         "M",
-        "R",
         "O",
+        "B",
+        "P",
+        "C",
+        "R",
+        "Y",
         "G"
       ],
       [
-        "O",
         "P",
         "B",
         "M",
+        "O",
         "R",
-        "G",
         "Y",
-        "C"
+        "C",
+        "O"
       ],
       [
-        "P",
-        "M",
         "O",
+        "G",
+        "P",
+        "C",
+        "M",
         "B",
         "G",
-        "Y",
-        "R",
-        "C"
+        "P"
       ]
     ],
     "ground_truth": [
@@ -1310,91 +800,91 @@
     "model": "gpt-5.4",
     "size": "8x8",
     "zoom": 8,
-    "correct_pixels": 11,
+    "correct_pixels": 7,
     "total_pixels": 64,
-    "accuracy": 0.171875,
-    "raw_output": "(zoom \u00d78)\n[[\"O\",\"O\",\"M\",\"M\",\"Y\",\"B\",\"C\",\"C\"],[\"O\",\"O\",\"M\",\"M\",\"G\",\"B\",\"C\",\"C\"],[\"Y\",\"Y\",\"G\",\"Y\",\"B\",\"O\",\"Y\",\"Y\"],[\"Y\",\"Y\",\"G\",\"G\",\"C\",\"P\",\"O\",\"G\"],[\"P\",\"P\",\"Y\",\"Y\",\"C\",\"P\",\"O\",\"G\"],[\"P\",\"P\",\"Y\",\"Y\",\"M\",\"P\",\"O\",\"G\"],[\"P\",\"P\",\"R\",\"R\",\"R\",\"B\",\"G\",\"G\"],[\"P\",\"P\",\"R\",\"R\",\"R\",\"B\",\"G\",\"G\"]]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.109375,
+    "raw_output": "(zoom \u00d78)\n[[\"R\",\"M\",\"R\",\"Y\",\"G\",\"B\",\"P\",\"C\"],[\"O\",\"Y\",\"M\",\"R\",\"Y\",\"G\",\"B\",\"P\"],[\"G\",\"B\",\"O\",\"Y\",\"M\",\"R\",\"Y\",\"G\"],[\"R\",\"Y\",\"B\",\"M\",\"O\",\"Y\",\"M\",\"R\"],[\"R\",\"G\",\"G\",\"B\",\"R\",\"M\",\"O\",\"Y\"],[\"G\",\"R\",\"R\",\"Y\",\"B\",\"M\",\"R\",\"Y\"],[\"B\",\"R\",\"G\",\"B\",\"O\",\"Y\",\"G\",\"B\"],[\"C\",\"G\",\"R\",\"R\",\"Y\",\"G\",\"B\",\"C\"]]\n\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
-        "O",
-        "O",
+        "R",
         "M",
-        "M",
+        "R",
         "Y",
+        "G",
         "B",
-        "C",
+        "P",
         "C"
       ],
       [
         "O",
-        "O",
+        "Y",
         "M",
-        "M",
+        "R",
+        "Y",
         "G",
         "B",
-        "C",
-        "C"
+        "P"
       ],
       [
-        "Y",
-        "Y",
         "G",
-        "Y",
         "B",
         "O",
         "Y",
+        "M",
+        "R",
+        "Y",
+        "G"
+      ],
+      [
+        "R",
+        "Y",
+        "B",
+        "M",
+        "O",
+        "Y",
+        "M",
+        "R"
+      ],
+      [
+        "R",
+        "G",
+        "G",
+        "B",
+        "R",
+        "M",
+        "O",
         "Y"
       ],
       [
-        "Y",
-        "Y",
         "G",
-        "G",
-        "C",
-        "P",
-        "O",
-        "G"
-      ],
-      [
-        "P",
-        "P",
+        "R",
+        "R",
         "Y",
-        "Y",
-        "C",
-        "P",
-        "O",
-        "G"
-      ],
-      [
-        "P",
-        "P",
-        "Y",
-        "Y",
+        "B",
         "M",
-        "P",
+        "R",
+        "Y"
+      ],
+      [
+        "B",
+        "R",
+        "G",
+        "B",
         "O",
-        "G"
+        "Y",
+        "G",
+        "B"
       ],
       [
-        "P",
-        "P",
-        "R",
-        "R",
-        "R",
-        "B",
+        "C",
         "G",
-        "G"
-      ],
-      [
-        "P",
-        "P",
         "R",
         "R",
-        "R",
-        "B",
+        "Y",
         "G",
-        "G"
+        "B",
+        "C"
       ]
     ],
     "ground_truth": [
@@ -1485,375 +975,93 @@
     "model": "gpt-6-astra",
     "size": "8x8",
     "zoom": 8,
-    "correct_pixels": 17,
+    "correct_pixels": 13,
     "total_pixels": 64,
-    "accuracy": 0.265625,
-    "raw_output": "(zoom \u00d78)\n[\n  [\"O\",\"R\",\"Y\",\"Y\",\"C\",\"Y\",\"O\",\"O\"],\n  [\"O\",\"M\",\"Y\",\"Y\",\"Y\",\"Y\",\"R\",\"O\"],\n  [\"Y\",\"O\",\"M\",\"C\",\"O\",\"R\",\"G\",\"Y\"],\n  [\"O\",\"C\",\"M\",\"M\",\"R\",\"R\",\"G\",\"O\"],\n  [\"C\",\"C\",\"M\",\"Y\",\"M\",\"R\",\"G\",\"O\"],\n  [\"M\",\"C\",\"M\",\"G\",\"O\",\"Y\",\"G\",\"Y\"],\n  [\"Y\",\"O\",\"M\",\"G\",\"P\",\"M\",\"C\",\"Y\"],\n  [\"O\",\"Y\",\"R\",\"O\",\"B\",\"M\",\"C\",\"M\"]\n]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.203125,
+    "raw_output": "(zoom \u00d78)\n[\n  [\"O\",\"R\",\"M\",\"Y\",\"Y\",\"C\",\"C\",\"C\"],\n  [\"O\",\"R\",\"M\",\"M\",\"O\",\"O\",\"C\",\"C\"],\n  [\"Y\",\"O\",\"C\",\"M\",\"M\",\"Y\",\"G\",\"Y\"],\n  [\"Y\",\"Y\",\"C\",\"C\",\"M\",\"Y\",\"G\",\"Y\"],\n  [\"M\",\"Y\",\"C\",\"M\",\"M\",\"O\",\"G\",\"Y\"],\n  [\"C\",\"Y\",\"G\",\"M\",\"R\",\"Y\",\"Y\",\"M\"],\n  [\"Y\",\"Y\",\"G\",\"G\",\"P\",\"C\",\"Y\",\"B\"],\n  [\"Y\",\"O\",\"G\",\"P\",\"P\",\"C\",\"Y\",\"Y\"]\n]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
         "O",
         "R",
+        "M",
         "Y",
         "Y",
         "C",
-        "Y",
-        "O",
-        "O"
+        "C",
+        "C"
       ],
       [
         "O",
-        "M",
-        "Y",
-        "Y",
-        "Y",
-        "Y",
         "R",
-        "O"
+        "M",
+        "M",
+        "O",
+        "O",
+        "C",
+        "C"
       ],
       [
         "Y",
         "O",
-        "M",
-        "C",
-        "O",
-        "R",
-        "G",
-        "Y"
-      ],
-      [
-        "O",
         "C",
         "M",
         "M",
-        "R",
-        "R",
-        "G",
-        "O"
-      ],
-      [
-        "C",
-        "C",
-        "M",
-        "Y",
-        "M",
-        "R",
-        "G",
-        "O"
-      ],
-      [
-        "M",
-        "C",
-        "M",
-        "G",
-        "O",
         "Y",
         "G",
         "Y"
       ],
       [
         "Y",
-        "O",
-        "M",
-        "G",
-        "P",
-        "M",
+        "Y",
         "C",
+        "C",
+        "M",
+        "Y",
+        "G",
         "Y"
       ],
       [
-        "O",
-        "Y",
-        "R",
-        "O",
-        "B",
         "M",
+        "Y",
         "C",
+        "M",
+        "M",
+        "O",
+        "G",
+        "Y"
+      ],
+      [
+        "C",
+        "Y",
+        "G",
+        "M",
+        "R",
+        "Y",
+        "Y",
         "M"
-      ]
-    ],
-    "ground_truth": [
-      [
-        "G",
-        "R",
-        "M",
-        "Y",
-        "Y",
-        "B",
-        "G",
-        "G"
       ],
       [
-        "O",
-        "R",
-        "R",
+        "Y",
+        "Y",
         "G",
+        "G",
+        "P",
+        "C",
         "Y",
+        "B"
+      ],
+      [
         "Y",
-        "R",
+        "O",
+        "G",
+        "P",
+        "P",
+        "C",
+        "Y",
         "Y"
-      ],
-      [
-        "O",
-        "Y",
-        "P",
-        "M",
-        "R",
-        "B",
-        "O",
-        "C"
-      ],
-      [
-        "M",
-        "B",
-        "Y",
-        "C",
-        "G",
-        "G",
-        "O",
-        "G"
-      ],
-      [
-        "C",
-        "C",
-        "M",
-        "R",
-        "P",
-        "G",
-        "O",
-        "G"
-      ],
-      [
-        "M",
-        "C",
-        "Y",
-        "G",
-        "R",
-        "Y",
-        "M",
-        "G"
-      ],
-      [
-        "Y",
-        "G",
-        "O",
-        "M",
-        "P",
-        "C",
-        "B",
-        "C"
-      ],
-      [
-        "C",
-        "Y",
-        "M",
-        "G",
-        "B",
-        "Y",
-        "B",
-        "P"
       ]
     ],
-    "image_name": "random"
-  },
-  {
-    "model": "claude-sonnet-4",
-    "size": "8x8",
-    "zoom": 8,
-    "correct_pixels": 0,
-    "total_pixels": 64,
-    "accuracy": 0.0,
-    "raw_output": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "error": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "parsed_output": null,
-    "ground_truth": [
-      [
-        "G",
-        "R",
-        "M",
-        "Y",
-        "Y",
-        "B",
-        "G",
-        "G"
-      ],
-      [
-        "O",
-        "R",
-        "R",
-        "G",
-        "Y",
-        "Y",
-        "R",
-        "Y"
-      ],
-      [
-        "O",
-        "Y",
-        "P",
-        "M",
-        "R",
-        "B",
-        "O",
-        "C"
-      ],
-      [
-        "M",
-        "B",
-        "Y",
-        "C",
-        "G",
-        "G",
-        "O",
-        "G"
-      ],
-      [
-        "C",
-        "C",
-        "M",
-        "R",
-        "P",
-        "G",
-        "O",
-        "G"
-      ],
-      [
-        "M",
-        "C",
-        "Y",
-        "G",
-        "R",
-        "Y",
-        "M",
-        "G"
-      ],
-      [
-        "Y",
-        "G",
-        "O",
-        "M",
-        "P",
-        "C",
-        "B",
-        "C"
-      ],
-      [
-        "C",
-        "Y",
-        "M",
-        "G",
-        "B",
-        "Y",
-        "B",
-        "P"
-      ]
-    ],
-    "image_name": "random"
-  },
-  {
-    "model": "claude-sonnet-4.5",
-    "size": "8x8",
-    "zoom": 8,
-    "correct_pixels": 0,
-    "total_pixels": 64,
-    "accuracy": 0.0,
-    "raw_output": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "error": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "parsed_output": null,
-    "ground_truth": [
-      [
-        "G",
-        "R",
-        "M",
-        "Y",
-        "Y",
-        "B",
-        "G",
-        "G"
-      ],
-      [
-        "O",
-        "R",
-        "R",
-        "G",
-        "Y",
-        "Y",
-        "R",
-        "Y"
-      ],
-      [
-        "O",
-        "Y",
-        "P",
-        "M",
-        "R",
-        "B",
-        "O",
-        "C"
-      ],
-      [
-        "M",
-        "B",
-        "Y",
-        "C",
-        "G",
-        "G",
-        "O",
-        "G"
-      ],
-      [
-        "C",
-        "C",
-        "M",
-        "R",
-        "P",
-        "G",
-        "O",
-        "G"
-      ],
-      [
-        "M",
-        "C",
-        "Y",
-        "G",
-        "R",
-        "Y",
-        "M",
-        "G"
-      ],
-      [
-        "Y",
-        "G",
-        "O",
-        "M",
-        "P",
-        "C",
-        "B",
-        "C"
-      ],
-      [
-        "C",
-        "Y",
-        "M",
-        "G",
-        "B",
-        "Y",
-        "B",
-        "P"
-      ]
-    ],
-    "image_name": "random"
-  },
-  {
-    "model": "claude-opus-4.6",
-    "size": "8x8",
-    "zoom": 8,
-    "correct_pixels": 0,
-    "total_pixels": 64,
-    "accuracy": 0.0,
-    "raw_output": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "error": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "parsed_output": null,
     "ground_truth": [
       [
         "G",
@@ -1942,91 +1150,91 @@
     "model": "claude-opus-4.7",
     "size": "8x8",
     "zoom": 8,
-    "correct_pixels": 11,
+    "correct_pixels": 9,
     "total_pixels": 64,
-    "accuracy": 0.171875,
-    "raw_output": "(zoom \u00d78)\n[[\"Y\",\"B\",\"M\",\"G\",\"M\",\"Y\",\"M\",\"G\"],[\"C\",\"G\",\"Y\",\"M\",\"R\",\"Y\",\"C\",\"M\"],[\"G\",\"Y\",\"C\",\"M\",\"R\",\"M\",\"B\",\"M\"],[\"Y\",\"C\",\"R\",\"Y\",\"G\",\"B\",\"Y\",\"M\"],[\"C\",\"M\",\"R\",\"G\",\"M\",\"C\",\"M\",\"Y\"],[\"Y\",\"R\",\"Y\",\"R\",\"B\",\"M\",\"C\",\"M\"],[\"G\",\"M\",\"M\",\"M\",\"M\",\"Y\",\"M\",\"Y\"],[\"B\",\"Y\",\"R\",\"C\",\"M\",\"M\",\"M\",\"M\"]]\nUsing GitHub token from environment variable\u2026\n",
+    "accuracy": 0.140625,
+    "raw_output": "(zoom \u00d78)\n[[\"Y\",\"M\",\"G\",\"Y\",\"R\",\"M\",\"G\",\"M\"],[\"C\",\"Y\",\"G\",\"M\",\"R\",\"Y\",\"M\",\"M\"],[\"C\",\"M\",\"M\",\"G\",\"R\",\"G\",\"C\",\"O\"],[\"R\",\"Y\",\"C\",\"Y\",\"O\",\"M\",\"M\",\"Y\"],[\"C\",\"C\",\"C\",\"G\",\"G\",\"M\",\"Y\",\"O\"],[\"Y\",\"M\",\"G\",\"M\",\"R\",\"B\",\"O\",\"M\"],[\"O\",\"R\",\"M\",\"G\",\"B\",\"M\",\"Y\",\"C\"],[\"G\",\"Y\",\"G\",\"M\",\"G\",\"M\",\"M\",\"G\"]]\nUsing GitHub token from environment variable\u2026\n",
     "error": null,
     "parsed_output": [
       [
         "Y",
-        "B",
         "M",
+        "G",
+        "Y",
+        "R",
+        "M",
+        "G",
+        "M"
+      ],
+      [
+        "C",
+        "Y",
+        "G",
+        "M",
+        "R",
+        "Y",
+        "M",
+        "M"
+      ],
+      [
+        "C",
+        "M",
+        "M",
+        "G",
+        "R",
+        "G",
+        "C",
+        "O"
+      ],
+      [
+        "R",
+        "Y",
+        "C",
+        "Y",
+        "O",
+        "M",
+        "M",
+        "Y"
+      ],
+      [
+        "C",
+        "C",
+        "C",
+        "G",
         "G",
         "M",
         "Y",
+        "O"
+      ],
+      [
+        "Y",
+        "M",
+        "G",
+        "M",
+        "R",
+        "B",
+        "O",
+        "M"
+      ],
+      [
+        "O",
+        "R",
+        "M",
+        "G",
+        "B",
+        "M",
+        "Y",
+        "C"
+      ],
+      [
+        "G",
+        "Y",
+        "G",
+        "M",
+        "G",
+        "M",
         "M",
         "G"
-      ],
-      [
-        "C",
-        "G",
-        "Y",
-        "M",
-        "R",
-        "Y",
-        "C",
-        "M"
-      ],
-      [
-        "G",
-        "Y",
-        "C",
-        "M",
-        "R",
-        "M",
-        "B",
-        "M"
-      ],
-      [
-        "Y",
-        "C",
-        "R",
-        "Y",
-        "G",
-        "B",
-        "Y",
-        "M"
-      ],
-      [
-        "C",
-        "M",
-        "R",
-        "G",
-        "M",
-        "C",
-        "M",
-        "Y"
-      ],
-      [
-        "Y",
-        "R",
-        "Y",
-        "R",
-        "B",
-        "M",
-        "C",
-        "M"
-      ],
-      [
-        "G",
-        "M",
-        "M",
-        "M",
-        "M",
-        "Y",
-        "M",
-        "Y"
-      ],
-      [
-        "B",
-        "Y",
-        "R",
-        "C",
-        "M",
-        "M",
-        "M",
-        "M"
       ]
     ],
     "ground_truth": [
@@ -2117,10 +1325,10 @@
     "model": "gemini-3.5-flash",
     "size": "8x16",
     "zoom": 8,
-    "correct_pixels": 125,
+    "correct_pixels": 127,
     "total_pixels": 128,
-    "accuracy": 0.9765625,
-    "raw_output": "(zoom \u00d78)\n[\n  [\"R\", \"R\", \"R\", \"R\", \"R\", \"W\", \"W\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"R\", \"W\", \"W\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"R\", \"R\", \"W\", \"W\", \"R\", \"R\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\"],\n  [\"W\", \"W\", \"W\", \"W\", \"R\", \"W\", \"W\", \"W\"],\n  [\"W\", \"W\", \"W\", \"W\", \"W\", \"R\", \"W\", \"W\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"R\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"R\", \"W\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"R\", \"W\", \"W\", \"R\"]\n]\nUsing GitHub token from environment variable\u2026\n",
+    "accuracy": 0.9921875,
+    "raw_output": "(zoom \u00d78)\n[\n  [\"R\", \"R\", \"R\", \"R\", \"R\", \"W\", \"W\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"R\", \"W\", \"R\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"R\", \"R\", \"W\", \"W\", \"R\", \"R\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\"],\n  [\"W\", \"W\", \"W\", \"W\", \"R\", \"W\", \"W\", \"W\"],\n  [\"W\", \"W\", \"W\", \"W\", \"W\", \"R\", \"W\", \"W\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"R\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"R\", \"W\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"R\", \"W\", \"W\", \"R\"]\n]\nUsing GitHub token from environment variable\u2026\n",
     "error": null,
     "parsed_output": [
       [
@@ -2160,7 +1368,7 @@
         "W",
         "R",
         "W",
-        "W",
+        "R",
         "R"
       ],
       [
@@ -2170,7 +1378,7 @@
         "W",
         "W",
         "W",
-        "R",
+        "W",
         "R"
       ],
       [
@@ -2284,528 +1492,6 @@
         "R"
       ]
     ],
-    "ground_truth": [
-      [
-        "R",
-        "R",
-        "R",
-        "R",
-        "R",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "R",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "R",
-        "W",
-        "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "W"
-      ],
-      [
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "W"
-      ]
-    ],
-    "image_name": "willy"
-  },
-  {
-    "model": "gemini-3.1-pro-preview",
-    "size": "8x16",
-    "zoom": 8,
-    "correct_pixels": 0,
-    "total_pixels": 128,
-    "accuracy": 0.0,
-    "raw_output": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not available for integrator \\\"vscode-chat\\\". Available models: [chamomile gpt-4.1 claude-fable-5.1 claude-fable-5 claude-opus-4.6 claude-opus-4.7 claude-opus-4.8-fast claude-opus-4.8 claude-opus-5 claude-sonnet-4.6 claude-sonnet-5 copilot-search-a copilot-search-b copilot-search-c exec-agent-a exec-agent-b exec-agent-c gemini-3.5-flash gemini-3.6-flash gemini-3.7-flash gemini-3.8-flash gpt-5.3-codex gpt-5.4-mini gpt-5.4 gpt-5.5 gpt-5.6-luna gpt-5.6-sol-fast gpt-5.6-sol gpt-5.6-terra gpt-6-astra grok-4.5 grok-4.6 kimi-k2.7-code kimi-k3 mai-code-1.1-flash mai-code-1-flash-4th mai-code-1-flash-picker mai-code-1-flash-secondary mai-code-1-flash-tertiary mai-code-1-flash trajectory-compaction gpt-5-mini gpt-3.5-turbo gpt-3.5-turbo-0613 gpt-4o-mini gpt-4o-mini-2024-07-18 copilot-preview-4o-mini-a1cfd608 gpt-4 gpt-4-0613 gpt-4-0125-preview copilot-preview-gpt4-centralus gpt-4o gpt-4o-2024-11-20 gpt-4o-2024-05-13 gpt-4-o-preview gpt-4o-japanwest copilot-preview-gpt4o-centralus gpt-4o-2024-08-06 claude-sonnet-4.5 claude-opus-4.5 claude-haiku-4.5 gpt-4.1-2025-04-14 goldeneye-secondary gpt-5.2]. Verify the correct Copilot-Integration-Id header is being sent.\",\"code\":\"model_not_available_for_integrator\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "error": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not available for integrator \\\"vscode-chat\\\". Available models: [chamomile gpt-4.1 claude-fable-5.1 claude-fable-5 claude-opus-4.6 claude-opus-4.7 claude-opus-4.8-fast claude-opus-4.8 claude-opus-5 claude-sonnet-4.6 claude-sonnet-5 copilot-search-a copilot-search-b copilot-search-c exec-agent-a exec-agent-b exec-agent-c gemini-3.5-flash gemini-3.6-flash gemini-3.7-flash gemini-3.8-flash gpt-5.3-codex gpt-5.4-mini gpt-5.4 gpt-5.5 gpt-5.6-luna gpt-5.6-sol-fast gpt-5.6-sol gpt-5.6-terra gpt-6-astra grok-4.5 grok-4.6 kimi-k2.7-code kimi-k3 mai-code-1.1-flash mai-code-1-flash-4th mai-code-1-flash-picker mai-code-1-flash-secondary mai-code-1-flash-tertiary mai-code-1-flash trajectory-compaction gpt-5-mini gpt-3.5-turbo gpt-3.5-turbo-0613 gpt-4o-mini gpt-4o-mini-2024-07-18 copilot-preview-4o-mini-a1cfd608 gpt-4 gpt-4-0613 gpt-4-0125-preview copilot-preview-gpt4-centralus gpt-4o gpt-4o-2024-11-20 gpt-4o-2024-05-13 gpt-4-o-preview gpt-4o-japanwest copilot-preview-gpt4o-centralus gpt-4o-2024-08-06 claude-sonnet-4.5 claude-opus-4.5 claude-haiku-4.5 gpt-4.1-2025-04-14 goldeneye-secondary gpt-5.2]. Verify the correct Copilot-Integration-Id header is being sent.\",\"code\":\"model_not_available_for_integrator\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "parsed_output": null,
-    "ground_truth": [
-      [
-        "R",
-        "R",
-        "R",
-        "R",
-        "R",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "R",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "R",
-        "W",
-        "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "W"
-      ],
-      [
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "W"
-      ]
-    ],
-    "image_name": "willy"
-  },
-  {
-    "model": "gemini-3-flash-preview",
-    "size": "8x16",
-    "zoom": 8,
-    "correct_pixels": 0,
-    "total_pixels": 128,
-    "accuracy": 0.0,
-    "raw_output": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "error": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "parsed_output": null,
-    "ground_truth": [
-      [
-        "R",
-        "R",
-        "R",
-        "R",
-        "R",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "R",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "R",
-        "W",
-        "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "W"
-      ],
-      [
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "W"
-      ]
-    ],
-    "image_name": "willy"
-  },
-  {
-    "model": "gemini-2.5-pro",
-    "size": "8x16",
-    "zoom": 8,
-    "correct_pixels": 0,
-    "total_pixels": 128,
-    "accuracy": 0.0,
-    "raw_output": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "error": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "parsed_output": null,
     "ground_truth": [
       [
         "R",
@@ -3148,10 +1834,10 @@
     "model": "gpt-5-mini",
     "size": "8x16",
     "zoom": 8,
-    "correct_pixels": 61,
+    "correct_pixels": 68,
     "total_pixels": 128,
-    "accuracy": 0.4765625,
-    "raw_output": "(zoom \u00d78)\n[[\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"W\",\"R\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"W\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"R\",\"W\"],\n [\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"W\",\"R\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"W\",\"R\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"W\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"R\",\"W\"],\n [\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n [\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"]]\nUsing GitHub token from environment variable\u2026\n",
+    "accuracy": 0.53125,
+    "raw_output": "(zoom \u00d78)\n[[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"W\",\"R\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"W\",\"R\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"W\",\"R\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"W\",\"R\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"W\",\"R\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"W\",\"R\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"W\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"R\",\"W\"],\n [\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n [\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n [\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n [\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"]]\nUsing GitHub token from environment variable\u2026\n",
     "error": null,
     "parsed_output": [
       [
@@ -3159,6 +1845,76 @@
         "R",
         "W",
         "W",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "R",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "R",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "R",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "R",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "R",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "R",
         "R",
         "R",
         "R",
@@ -3227,77 +1983,7 @@
       [
         "R",
         "R",
-        "W",
         "R",
-        "R",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "R",
-        "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "R",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "R",
-        "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "R",
-        "R",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "R",
-        "R",
-        "R",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "R",
-        "R",
-        "R",
-        "R",
-        "W"
-      ],
-      [
-        "R",
-        "R",
-        "W",
         "R",
         "R",
         "R",
@@ -3483,10 +2169,10 @@
     "model": "gpt-5.4",
     "size": "8x16",
     "zoom": 8,
-    "correct_pixels": 78,
+    "correct_pixels": 82,
     "total_pixels": 128,
-    "accuracy": 0.609375,
-    "raw_output": "(zoom \u00d78)\n[[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"R\",\"W\",\"R\",\"R\"]]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.640625,
+    "raw_output": "(zoom \u00d78)\n[[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"R\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"R\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"R\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\"]]\n\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
@@ -3521,51 +2207,41 @@
       ],
       [
         "R",
-        "R",
         "W",
         "W",
         "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "R",
         "W",
         "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "R",
-        "W",
-        "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "R",
         "R",
         "R"
       ],
       [
         "R",
         "W",
-        "R",
+        "W",
+        "W",
         "W",
         "W",
         "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
         "R",
         "R"
       ],
@@ -3603,9 +2279,9 @@
         "R",
         "W",
         "W",
-        "W",
-        "W",
         "R",
+        "W",
+        "W",
         "R",
         "R"
       ],
@@ -3613,9 +2289,9 @@
         "R",
         "W",
         "W",
-        "W",
-        "W",
         "R",
+        "W",
+        "W",
         "R",
         "R"
       ],
@@ -3623,9 +2299,19 @@
         "R",
         "R",
         "W",
+        "R",
         "W",
         "W",
         "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "R",
+        "R",
+        "W",
         "R",
         "R"
       ],
@@ -3633,18 +2319,18 @@
         "R",
         "R",
         "R",
-        "W",
-        "W",
         "R",
+        "W",
+        "W",
         "R",
         "R"
       ],
       [
         "R",
         "R",
-        "W",
-        "W",
         "R",
+        "R",
+        "W",
         "W",
         "R",
         "R"
@@ -3818,10 +2504,10 @@
     "model": "gpt-6-astra",
     "size": "8x16",
     "zoom": 8,
-    "correct_pixels": 96,
+    "correct_pixels": 97,
     "total_pixels": 128,
-    "accuracy": 0.75,
-    "raw_output": "(zoom \u00d78)\n[\n  [\"R\",\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\"],\n  [\"W\",\"W\",\"W\",\"W\",\"R\",\"W\",\"W\",\"W\"],\n  [\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"W\",\"W\"],\n  [\"W\",\"W\",\"R\",\"R\",\"R\",\"R\",\"W\",\"W\"],\n  [\"W\",\"W\",\"R\",\"W\",\"W\",\"R\",\"W\",\"W\"],\n  [\"W\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\",\"W\"]\n]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.7578125,
+    "raw_output": "(zoom \u00d78)\n[\n  [\"R\",\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n  [\"R\",\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"W\",\"W\",\"W\",\"W\",\"R\",\"W\",\"W\",\"R\"],\n  [\"W\",\"W\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\"],\n  [\"W\",\"R\",\"R\",\"R\",\"W\",\"W\",\"W\",\"R\"],\n  [\"W\",\"R\",\"R\",\"W\",\"W\",\"R\",\"W\",\"R\"],\n  [\"W\",\"R\",\"R\",\"R\",\"W\",\"W\",\"W\",\"W\"]\n]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
@@ -3841,22 +2527,12 @@
         "W",
         "W",
         "W",
-        "R",
+        "W",
         "R"
       ],
       [
         "R",
         "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
         "W",
         "W",
         "W",
@@ -3877,16 +2553,6 @@
       [
         "R",
         "R",
-        "R",
-        "W",
-        "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
         "W",
         "W",
         "W",
@@ -3900,100 +2566,18 @@
         "W",
         "W",
         "W",
-        "W",
-        "W",
+        "R",
+        "R",
         "R"
       ],
       [
         "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W"
-      ],
-      [
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "W"
-      ],
-      [
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R",
-        "W",
-        "W"
-      ],
-      [
-        "W",
-        "W",
-        "R",
-        "R",
-        "R",
-        "R",
-        "W",
-        "W"
-      ],
-      [
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W"
-      ],
-      [
-        "W",
-        "W",
-        "R",
-        "R",
-        "R",
-        "R",
-        "R",
-        "W"
-      ]
-    ],
-    "ground_truth": [
-      [
-        "R",
-        "R",
-        "R",
         "R",
         "R",
         "W",
         "W",
+        "W",
+        "R",
         "R"
       ],
       [
@@ -4002,8 +2586,8 @@
         "W",
         "W",
         "W",
-        "W",
-        "W",
+        "R",
+        "R",
         "R"
       ],
       [
@@ -4018,27 +2602,7 @@
       ],
       [
         "R",
-        "R",
         "W",
-        "W",
-        "R",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "R",
         "W",
         "W",
         "W",
@@ -4047,37 +2611,7 @@
         "R"
       ],
       [
-        "R",
-        "R",
-        "R",
         "W",
-        "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
         "W",
         "W",
         "W",
@@ -4094,42 +2628,22 @@
         "R",
         "W",
         "W",
-        "W"
+        "R"
       ],
       [
         "W",
         "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W"
-      ],
-      [
         "R",
         "R",
-        "W",
-        "W",
         "W",
         "W",
         "R",
         "R"
       ],
       [
-        "R",
-        "W",
-        "W",
         "W",
         "R",
-        "W",
-        "W",
-        "R"
-      ],
-      [
         "R",
-        "W",
-        "W",
         "R",
         "W",
         "W",
@@ -4137,376 +2651,26 @@
         "R"
       ],
       [
+        "W",
+        "R",
         "R",
         "W",
         "W",
+        "R",
+        "W",
+        "R"
+      ],
+      [
         "W",
         "R",
+        "R",
+        "R",
+        "W",
         "W",
         "W",
         "W"
       ]
     ],
-    "image_name": "willy"
-  },
-  {
-    "model": "claude-sonnet-4",
-    "size": "8x16",
-    "zoom": 8,
-    "correct_pixels": 0,
-    "total_pixels": 128,
-    "accuracy": 0.0,
-    "raw_output": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "error": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "parsed_output": null,
-    "ground_truth": [
-      [
-        "R",
-        "R",
-        "R",
-        "R",
-        "R",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "R",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "R",
-        "W",
-        "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "W"
-      ],
-      [
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "W"
-      ]
-    ],
-    "image_name": "willy"
-  },
-  {
-    "model": "claude-sonnet-4.5",
-    "size": "8x16",
-    "zoom": 8,
-    "correct_pixels": 0,
-    "total_pixels": 128,
-    "accuracy": 0.0,
-    "raw_output": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "error": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "parsed_output": null,
-    "ground_truth": [
-      [
-        "R",
-        "R",
-        "R",
-        "R",
-        "R",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "R",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "R",
-        "W",
-        "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "W"
-      ],
-      [
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "W"
-      ]
-    ],
-    "image_name": "willy"
-  },
-  {
-    "model": "claude-opus-4.6",
-    "size": "8x16",
-    "zoom": 8,
-    "correct_pixels": 0,
-    "total_pixels": 128,
-    "accuracy": 0.0,
-    "raw_output": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "error": "ERROR: Copilot API error 400: {\"error\":{\"message\":\"The requested model is not supported.\",\"code\":\"model_not_supported\",\"param\":\"model\",\"type\":\"invalid_request_error\"}}",
-    "parsed_output": null,
     "ground_truth": [
       [
         "R",
@@ -4675,10 +2839,10 @@
     "model": "claude-opus-4.7",
     "size": "8x16",
     "zoom": 8,
-    "correct_pixels": 71,
+    "correct_pixels": 65,
     "total_pixels": 128,
-    "accuracy": 0.5546875,
-    "raw_output": "(zoom \u00d78)\n[[\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"R\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"W\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"R\",\"W\",\"W\",\"R\",\"R\"],[\"W\",\"W\",\"R\",\"R\",\"R\",\"W\",\"W\",\"R\"],[\"W\",\"R\",\"R\",\"R\",\"R\",\"R\",\"W\",\"R\"],[\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"]]\nUsing GitHub token from environment variable\u2026\n",
+    "accuracy": 0.5078125,
+    "raw_output": "(zoom \u00d78)\n[[\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],[\"R\",\"W\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"R\",\"R\",\"W\",\"W\",\"R\"],[\"W\",\"W\",\"R\",\"R\",\"R\",\"R\",\"W\",\"W\"],[\"W\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"W\"],[\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"]]\nUsing GitHub token from environment variable\u2026\n",
     "error": null,
     "parsed_output": [
       [
@@ -4717,34 +2881,14 @@
         "R",
         "R",
         "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "R",
-        "W",
-        "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
         "W",
         "R",
         "R"
       ],
       [
         "R",
-        "W",
         "R",
+        "W",
         "W",
         "W",
         "W",
@@ -4758,7 +2902,27 @@
         "W",
         "W",
         "W",
+        "W",
+        "R"
+      ],
+      [
         "R",
+        "W",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
         "R"
       ],
       [
@@ -4766,56 +2930,6 @@
         "R",
         "W",
         "W",
-        "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "R",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "W",
-        "W",
-        "R",
-        "R",
-        "R",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "W",
-        "R",
-        "R",
-        "R",
-        "R",
-        "R",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "R",
-        "R",
         "W",
         "W",
         "R",
@@ -4836,6 +2950,56 @@
         "R",
         "W",
         "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "R",
+        "R",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "W",
+        "W",
+        "R",
+        "R",
+        "R",
+        "R",
+        "W",
+        "W"
+      ],
+      [
+        "W",
+        "R",
+        "R",
+        "R",
+        "R",
+        "R",
+        "R",
+        "W"
+      ],
+      [
+        "R",
+        "R",
+        "R",
+        "R",
+        "R",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "R",
+        "R",
         "R",
         "R",
         "R",
