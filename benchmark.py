@@ -592,15 +592,18 @@ def render_reasoning_summaries(results: list[BenchmarkResult]) -> list[str]:
     ]
     for result in available:
         model = html.escape(result.model)
-        summary = html.escape(result.reasoning_text or "")
+        paragraphs = [
+            html.escape(paragraph).replace("\n", "<br>\n")
+            for paragraph in (result.reasoning_text or "").split("\n\n")
+        ]
         lines.extend([
             "<details>",
             f"<summary>{model} ({result.correct_pixels}/{result.total_pixels}, {result.accuracy:.1%})</summary>",
             "",
-            f"<pre>{summary}</pre>",
-            "</details>",
-            "",
         ])
+        for paragraph in paragraphs:
+            lines.extend([f"<p>{paragraph}</p>", ""])
+        lines.extend(["</details>", ""])
     return lines
 
 
