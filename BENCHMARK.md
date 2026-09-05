@@ -6,7 +6,7 @@ A benchmark suite for testing vision models' ability to extract pixel-level colo
 
 This benchmark tests how accurately various AI vision models can identify individual pixel colors in small images (4x4, 8x8, 8x16). It uses the GitHub Copilot API to test multiple models including:
 
-- **Gemini models** (gemini-3.5-flash, gemini-3.8-flash)
+- **Gemini models** (gemini-3.5-flash, gemini-3.6-flash, gemini-3.7-flash, gemini-3.8-flash)
 - **GPT models** (gpt-4o-2024-05-13, gpt-5.4, gpt-5.5, gpt-5.6-terra, gpt-5.6-sol, gpt-6-astra)
 - **Claude models** (claude-haiku-4.5, claude-sonnet-5, claude-opus-5)
 - **Grok models** (grok-4.6)
@@ -20,6 +20,8 @@ Based on extensive testing:
 | Model | API | Latest Average Accuracy | Notes |
 |-------|-----|-------------------------|-------|
 | gemini-3.5-flash | Chat | **99.2%** | Near-perfect across the latest benchmark |
+| gemini-3.6-flash | Chat | TBD | Gemini version comparison |
+| gemini-3.7-flash | Chat | TBD | Gemini version comparison |
 | gemini-3.8-flash | Chat | TBD | Current Gemini comparison |
 | gpt-5.4 | Responses | 37.0% | Requires Responses API |
 | gpt-5.5 | Responses | TBD | Intermediate GPT generation |

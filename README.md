@@ -53,6 +53,8 @@ cop models
 | Model | API | Latest Average Accuracy |
 |-------|-----|-------------------------|
 | gemini-3.5-flash | Chat Completions | **99.2%** |
+| gemini-3.6-flash | Chat Completions | TBD |
+| gemini-3.7-flash | Chat Completions | TBD |
 | gemini-3.8-flash | Chat Completions | TBD |
 | gpt-4o-2024-05-13 | Chat Completions | 46.9% |
 | gpt-5.4 | Responses | 37.0% |

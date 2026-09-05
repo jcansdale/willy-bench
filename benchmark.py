@@ -71,6 +71,8 @@ COLOR_KEYS = list(COLORS.keys())
 # Models to test
 DEFAULT_MODELS = [
     "gemini-3.5-flash",
+    "gemini-3.6-flash",
+    "gemini-3.7-flash",
     "gemini-3.8-flash",
     "gpt-4o-2024-05-13",
     "gpt-5.4",
