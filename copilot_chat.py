@@ -343,6 +343,8 @@ def copilot_chat(
     images: list[str] | None = None,
     zoom: int = 1,
     grid: bool = False,
+    reasoning_output: Path | None = None,
+    reasoning_effort: str | None = None,
 ) -> str:
     """Send a prompt (with optional images) and return the assistant's reply."""
     base_url = creds.get("base_url", DEFAULT_BASE_URL)
@@ -371,6 +373,8 @@ def copilot_chat(
         "messages": [{"role": "user", "content": content}],
         "stream": False,
     }
+    if reasoning_effort:
+        payload["reasoning_effort"] = reasoning_effort
 
     resp = requests.post(
         url,
@@ -388,7 +392,11 @@ def copilot_chat(
 
     data = resp.json()
     try:
-        return data["choices"][0]["message"]["content"]
+        message = data["choices"][0]["message"]
+        reasoning_text = message.get("reasoning_text")
+        if reasoning_output and reasoning_text:
+            reasoning_output.write_text(reasoning_text)
+        return message["content"]
     except (KeyError, IndexError) as exc:
         raise RuntimeError(f"Unexpected response shape: {data}") from exc
 
@@ -400,6 +408,8 @@ def copilot_responses(
     images: list[str] | None = None,
     zoom: int = 1,
     instructions: str | None = None,
+    reasoning_output: Path | None = None,
+    reasoning_effort: str | None = None,
 ) -> str:
     """Send a prompt using the Responses API and return the assistant's reply.
     
@@ -434,7 +444,10 @@ def copilot_responses(
     payload = {
         "model": model,
         "input": input_content,
+        "reasoning": {"summary": "auto"},
     }
+    if reasoning_effort:
+        payload["reasoning"]["effort"] = reasoning_effort
     
     if instructions:
         payload["instructions"] = instructions
@@ -457,6 +470,16 @@ def copilot_responses(
     try:
         # Responses API returns output array with content blocks
         output = data.get("output", [])
+        reasoning_parts = []
+        for item in output:
+            if item.get("type") != "reasoning":
+                continue
+            for summary in item.get("summary", []):
+                text = summary.get("text")
+                if text:
+                    reasoning_parts.append(text)
+        if reasoning_output and reasoning_parts:
+            reasoning_output.write_text("\n\n".join(reasoning_parts))
         for item in output:
             if item.get("type") == "message":
                 content = item.get("content", [])
@@ -567,6 +590,16 @@ def build_parser() -> argparse.ArgumentParser:
         default="auto",
         help="API to use: 'chat' (completions), 'responses', or 'auto' (default: auto)",
     )
+    chat_p.add_argument(
+        "--reasoning-output",
+        metavar="FILE",
+        help="Write a model-provided reasoning summary to FILE when available",
+    )
+    chat_p.add_argument(
+        "--reasoning-effort",
+        choices=["none", "low", "medium", "high", "xhigh", "max"],
+        help="Set the model reasoning effort when supported",
+    )
 
     # models
     sub.add_parser("models", help="List available models")
@@ -627,6 +660,8 @@ def main() -> None:
     zoom = getattr(args, "zoom", 1)
     grid = getattr(args, "grid", False)
     output = getattr(args, "output", None)
+    reasoning_output = getattr(args, "reasoning_output", None)
+    reasoning_effort = getattr(args, "reasoning_effort", None)
     api_choice = getattr(args, "api", "auto")
     
     # Models that require Responses API
@@ -663,9 +698,26 @@ def main() -> None:
             if use_responses:
                 if multi or api_choice == "auto":
                     print(f"(using Responses API)", file=sys.stderr)
-                reply = copilot_responses(creds, prompt, model=model, images=images, zoom=zoom)
+                reply = copilot_responses(
+                    creds,
+                    prompt,
+                    model=model,
+                    images=images,
+                    zoom=zoom,
+                    reasoning_output=Path(reasoning_output) if reasoning_output else None,
+                    reasoning_effort=reasoning_effort,
+                )
             else:
-                reply = copilot_chat(creds, prompt, model=model, images=images, zoom=zoom, grid=grid)
+                reply = copilot_chat(
+                    creds,
+                    prompt,
+                    model=model,
+                    images=images,
+                    zoom=zoom,
+                    grid=grid,
+                    reasoning_output=Path(reasoning_output) if reasoning_output else None,
+                    reasoning_effort=reasoning_effort,
+                )
             print(reply)
             if output:
                 if multi:

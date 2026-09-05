@@ -108,8 +108,8 @@ The benchmark runs as a GitHub Actions workflow:
 
 Results are saved to `benchmark_results/`:
 
-- `RESULTS.md` - Markdown report with tables and visual comparison
-- `results.json` - Detailed JSON data for analysis
+- `RESULTS.md` - Markdown report with tables, visual comparison, and collapsible reasoning summaries when available
+- `results.json` - Detailed JSON data for analysis, including model-provided `reasoning_text` when available
 - `images/` - PNG images showing ground truth vs model output
   - Red X marks on incorrect pixels
   - Ground truth images for reference
@@ -136,9 +136,10 @@ The `cop` CLI auto-detects which API to use based on model name.
 
 1. **Image Generation**: Creates random colored images using 8 distinct colors (R, G, B, Y, M, C, O, P)
 2. **Prompt Engineering**: Asks models to output a JSON 2D array of color letters
-3. **Accuracy Measurement**: Compares model output against ground truth pixel-by-pixel
-4. **Zoom**: Scales images up (8x) before sending to improve model accuracy
-5. **Visual Output**: Generates PNG images showing errors
+3. **Metrics**: Reports raw pixel accuracy and Cohen's kappa, where 1 is perfect agreement, 0 is chance-level agreement, and negative values are worse than chance
+4. **Reasoning**: Uses low reasoning effort for Gemini models and captures optional reasoning summaries without mixing them into the scored output
+5. **Zoom**: Scales images up (8x) before sending to improve model accuracy
+6. **Visual Output**: Generates PNG images showing errors
 
 ## License
 

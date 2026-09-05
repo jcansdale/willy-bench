@@ -10,6 +10,7 @@ Usage:
 """
 
 import argparse
+import html
 import json
 import os
 import random
@@ -103,9 +104,11 @@ class BenchmarkResult:
     accuracy: float
     raw_output: str
     parsed_output: Optional[list[list[str]]]
+    kappa: Optional[float] = None
     ground_truth: Optional[list[list[str]]] = None
     error: Optional[str] = None
     image_name: str = "random"  # "random" or "willy"
+    reasoning_text: Optional[str] = None
 
 
 def generate_random_image(width: int, height: int, seed: int) -> tuple[Image.Image, list[list[str]]]:
@@ -162,7 +165,7 @@ def load_willy_sprite(image_path: str) -> tuple[Image.Image, list[list[str]]]:
     return img, ground_truth
 
 
-def run_cop_chat(image_path: str, model: str, width: int, height: int, zoom: int = 0, custom_prompt: str = None) -> str:
+def run_cop_chat(image_path: str, model: str, width: int, height: int, zoom: int = 0, custom_prompt: str = None) -> tuple[str, Optional[str]]:
     """Run the cop CLI tool and return the output."""
     if custom_prompt:
         prompt = custom_prompt
@@ -174,37 +177,45 @@ def run_cop_chat(image_path: str, model: str, width: int, height: int, zoom: int
             f"ONLY output the JSON array, nothing else."
         )
     
-    cmd = ["cop", "chat", "-m", model, "-i", image_path]
-    if zoom > 0:
-        cmd.extend(["-z", str(zoom)])
-    cmd.append(prompt)
-    
-    try:
-        result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            timeout=120,
-            env={**os.environ, "PYTHONUNBUFFERED": "1"}
-        )
-        output = result.stdout + result.stderr
-        # Surface API errors and non-zero exits with a clear ERROR: prefix
-        # so the caller's startswith("ERROR:") check catches them.
-        if result.returncode != 0 or "Copilot API error" in output or "model_not_supported" in output:
-            # Extract the most informative line
-            for line in output.splitlines():
-                if "ERROR" in line or "error" in line:
-                    line = line.strip()
-                    # Avoid double "ERROR: ERROR:" when the line already has the prefix
-                    if line.startswith("ERROR:"):
-                        return line
-                    return f"ERROR: {line}"
-            return f"ERROR: cop exited {result.returncode}: {output.strip()[:200]}"
-        return output
-    except subprocess.TimeoutExpired:
-        return "ERROR: Command timed out after 120 seconds"
-    except Exception as e:
-        return f"ERROR: {str(e)}"
+    with tempfile.TemporaryDirectory() as temp_dir:
+        reasoning_path = Path(temp_dir) / "reasoning.txt"
+        cmd = [
+            "cop", "chat", "-m", model, "-i", image_path,
+            "--reasoning-output", str(reasoning_path),
+        ]
+        if model.startswith("gemini-"):
+            cmd.extend(["--reasoning-effort", "low"])
+        if zoom > 0:
+            cmd.extend(["-z", str(zoom)])
+        cmd.append(prompt)
+
+        try:
+            result = subprocess.run(
+                cmd,
+                capture_output=True,
+                text=True,
+                timeout=120,
+                env={**os.environ, "PYTHONUNBUFFERED": "1"}
+            )
+            output = result.stdout + result.stderr
+            reasoning_text = reasoning_path.read_text() if reasoning_path.exists() else None
+            # Surface API errors and non-zero exits with a clear ERROR: prefix
+            # so the caller's startswith("ERROR:") check catches them.
+            if result.returncode != 0 or "Copilot API error" in output or "model_not_supported" in output:
+                # Extract the most informative line
+                for line in output.splitlines():
+                    if "ERROR" in line or "error" in line:
+                        line = line.strip()
+                        # Avoid double "ERROR: ERROR:" when the line already has the prefix
+                        if line.startswith("ERROR:"):
+                            return line, reasoning_text
+                        return f"ERROR: {line}", reasoning_text
+                return f"ERROR: cop exited {result.returncode}: {output.strip()[:200]}", reasoning_text
+            return output, reasoning_text
+        except subprocess.TimeoutExpired:
+            return "ERROR: Command timed out after 120 seconds", None
+        except Exception as e:
+            return f"ERROR: {str(e)}", None
 
 
 def parse_json_output(output: str, width: int, height: int) -> Optional[list[list[str]]]:
@@ -356,6 +367,39 @@ def calculate_accuracy(ground_truth: list[list[str]], output: list[list[str]]) -
     return correct, total
 
 
+def calculate_kappa(ground_truth: list[list[str]], output: Optional[list[list[str]]]) -> Optional[float]:
+    """Calculate Cohen's kappa for pixel-level label agreement."""
+    if output is None:
+        return None
+
+    expected_counts: dict[str, int] = {}
+    predicted_counts: dict[str, int] = {}
+    correct = 0
+    total = 0
+
+    for row_index, row in enumerate(ground_truth):
+        for column_index, expected in enumerate(row):
+            predicted = output[row_index][column_index].upper()
+            expected_counts[expected] = expected_counts.get(expected, 0) + 1
+            predicted_counts[predicted] = predicted_counts.get(predicted, 0) + 1
+            correct += predicted == expected
+            total += 1
+
+    if total == 0:
+        return None
+
+    observed_agreement = correct / total
+    labels = expected_counts.keys() | predicted_counts.keys()
+    chance_agreement = sum(
+        expected_counts.get(label, 0) * predicted_counts.get(label, 0)
+        for label in labels
+    ) / (total * total)
+
+    if chance_agreement == 1.0:
+        return 1.0 if observed_agreement == 1.0 else 0.0
+    return (observed_agreement - chance_agreement) / (1.0 - chance_agreement)
+
+
 def run_benchmark(
     models: list[str],
     sizes: list[tuple[int, int]],
@@ -385,7 +429,7 @@ def run_benchmark(
         for model in models:
             print(f"\n  Testing {model}...", end=" ", flush=True)
             
-            raw_output = run_cop_chat(str(image_path), model, width, height, zoom)
+            raw_output, reasoning_text = run_cop_chat(str(image_path), model, width, height, zoom)
             
             if raw_output.startswith("ERROR:"):
                 result = BenchmarkResult(
@@ -397,13 +441,16 @@ def run_benchmark(
                     accuracy=0.0,
                     raw_output=raw_output,
                     parsed_output=None,
+                    kappa=None,
                     ground_truth=ground_truth,
-                    error=raw_output
+                    error=raw_output,
+                    reasoning_text=reasoning_text,
                 )
             else:
                 parsed = parse_json_output(raw_output, width, height)
                 correct, total = calculate_accuracy(ground_truth, parsed)
                 accuracy = correct / total if total > 0 else 0.0
+                kappa = calculate_kappa(ground_truth, parsed)
                 
                 result = BenchmarkResult(
                     model=model,
@@ -414,8 +461,10 @@ def run_benchmark(
                     accuracy=accuracy,
                     raw_output=raw_output,
                     parsed_output=parsed,
+                    kappa=kappa,
                     ground_truth=ground_truth,
-                    error=None if parsed else "Failed to parse JSON output"
+                    error=None if parsed else "Failed to parse JSON output",
+                    reasoning_text=reasoning_text,
                 )
             
             results.append(result)
@@ -473,7 +522,7 @@ def run_willy_benchmark(
     for model in models:
         print(f"\n  Testing {model}...", end=" ", flush=True)
         
-        raw_output = run_cop_chat(str(willy_path), model, width, height, zoom, custom_prompt=willy_prompt)
+        raw_output, reasoning_text = run_cop_chat(str(willy_path), model, width, height, zoom, custom_prompt=willy_prompt)
         
         if raw_output.startswith("ERROR:"):
             result = BenchmarkResult(
@@ -485,14 +534,17 @@ def run_willy_benchmark(
                 accuracy=0.0,
                 raw_output=raw_output,
                 parsed_output=None,
+                kappa=None,
                 ground_truth=ground_truth,
                 error=raw_output,
-                image_name="willy"
+                image_name="willy",
+                reasoning_text=reasoning_text,
             )
         else:
             parsed = parse_json_output(raw_output, width, height)
             correct, total = calculate_accuracy(ground_truth, parsed)
             accuracy = correct / total if total > 0 else 0.0
+            kappa = calculate_kappa(ground_truth, parsed)
             
             result = BenchmarkResult(
                 model=model,
@@ -503,9 +555,11 @@ def run_willy_benchmark(
                 accuracy=accuracy,
                 raw_output=raw_output,
                 parsed_output=parsed,
+                kappa=kappa,
                 ground_truth=ground_truth,
                 error=None if parsed else "Failed to parse JSON output",
-                image_name="willy"
+                image_name="willy",
+                reasoning_text=reasoning_text,
             )
         
         results.append(result)
@@ -522,6 +576,32 @@ def run_willy_benchmark(
     return results
     
     return results
+
+
+def render_reasoning_summaries(results: list[BenchmarkResult]) -> list[str]:
+    """Render model-provided reasoning summaries as collapsed HTML blocks."""
+    available = [result for result in results if result.reasoning_text]
+    if not available:
+        return []
+
+    lines = [
+        "#### Reasoning Summaries",
+        "",
+        "> These model-provided summaries may not faithfully represent the model's internal computation.",
+        "",
+    ]
+    for result in available:
+        model = html.escape(result.model)
+        summary = html.escape(result.reasoning_text or "")
+        lines.extend([
+            "<details>",
+            f"<summary>{model} ({result.correct_pixels}/{result.total_pixels}, {result.accuracy:.1%})</summary>",
+            "",
+            f"<pre>{summary}</pre>",
+            "</details>",
+            "",
+        ])
+    return lines
 
 
 def generate_report(results: list[BenchmarkResult], output_path: Path, image_base_url: str = "") -> str:
@@ -556,6 +636,7 @@ def generate_report(results: list[BenchmarkResult], output_path: Path, image_bas
         "- Random colored images generated with 8 distinct colors (R, G, B, Y, M, C, O, P)",
         "- Models asked to output a JSON 2D array of color letters",
         "- Accuracy measured as percentage of correctly identified pixels",
+        "- Cohen's kappa adjusts accuracy for agreement expected by chance: 1 is perfect, 0 is chance-level, and negative values are worse than chance",
         "",
         "## Results by Image Size",
         "",
@@ -572,17 +653,18 @@ def generate_report(results: list[BenchmarkResult], output_path: Path, image_bas
         width, height = size
         total_pixels = width * height
         size_results = [r for r in random_results if r.size == size]
-        size_results.sort(key=lambda r: -r.accuracy)
+        size_results.sort(key=lambda r: (r.kappa is None, -(r.kappa or 0.0)))
         
         lines.append(f"### {width}x{height} ({total_pixels} pixels)")
         lines.append("")
-        lines.append("| Model | Zoom | Correct | Accuracy |")
-        lines.append("|-------|------|---------|----------|")
+        lines.append("| Model | Zoom | Correct | Accuracy | Kappa |")
+        lines.append("|-------|------|---------|----------|-------|")
         
         for r in size_results:
             zoom_str = f"{r.zoom}x" if r.zoom > 0 else "none"
             status = "✅" if r.accuracy == 1.0 else "🟡" if r.accuracy >= 0.8 else "🔴"
-            lines.append(f"| {r.model} | {zoom_str} | {r.correct_pixels}/{r.total_pixels} | {status} {r.accuracy:.1%} |")
+            kappa_str = f"{r.kappa:.3f}" if r.kappa is not None else "N/A"
+            lines.append(f"| {r.model} | {zoom_str} | {r.correct_pixels}/{r.total_pixels} | {status} {r.accuracy:.1%} | {kappa_str} |")
         
         lines.append("")
         
@@ -626,10 +708,11 @@ def generate_report(results: list[BenchmarkResult], output_path: Path, image_bas
                 lines.append(f"| {r.model} | {status} | ⚠️ No output |")
         
         lines.append("")
+        lines.extend(render_reasoning_summaries(size_results))
     
     # Willy sprite results (if any)
     if willy_results:
-        willy_results.sort(key=lambda r: -r.accuracy)
+        willy_results.sort(key=lambda r: (r.kappa is None, -(r.kappa or 0.0)))
         width, height = willy_results[0].size
         total_pixels = width * height
         
@@ -640,13 +723,14 @@ def generate_report(results: list[BenchmarkResult], output_path: Path, image_bas
         lines.append("")
         lines.append("A classic 2-color retro game sprite (R=Red, W=White).")
         lines.append("")
-        lines.append("| Model | Zoom | Correct | Accuracy |")
-        lines.append("|-------|------|---------|----------|")
+        lines.append("| Model | Zoom | Correct | Accuracy | Kappa |")
+        lines.append("|-------|------|---------|----------|-------|")
         
         for r in willy_results:
             zoom_str = f"{r.zoom}x" if r.zoom > 0 else "none"
             status = "✅" if r.accuracy == 1.0 else "🟡" if r.accuracy >= 0.8 else "🔴"
-            lines.append(f"| {r.model} | {zoom_str} | {r.correct_pixels}/{r.total_pixels} | {status} {r.accuracy:.1%} |")
+            kappa_str = f"{r.kappa:.3f}" if r.kappa is not None else "N/A"
+            lines.append(f"| {r.model} | {zoom_str} | {r.correct_pixels}/{r.total_pixels} | {status} {r.accuracy:.1%} | {kappa_str} |")
         
         lines.append("")
         
@@ -686,30 +770,37 @@ def generate_report(results: list[BenchmarkResult], output_path: Path, image_bas
                 lines.append(f"| {r.model} | {status} | ⚠️ No output |")
         
         lines.append("")
+        lines.extend(render_reasoning_summaries(willy_results))
     
     # Overall rankings
     lines.extend([
         "## Overall Rankings",
         "",
-        "Averaged across all image sizes:",
+        "Averaged across all successful image tests and ranked by Cohen's kappa:",
         "",
-        "| Rank | Model | Avg Accuracy |",
-        "|------|-------|--------------|",
+        "| Rank | Model | Avg Accuracy | Avg Kappa |",
+        "|------|-------|--------------|-----------|",
     ])
     
-    # Calculate average accuracy per model
-    model_scores = {}
+    # Calculate average accuracy and kappa per model, excluding failed runs.
+    model_scores: dict[str, list[tuple[float, float]]] = {}
     for r in results:
-        if r.model not in model_scores:
-            model_scores[r.model] = []
-        model_scores[r.model].append(r.accuracy)
+        if r.kappa is not None:
+            model_scores.setdefault(r.model, []).append((r.accuracy, r.kappa))
+
+    model_avg = [
+        (
+            model,
+            sum(accuracy for accuracy, _ in scores) / len(scores),
+            sum(kappa for _, kappa in scores) / len(scores),
+        )
+        for model, scores in model_scores.items()
+    ]
+    model_avg.sort(key=lambda item: -item[2])
     
-    model_avg = [(model, sum(scores)/len(scores)) for model, scores in model_scores.items()]
-    model_avg.sort(key=lambda x: -x[1])
-    
-    for rank, (model, avg) in enumerate(model_avg, 1):
+    for rank, (model, avg_accuracy, avg_kappa) in enumerate(model_avg, 1):
         medal = "🥇" if rank == 1 else "🥈" if rank == 2 else "🥉" if rank == 3 else ""
-        lines.append(f"| {rank} | {medal} {model} | {avg:.1%} |")
+        lines.append(f"| {rank} | {medal} {model} | {avg_accuracy:.1%} | {avg_kappa:.3f} |")
     
     lines.extend([
         "",
@@ -741,11 +832,13 @@ def save_json_results(results: list[BenchmarkResult], output_path: Path):
             "correct_pixels": r.correct_pixels,
             "total_pixels": r.total_pixels,
             "accuracy": r.accuracy,
+            "kappa": r.kappa,
             "raw_output": r.raw_output,
             "error": r.error,
             "parsed_output": r.parsed_output,
             "ground_truth": r.ground_truth,
             "image_name": r.image_name,
+            "reasoning_text": r.reasoning_text,
         })
     
     with open(output_path, "w") as f:
@@ -770,8 +863,12 @@ def load_json_results(input_path: Path) -> list[BenchmarkResult]:
             raw_output=item.get("raw_output", ""),
             error=item.get("error"),
             parsed_output=item.get("parsed_output"),
+            kappa=item.get("kappa") if "kappa" in item else calculate_kappa(
+                item.get("ground_truth"), item.get("parsed_output")
+            ),
             ground_truth=item.get("ground_truth"),
             image_name=item.get("image_name", "random"),
+            reasoning_text=item.get("reasoning_text"),
         ))
     return results
 
