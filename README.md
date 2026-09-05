@@ -53,11 +53,17 @@ cop models
 | Model | API | Latest Average Accuracy |
 |-------|-----|-------------------------|
 | gemini-3.5-flash | Chat Completions | **99.2%** |
-| gpt-4o | Chat Completions | 46.9% |
-| gpt-5-mini | Chat Completions | 24.7% |
+| gemini-3.8-flash | Chat Completions | TBD |
+| gpt-4o-2024-05-13 | Chat Completions | 46.9% |
 | gpt-5.4 | Responses | 37.0% |
+| gpt-5.5 | Responses | TBD |
+| gpt-5.6-terra | Responses | TBD |
+| gpt-5.6-sol | Responses | TBD |
 | gpt-6-astra | Responses | TBD |
-| claude-opus-4.7 | Chat Completions | 38.3% |
+| claude-haiku-4.5 | Chat Completions | TBD |
+| claude-sonnet-5 | Chat Completions | TBD |
+| claude-opus-5 | Chat Completions | TBD |
+| grok-4.6 | Responses | TBD |
 
 ## Benchmark Results
 
@@ -71,9 +77,9 @@ The benchmark generates:
 ### Example Output
 
 ```
-Testing gemini-3.5-flash... ✅ 16/16 (100%)
-Testing gpt-4o... 🔴 12/16 (75%)
-Testing claude-opus-4.7... 🔴 6/16 (38%)
+Testing gemini-3.8-flash... ✅ 16/16 (100%)
+Testing gpt-6-astra... 🔴 4/16 (25%)
+Testing claude-sonnet-5... 🔴 2/16 (12%)
 ```
 
 ## Authentication

@@ -71,14 +71,20 @@ COLOR_KEYS = list(COLORS.keys())
 # Models to test
 DEFAULT_MODELS = [
     "gemini-3.5-flash",
-    "gpt-4o",
-    "gpt-5-mini",
+    "gemini-3.8-flash",
+    "gpt-4o-2024-05-13",
     "gpt-5.4",
+    "gpt-5.5",
+    "gpt-5.6-terra",
+    "gpt-5.6-sol",
     "gpt-6-astra",
-    "claude-opus-4.7",
+    "claude-haiku-4.5",
+    "claude-sonnet-5",
+    "claude-opus-5",
+    "grok-4.6",
 ]
 
-QUICK_MODELS = ["gemini-3.5-flash", "gpt-4o", "claude-opus-4.7"]
+QUICK_MODELS = ["gemini-3.8-flash", "gpt-6-astra", "claude-sonnet-5"]
 
 # Default image sizes to test (width x height)
 DEFAULT_SIZES = [(4, 4), (8, 8), (8, 16), (16, 16)]

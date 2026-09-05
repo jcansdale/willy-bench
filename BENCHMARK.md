@@ -6,9 +6,12 @@ A benchmark suite for testing vision models' ability to extract pixel-level colo
 
 This benchmark tests how accurately various AI vision models can identify individual pixel colors in small images (4x4, 8x8, 8x16). It uses the GitHub Copilot API to test multiple models including:
 
-- **Gemini models** (gemini-3.5-flash) — Best performer
-- **GPT models** (gpt-4o, gpt-5-mini, gpt-5.4, gpt-6-astra) — gpt-5.4 and gpt-6-astra require Responses API
-- **Claude models** (claude-opus-4.7)
+- **Gemini models** (gemini-3.5-flash, gemini-3.8-flash)
+- **GPT models** (gpt-4o-2024-05-13, gpt-5.4, gpt-5.5, gpt-5.6-terra, gpt-5.6-sol, gpt-6-astra)
+- **Claude models** (claude-haiku-4.5, claude-sonnet-5, claude-opus-5)
+- **Grok models** (grok-4.6)
+
+GPT-5.4 and newer GPT models, plus Grok 4.6, use the Responses API.
 
 ## Key Findings
 
@@ -17,11 +20,17 @@ Based on extensive testing:
 | Model | API | Latest Average Accuracy | Notes |
 |-------|-----|-------------------------|-------|
 | gemini-3.5-flash | Chat | **99.2%** | Near-perfect across the latest benchmark |
-| claude-opus-4.7 | Chat | 38.3% | Current Claude baseline |
-| gpt-6-astra | Responses | TBD | Newly added; requires Responses API |
+| gemini-3.8-flash | Chat | TBD | Current Gemini comparison |
 | gpt-5.4 | Responses | 37.0% | Requires Responses API |
-| gpt-4o | Chat | 46.9% | Better on smaller images |
-| gpt-5-mini | Chat | 24.7% | Lightweight GPT baseline |
+| gpt-5.5 | Responses | TBD | Intermediate GPT generation |
+| gpt-5.6-terra | Responses | TBD | General-purpose GPT-5.6 tier |
+| gpt-5.6-sol | Responses | TBD | Powerful GPT-5.6 tier |
+| gpt-6-astra | Responses | TBD | Frontier GPT model |
+| gpt-4o-2024-05-13 | Chat | 46.9% | Pinned because newer GPT-4o snapshots reject vision input |
+| claude-haiku-4.5 | Chat | TBD | Lightweight Claude baseline |
+| claude-sonnet-5 | Chat | TBD | Balanced Claude model |
+| claude-opus-5 | Chat | TBD | Frontier Claude model |
+| grok-4.6 | Responses | TBD | Current xAI comparison |
 
 ### Critical Settings for Best Results
 
@@ -50,7 +59,7 @@ pip install Pillow
 python benchmark.py --quick
 
 # Full benchmark with Willy sprite
-python benchmark.py --models "gemini-3.5-flash,gpt-4o,claude-opus-4.7" \
+python benchmark.py --models "gemini-3.8-flash,gpt-6-astra,claude-sonnet-5" \
                     --sizes "4x4,8x8" \
                     --zoom 8 \
                     --willy
@@ -116,8 +125,8 @@ The benchmark supports two Copilot APIs:
 
 | API | Endpoint | Models |
 |-----|----------|--------|
-| Chat Completions | `/chat/completions` | Most models (Gemini, Claude, gpt-4o) |
-| Responses | `/responses` | gpt-6-astra, gpt-5.4, gpt-5.x-codex models |
+| Chat Completions | `/chat/completions` | Most models (Gemini, Claude, gpt-4o-2024-05-13) |
+| Responses | `/responses` | GPT-5.4+, GPT-6 Astra, Grok 4.6, GPT Codex models |
 
 The `cop` CLI auto-detects which API to use based on model name.
 
