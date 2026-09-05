@@ -63,13 +63,139 @@
     "image_name": "random"
   },
   {
-    "model": "gemini-3.8-flash",
+    "model": "gemini-3.6-flash",
     "size": "4x4",
     "zoom": 8,
     "correct_pixels": 16,
     "total_pixels": 16,
     "accuracy": 1.0,
     "raw_output": "(zoom \u00d78)\n[\n  [\"G\", \"R\", \"M\", \"Y\"],\n  [\"Y\", \"B\", \"G\", \"G\"],\n  [\"O\", \"R\", \"R\", \"G\"],\n  [\"Y\", \"Y\", \"R\", \"Y\"]\n]\nUsing GitHub token from environment variable\u2026\n",
+    "error": null,
+    "parsed_output": [
+      [
+        "G",
+        "R",
+        "M",
+        "Y"
+      ],
+      [
+        "Y",
+        "B",
+        "G",
+        "G"
+      ],
+      [
+        "O",
+        "R",
+        "R",
+        "G"
+      ],
+      [
+        "Y",
+        "Y",
+        "R",
+        "Y"
+      ]
+    ],
+    "ground_truth": [
+      [
+        "G",
+        "R",
+        "M",
+        "Y"
+      ],
+      [
+        "Y",
+        "B",
+        "G",
+        "G"
+      ],
+      [
+        "O",
+        "R",
+        "R",
+        "G"
+      ],
+      [
+        "Y",
+        "Y",
+        "R",
+        "Y"
+      ]
+    ],
+    "image_name": "random"
+  },
+  {
+    "model": "gemini-3.7-flash",
+    "size": "4x4",
+    "zoom": 8,
+    "correct_pixels": 16,
+    "total_pixels": 16,
+    "accuracy": 1.0,
+    "raw_output": "(zoom \u00d78)\n[\n  [\"G\", \"R\", \"M\", \"Y\"],\n  [\"Y\", \"B\", \"G\", \"G\"],\n  [\"O\", \"R\", \"R\", \"G\"],\n  [\"Y\", \"Y\", \"R\", \"Y\"]\n]\nUsing GitHub token from environment variable\u2026\n",
+    "error": null,
+    "parsed_output": [
+      [
+        "G",
+        "R",
+        "M",
+        "Y"
+      ],
+      [
+        "Y",
+        "B",
+        "G",
+        "G"
+      ],
+      [
+        "O",
+        "R",
+        "R",
+        "G"
+      ],
+      [
+        "Y",
+        "Y",
+        "R",
+        "Y"
+      ]
+    ],
+    "ground_truth": [
+      [
+        "G",
+        "R",
+        "M",
+        "Y"
+      ],
+      [
+        "Y",
+        "B",
+        "G",
+        "G"
+      ],
+      [
+        "O",
+        "R",
+        "R",
+        "G"
+      ],
+      [
+        "Y",
+        "Y",
+        "R",
+        "Y"
+      ]
+    ],
+    "image_name": "random"
+  },
+  {
+    "model": "gemini-3.8-flash",
+    "size": "4x4",
+    "zoom": 8,
+    "correct_pixels": 16,
+    "total_pixels": 16,
+    "accuracy": 1.0,
+    "raw_output": "(zoom \u00d78)\n[[\"G\", \"R\", \"M\", \"Y\"], [\"Y\", \"B\", \"G\", \"G\"], [\"O\", \"R\", \"R\", \"G\"], [\"Y\", \"Y\", \"R\", \"Y\"]]\nUsing GitHub token from environment variable\u2026\n",
     "error": null,
     "parsed_output": [
       [
@@ -192,34 +318,34 @@
     "model": "gpt-5.4",
     "size": "4x4",
     "zoom": 8,
-    "correct_pixels": 3,
+    "correct_pixels": 2,
     "total_pixels": 16,
-    "accuracy": 0.1875,
-    "raw_output": "(zoom \u00d78)\n[[\"G\",\"R\",\"R\",\"M\"],[\"G\",\"R\",\"O\",\"M\"],[\"Y\",\"B\",\"C\",\"P\"],[\"Y\",\"B\",\"C\",\"P\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.125,
+    "raw_output": "(zoom \u00d78)\n[[\"Y\",\"Y\",\"G\",\"G\"],[\"Y\",\"O\",\"C\",\"G\"],[\"R\",\"O\",\"C\",\"C\"],[\"R\",\"B\",\"M\",\"P\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
+        "Y",
+        "Y",
         "G",
-        "R",
-        "R",
-        "M"
+        "G"
       ],
       [
-        "G",
+        "Y",
+        "O",
+        "C",
+        "G"
+      ],
+      [
         "R",
         "O",
-        "M"
+        "C",
+        "C"
       ],
       [
-        "Y",
+        "R",
         "B",
-        "C",
-        "P"
-      ],
-      [
-        "Y",
-        "B",
-        "C",
+        "M",
         "P"
       ]
     ],
@@ -255,34 +381,34 @@
     "model": "gpt-5.5",
     "size": "4x4",
     "zoom": 8,
-    "correct_pixels": 1,
+    "correct_pixels": 3,
     "total_pixels": 16,
-    "accuracy": 0.0625,
-    "raw_output": "(zoom \u00d78)\n[[\"B\",\"Y\",\"R\",\"P\"],[\"G\",\"O\",\"M\",\"C\"],[\"M\",\"G\",\"O\",\"C\"],[\"R\",\"Y\",\"B\",\"P\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.1875,
+    "raw_output": "(zoom \u00d78)\n[[\"R\",\"R\",\"B\",\"G\"],[\"Y\",\"Y\",\"B\",\"G\"],[\"M\",\"C\",\"C\",\"P\"],[\"O\",\"O\",\"P\",\"P\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
-        "B",
-        "Y",
         "R",
+        "R",
+        "B",
+        "G"
+      ],
+      [
+        "Y",
+        "Y",
+        "B",
+        "G"
+      ],
+      [
+        "M",
+        "C",
+        "C",
         "P"
       ],
       [
-        "G",
         "O",
-        "M",
-        "C"
-      ],
-      [
-        "M",
-        "G",
         "O",
-        "C"
-      ],
-      [
-        "R",
-        "Y",
-        "B",
+        "P",
         "P"
       ]
     ],
@@ -318,10 +444,10 @@
     "model": "gpt-5.6-terra",
     "size": "4x4",
     "zoom": 8,
-    "correct_pixels": 3,
+    "correct_pixels": 4,
     "total_pixels": 16,
-    "accuracy": 0.1875,
-    "raw_output": "(zoom \u00d78)\n[[\"R\",\"R\",\"G\",\"G\"],[\"R\",\"O\",\"G\",\"C\"],[\"Y\",\"Y\",\"B\",\"B\"],[\"Y\",\"M\",\"B\",\"P\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.25,
+    "raw_output": "(zoom \u00d78)\n[[\"R\",\"R\",\"G\",\"G\"],[\"Y\",\"Y\",\"G\",\"G\"],[\"B\",\"B\",\"O\",\"O\"],[\"B\",\"B\",\"O\",\"O\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
@@ -331,22 +457,22 @@
         "G"
       ],
       [
-        "R",
-        "O",
+        "Y",
+        "Y",
         "G",
-        "C"
+        "G"
       ],
       [
-        "Y",
-        "Y",
         "B",
-        "B"
+        "B",
+        "O",
+        "O"
       ],
       [
-        "Y",
-        "M",
         "B",
-        "P"
+        "B",
+        "O",
+        "O"
       ]
     ],
     "ground_truth": [
@@ -381,34 +507,34 @@
     "model": "gpt-5.6-sol",
     "size": "4x4",
     "zoom": 8,
-    "correct_pixels": 3,
+    "correct_pixels": 1,
     "total_pixels": 16,
-    "accuracy": 0.1875,
-    "raw_output": "(zoom \u00d78)\n[[\"R\",\"O\",\"G\",\"Y\"],[\"M\",\"Y\",\"O\",\"G\"],[\"C\",\"B\",\"M\",\"G\"],[\"C\",\"B\",\"P\",\"O\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.0625,
+    "raw_output": "(zoom \u00d78)\n[[\"Y\",\"Y\",\"R\",\"G\"],[\"C\",\"Y\",\"R\",\"G\"],[\"C\",\"B\",\"M\",\"O\"],[\"B\",\"P\",\"O\",\"O\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
+        "Y",
+        "Y",
         "R",
-        "O",
-        "G",
-        "Y"
+        "G"
       ],
       [
-        "M",
+        "C",
         "Y",
-        "O",
+        "R",
         "G"
       ],
       [
         "C",
         "B",
         "M",
-        "G"
+        "O"
       ],
       [
-        "C",
         "B",
         "P",
+        "O",
         "O"
       ]
     ],
@@ -447,14 +573,14 @@
     "correct_pixels": 7,
     "total_pixels": 16,
     "accuracy": 0.4375,
-    "raw_output": "(zoom \u00d78)\n[[\"Y\",\"G\",\"M\",\"Y\"],[\"O\",\"G\",\"M\",\"M\"],[\"R\",\"R\",\"R\",\"Y\"],[\"Y\",\"O\",\"R\",\"Y\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "raw_output": "(zoom \u00d78)\n[[\"Y\",\"G\",\"M\",\"M\"],[\"O\",\"G\",\"M\",\"M\"],[\"R\",\"R\",\"R\",\"G\"],[\"Y\",\"Y\",\"R\",\"G\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
         "Y",
         "G",
         "M",
-        "Y"
+        "M"
       ],
       [
         "O",
@@ -466,13 +592,13 @@
         "R",
         "R",
         "R",
-        "Y"
+        "G"
       ],
       [
         "Y",
-        "O",
+        "Y",
         "R",
-        "Y"
+        "G"
       ]
     ],
     "ground_truth": [
@@ -570,10 +696,10 @@
     "model": "claude-sonnet-5",
     "size": "4x4",
     "zoom": 8,
-    "correct_pixels": 2,
+    "correct_pixels": 1,
     "total_pixels": 16,
-    "accuracy": 0.125,
-    "raw_output": "(zoom \u00d78)\n[[\"R\",\"Y\",\"G\",\"G\"],[\"O\",\"P\",\"G\",\"Y\"],[\"G\",\"G\",\"Y\",\"G\"],[\"G\",\"G\",\"G\",\"G\"]]\nUsing GitHub token from environment variable\u2026\n",
+    "accuracy": 0.0625,
+    "raw_output": "(zoom \u00d78)\n[[\"R\",\"Y\",\"G\",\"G\"],[\"O\",\"R\",\"G\",\"C\"],[\"G\",\"G\",\"C\",\"C\"],[\"G\",\"G\",\"C\",\"C\"]]\nUsing GitHub token from environment variable\u2026\n",
     "error": null,
     "parsed_output": [
       [
@@ -584,21 +710,21 @@
       ],
       [
         "O",
-        "P",
+        "R",
         "G",
-        "Y"
+        "C"
       ],
       [
         "G",
         "G",
-        "Y",
-        "G"
+        "C",
+        "C"
       ],
       [
         "G",
         "G",
-        "G",
-        "G"
+        "C",
+        "C"
       ]
     ],
     "ground_truth": [
@@ -633,37 +759,12 @@
     "model": "claude-opus-5",
     "size": "4x4",
     "zoom": 8,
-    "correct_pixels": 6,
+    "correct_pixels": 0,
     "total_pixels": 16,
-    "accuracy": 0.375,
-    "raw_output": "(zoom \u00d78)\n[[\"R\",\"M\",\"P\",\"G\"],[\"G\",\"R\",\"R\",\"G\"],[\"R\",\"Y\",\"R\",\"G\"],[\"Y\",\"Y\",\"R\",\"G\"]]\nUsing GitHub token from environment variable\u2026\n",
-    "error": null,
-    "parsed_output": [
-      [
-        "R",
-        "M",
-        "P",
-        "G"
-      ],
-      [
-        "G",
-        "R",
-        "R",
-        "G"
-      ],
-      [
-        "R",
-        "Y",
-        "R",
-        "G"
-      ],
-      [
-        "Y",
-        "Y",
-        "R",
-        "G"
-      ]
-    ],
+    "accuracy": 0.0,
+    "raw_output": "ERROR: Copilot API error 503: Sorry, the upstream model provider is currently experiencing high demand. Please try another model.",
+    "error": "ERROR: Copilot API error 503: Sorry, the upstream model provider is currently experiencing high demand. Please try another model.",
+    "parsed_output": null,
     "ground_truth": [
       [
         "G",
@@ -696,35 +797,35 @@
     "model": "grok-4.6",
     "size": "4x4",
     "zoom": 8,
-    "correct_pixels": 4,
+    "correct_pixels": 1,
     "total_pixels": 16,
-    "accuracy": 0.25,
-    "raw_output": "(zoom \u00d78)\n[[\"C\",\"Y\",\"M\",\"B\"],[\"G\",\"R\",\"O\",\"P\"],[\"Y\",\"C\",\"P\",\"G\"],[\"M\",\"B\",\"R\",\"Y\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.0625,
+    "raw_output": "(zoom \u00d78)\n[[\"C\",\"M\",\"Y\",\"G\"],[\"B\",\"R\",\"O\",\"P\"],[\"G\",\"Y\",\"M\",\"C\"],[\"P\",\"O\",\"R\",\"B\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
         "C",
-        "Y",
         "M",
-        "B"
+        "Y",
+        "G"
       ],
       [
-        "G",
+        "B",
         "R",
         "O",
         "P"
       ],
       [
+        "G",
         "Y",
-        "C",
-        "P",
-        "G"
+        "M",
+        "C"
       ],
       [
-        "M",
-        "B",
+        "P",
+        "O",
         "R",
-        "Y"
+        "B"
       ]
     ],
     "ground_truth": [
@@ -931,6 +1032,356 @@
     "image_name": "random"
   },
   {
+    "model": "gemini-3.6-flash",
+    "size": "8x8",
+    "zoom": 8,
+    "correct_pixels": 64,
+    "total_pixels": 64,
+    "accuracy": 1.0,
+    "raw_output": "(zoom \u00d78)\n[\n  [\"G\", \"R\", \"M\", \"Y\", \"Y\", \"B\", \"G\", \"G\"],\n  [\"O\", \"R\", \"R\", \"G\", \"Y\", \"Y\", \"R\", \"Y\"],\n  [\"O\", \"Y\", \"P\", \"M\", \"R\", \"B\", \"O\", \"C\"],\n  [\"M\", \"B\", \"Y\", \"C\", \"G\", \"G\", \"O\", \"G\"],\n  [\"C\", \"C\", \"M\", \"R\", \"P\", \"G\", \"O\", \"G\"],\n  [\"M\", \"C\", \"Y\", \"G\", \"R\", \"Y\", \"M\", \"G\"],\n  [\"Y\", \"G\", \"O\", \"M\", \"P\", \"C\", \"B\", \"C\"],\n  [\"C\", \"Y\", \"M\", \"G\", \"B\", \"Y\", \"B\", \"P\"]\n]\nUsing GitHub token from environment variable\u2026\n",
+    "error": null,
+    "parsed_output": [
+      [
+        "G",
+        "R",
+        "M",
+        "Y",
+        "Y",
+        "B",
+        "G",
+        "G"
+      ],
+      [
+        "O",
+        "R",
+        "R",
+        "G",
+        "Y",
+        "Y",
+        "R",
+        "Y"
+      ],
+      [
+        "O",
+        "Y",
+        "P",
+        "M",
+        "R",
+        "B",
+        "O",
+        "C"
+      ],
+      [
+        "M",
+        "B",
+        "Y",
+        "C",
+        "G",
+        "G",
+        "O",
+        "G"
+      ],
+      [
+        "C",
+        "C",
+        "M",
+        "R",
+        "P",
+        "G",
+        "O",
+        "G"
+      ],
+      [
+        "M",
+        "C",
+        "Y",
+        "G",
+        "R",
+        "Y",
+        "M",
+        "G"
+      ],
+      [
+        "Y",
+        "G",
+        "O",
+        "M",
+        "P",
+        "C",
+        "B",
+        "C"
+      ],
+      [
+        "C",
+        "Y",
+        "M",
+        "G",
+        "B",
+        "Y",
+        "B",
+        "P"
+      ]
+    ],
+    "ground_truth": [
+      [
+        "G",
+        "R",
+        "M",
+        "Y",
+        "Y",
+        "B",
+        "G",
+        "G"
+      ],
+      [
+        "O",
+        "R",
+        "R",
+        "G",
+        "Y",
+        "Y",
+        "R",
+        "Y"
+      ],
+      [
+        "O",
+        "Y",
+        "P",
+        "M",
+        "R",
+        "B",
+        "O",
+        "C"
+      ],
+      [
+        "M",
+        "B",
+        "Y",
+        "C",
+        "G",
+        "G",
+        "O",
+        "G"
+      ],
+      [
+        "C",
+        "C",
+        "M",
+        "R",
+        "P",
+        "G",
+        "O",
+        "G"
+      ],
+      [
+        "M",
+        "C",
+        "Y",
+        "G",
+        "R",
+        "Y",
+        "M",
+        "G"
+      ],
+      [
+        "Y",
+        "G",
+        "O",
+        "M",
+        "P",
+        "C",
+        "B",
+        "C"
+      ],
+      [
+        "C",
+        "Y",
+        "M",
+        "G",
+        "B",
+        "Y",
+        "B",
+        "P"
+      ]
+    ],
+    "image_name": "random"
+  },
+  {
+    "model": "gemini-3.7-flash",
+    "size": "8x8",
+    "zoom": 8,
+    "correct_pixels": 64,
+    "total_pixels": 64,
+    "accuracy": 1.0,
+    "raw_output": "(zoom \u00d78)\n[\n  [\"G\", \"R\", \"M\", \"Y\", \"Y\", \"B\", \"G\", \"G\"],\n  [\"O\", \"R\", \"R\", \"G\", \"Y\", \"Y\", \"R\", \"Y\"],\n  [\"O\", \"Y\", \"P\", \"M\", \"R\", \"B\", \"O\", \"C\"],\n  [\"M\", \"B\", \"Y\", \"C\", \"G\", \"G\", \"O\", \"G\"],\n  [\"C\", \"C\", \"M\", \"R\", \"P\", \"G\", \"O\", \"G\"],\n  [\"M\", \"C\", \"Y\", \"G\", \"R\", \"Y\", \"M\", \"G\"],\n  [\"Y\", \"G\", \"O\", \"M\", \"P\", \"C\", \"B\", \"C\"],\n  [\"C\", \"Y\", \"M\", \"G\", \"B\", \"Y\", \"B\", \"P\"]\n]\nUsing GitHub token from environment variable\u2026\n",
+    "error": null,
+    "parsed_output": [
+      [
+        "G",
+        "R",
+        "M",
+        "Y",
+        "Y",
+        "B",
+        "G",
+        "G"
+      ],
+      [
+        "O",
+        "R",
+        "R",
+        "G",
+        "Y",
+        "Y",
+        "R",
+        "Y"
+      ],
+      [
+        "O",
+        "Y",
+        "P",
+        "M",
+        "R",
+        "B",
+        "O",
+        "C"
+      ],
+      [
+        "M",
+        "B",
+        "Y",
+        "C",
+        "G",
+        "G",
+        "O",
+        "G"
+      ],
+      [
+        "C",
+        "C",
+        "M",
+        "R",
+        "P",
+        "G",
+        "O",
+        "G"
+      ],
+      [
+        "M",
+        "C",
+        "Y",
+        "G",
+        "R",
+        "Y",
+        "M",
+        "G"
+      ],
+      [
+        "Y",
+        "G",
+        "O",
+        "M",
+        "P",
+        "C",
+        "B",
+        "C"
+      ],
+      [
+        "C",
+        "Y",
+        "M",
+        "G",
+        "B",
+        "Y",
+        "B",
+        "P"
+      ]
+    ],
+    "ground_truth": [
+      [
+        "G",
+        "R",
+        "M",
+        "Y",
+        "Y",
+        "B",
+        "G",
+        "G"
+      ],
+      [
+        "O",
+        "R",
+        "R",
+        "G",
+        "Y",
+        "Y",
+        "R",
+        "Y"
+      ],
+      [
+        "O",
+        "Y",
+        "P",
+        "M",
+        "R",
+        "B",
+        "O",
+        "C"
+      ],
+      [
+        "M",
+        "B",
+        "Y",
+        "C",
+        "G",
+        "G",
+        "O",
+        "G"
+      ],
+      [
+        "C",
+        "C",
+        "M",
+        "R",
+        "P",
+        "G",
+        "O",
+        "G"
+      ],
+      [
+        "M",
+        "C",
+        "Y",
+        "G",
+        "R",
+        "Y",
+        "M",
+        "G"
+      ],
+      [
+        "Y",
+        "G",
+        "O",
+        "M",
+        "P",
+        "C",
+        "B",
+        "C"
+      ],
+      [
+        "C",
+        "Y",
+        "M",
+        "G",
+        "B",
+        "Y",
+        "B",
+        "P"
+      ]
+    ],
+    "image_name": "random"
+  },
+  {
     "model": "gemini-3.8-flash",
     "size": "8x8",
     "zoom": 8,
@@ -1109,10 +1560,10 @@
     "model": "gpt-4o-2024-05-13",
     "size": "8x8",
     "zoom": 8,
-    "correct_pixels": 18,
+    "correct_pixels": 23,
     "total_pixels": 64,
-    "accuracy": 0.28125,
-    "raw_output": "(zoom \u00d78)\n```json\n[\n  [\"O\",\"R\",\"M\",\"Y\",\"B\",\"Y\",\"G\",\"G\"],\n  [\"O\",\"R\",\"M\",\"Y\",\"M\",\"C\",\"Y\",\"B\"],\n  [\"R\",\"G\",\"G\",\"P\",\"G\",\"O\",\"Y\",\"O\"],\n  [\"C\",\"P\",\"C\",\"Y\",\"R\",\"R\",\"P\",\"G\"],\n  [\"C\",\"C\",\"R\",\"P\",\"Y\",\"O\",\"O\",\"G\"],\n  [\"Y\",\"C\",\"O\",\"Y\",\"R\",\"M\",\"M\",\"G\"],\n  [\"M\",\"O\",\"C\",\"Y\",\"M\",\"B\",\"B\",\"B\"],\n  [\"M\",\"M\",\"R\",\"C\",\"P\",\"G\",\"B\",\"C\"]\n]\n```\nUsing GitHub token from environment variable\u2026\n",
+    "accuracy": 0.359375,
+    "raw_output": "(zoom \u00d78)\n```json\n[\n  [\"O\",\"R\",\"M\",\"Y\",\"Y\",\"B\",\"G\",\"G\"],\n  [\"O\",\"R\",\"G\",\"G\",\"Y\",\"Y\",\"R\",\"R\"],\n  [\"C\",\"P\",\"P\",\"M\",\"B\",\"M\",\"G\",\"O\"],\n  [\"C\",\"Y\",\"C\",\"P\",\"M\",\"O\",\"O\",\"M\"],\n  [\"C\",\"C\",\"R\",\"R\",\"P\",\"O\",\"G\",\"G\"],\n  [\"C\",\"P\",\"O\",\"O\",\"P\",\"B\",\"B\",\"B\"],\n  [\"C\",\"G\",\"C\",\"P\",\"B\",\"G\",\"Y\",\"Y\"],\n  [\"Y\",\"C\",\"C\",\"M\",\"M\",\"P\",\"B\",\"B\"]\n]\n```\nUsing GitHub token from environment variable\u2026\n",
     "error": null,
     "parsed_output": [
       [
@@ -1120,80 +1571,80 @@
         "R",
         "M",
         "Y",
-        "B",
         "Y",
+        "B",
         "G",
         "G"
       ],
       [
         "O",
         "R",
-        "M",
+        "G",
+        "G",
         "Y",
-        "M",
-        "C",
         "Y",
-        "B"
+        "R",
+        "R"
       ],
       [
-        "R",
-        "G",
-        "G",
+        "C",
         "P",
+        "P",
+        "M",
+        "B",
+        "M",
         "G",
-        "O",
-        "Y",
         "O"
       ],
       [
         "C",
-        "P",
-        "C",
         "Y",
-        "R",
-        "R",
+        "C",
         "P",
-        "G"
+        "M",
+        "O",
+        "O",
+        "M"
       ],
       [
         "C",
         "C",
         "R",
-        "P",
-        "Y",
-        "O",
-        "O",
-        "G"
-      ],
-      [
-        "Y",
-        "C",
-        "O",
-        "Y",
         "R",
-        "M",
-        "M",
+        "P",
+        "O",
+        "G",
         "G"
       ],
       [
-        "M",
-        "O",
         "C",
-        "Y",
-        "M",
+        "P",
+        "O",
+        "O",
+        "P",
         "B",
         "B",
         "B"
       ],
       [
-        "M",
-        "M",
-        "R",
+        "C",
+        "G",
         "C",
         "P",
-        "G",
         "B",
-        "C"
+        "G",
+        "Y",
+        "Y"
+      ],
+      [
+        "Y",
+        "C",
+        "C",
+        "M",
+        "M",
+        "P",
+        "B",
+        "B"
       ]
     ],
     "ground_truth": [
@@ -1284,90 +1735,90 @@
     "model": "gpt-5.4",
     "size": "8x8",
     "zoom": 8,
-    "correct_pixels": 11,
+    "correct_pixels": 7,
     "total_pixels": 64,
-    "accuracy": 0.171875,
-    "raw_output": "(zoom \u00d78)\n[[\"Y\",\"M\",\"B\",\"O\",\"Y\",\"G\",\"G\",\"B\"],[\"M\",\"R\",\"R\",\"C\",\"G\",\"M\",\"B\",\"G\"],[\"Y\",\"R\",\"B\",\"R\",\"Y\",\"O\",\"P\",\"C\"],[\"M\",\"G\",\"P\",\"O\",\"M\",\"B\",\"R\",\"B\"],[\"O\",\"C\",\"Y\",\"M\",\"B\",\"B\",\"G\",\"C\"],[\"M\",\"B\",\"C\",\"Y\",\"B\",\"G\",\"Y\",\"O\"],[\"R\",\"B\",\"P\",\"M\",\"M\",\"O\",\"C\",\"C\"],[\"B\",\"O\",\"C\",\"O\",\"P\",\"G\",\"C\",\"P\"]]}\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.109375,
+    "raw_output": "(zoom \u00d78)\n[[\"P\",\"O\",\"O\",\"R\",\"R\",\"B\",\"M\",\"G\"],[\"P\",\"O\",\"Y\",\"R\",\"G\",\"B\",\"C\",\"G\"],[\"P\",\"Y\",\"Y\",\"G\",\"G\",\"C\",\"C\",\"G\"],[\"R\",\"Y\",\"G\",\"G\",\"C\",\"C\",\"B\",\"B\"],[\"R\",\"G\",\"G\",\"C\",\"C\",\"M\",\"O\",\"O\"],[\"B\",\"G\",\"C\",\"C\",\"M\",\"O\",\"O\",\"P\"],[\"B\",\"C\",\"C\",\"M\",\"M\",\"O\",\"P\",\"P\"],[\"Y\",\"C\",\"M\",\"M\",\"O\",\"P\",\"P\",\"P\"]]\n\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
-        "Y",
-        "M",
-        "B",
+        "P",
         "O",
-        "Y",
-        "G",
-        "G",
-        "B"
-      ],
-      [
-        "M",
+        "O",
         "R",
         "R",
-        "C",
-        "G",
-        "M",
         "B",
+        "M",
         "G"
       ],
       [
-        "Y",
-        "R",
-        "B",
-        "R",
-        "Y",
-        "O",
         "P",
-        "C"
+        "O",
+        "Y",
+        "R",
+        "G",
+        "B",
+        "C",
+        "G"
       ],
       [
-        "M",
-        "G",
         "P",
-        "O",
-        "M",
-        "B",
+        "Y",
+        "Y",
+        "G",
+        "G",
+        "C",
+        "C",
+        "G"
+      ],
+      [
         "R",
+        "Y",
+        "G",
+        "G",
+        "C",
+        "C",
+        "B",
         "B"
       ],
       [
+        "R",
+        "G",
+        "G",
+        "C",
+        "C",
+        "M",
         "O",
-        "C",
-        "Y",
-        "M",
-        "B",
-        "B",
-        "G",
-        "C"
-      ],
-      [
-        "M",
-        "B",
-        "C",
-        "Y",
-        "B",
-        "G",
-        "Y",
         "O"
       ],
       [
-        "R",
         "B",
-        "P",
-        "M",
+        "G",
+        "C",
+        "C",
         "M",
         "O",
-        "C",
-        "C"
+        "O",
+        "P"
       ],
       [
         "B",
-        "O",
         "C",
+        "C",
+        "M",
+        "M",
         "O",
         "P",
-        "G",
+        "P"
+      ],
+      [
+        "Y",
         "C",
+        "M",
+        "M",
+        "O",
+        "P",
+        "P",
         "P"
       ]
     ],
@@ -1459,91 +1910,91 @@
     "model": "gpt-5.5",
     "size": "8x8",
     "zoom": 8,
-    "correct_pixels": 6,
+    "correct_pixels": 9,
     "total_pixels": 64,
-    "accuracy": 0.09375,
-    "raw_output": "(zoom \u00d78)\n[[\"R\",\"G\",\"B\",\"Y\",\"M\",\"C\",\"O\",\"P\"],[\"G\",\"O\",\"Y\",\"C\",\"M\",\"R\",\"G\",\"B\"],[\"C\",\"M\",\"R\",\"Y\",\"O\",\"P\",\"B\",\"R\"],[\"M\",\"Y\",\"R\",\"B\",\"G\",\"R\",\"C\",\"Y\"],[\"C\",\"G\",\"O\",\"P\",\"B\",\"M\",\"R\",\"B\"],[\"Y\",\"R\",\"M\",\"G\",\"C\",\"O\",\"P\",\"R\"],[\"G\",\"C\",\"Y\",\"B\",\"R\",\"M\",\"O\",\"C\"],[\"P\",\"R\",\"G\",\"O\",\"Y\",\"B\",\"C\",\"M\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.140625,
+    "raw_output": "(zoom \u00d78)\n[[\"G\",\"O\",\"R\",\"C\",\"R\",\"Y\",\"M\",\"C\"],[\"C\",\"O\",\"G\",\"C\",\"M\",\"R\",\"Y\",\"B\"],[\"M\",\"C\",\"R\",\"M\",\"O\",\"M\",\"O\",\"R\"],[\"G\",\"Y\",\"M\",\"R\",\"B\",\"R\",\"C\",\"G\"],[\"C\",\"M\",\"R\",\"G\",\"R\",\"M\",\"B\",\"P\"],[\"C\",\"M\",\"O\",\"M\",\"Y\",\"R\",\"G\",\"P\"],[\"Y\",\"R\",\"B\",\"G\",\"M\",\"C\",\"Y\",\"C\"],[\"C\",\"O\",\"O\",\"B\",\"P\",\"B\",\"G\",\"O\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
-        "R",
-        "G",
-        "B",
-        "Y",
-        "M",
-        "C",
-        "O",
-        "P"
-      ],
-      [
         "G",
         "O",
-        "Y",
-        "C",
-        "M",
         "R",
-        "G",
-        "B"
-      ],
-      [
         "C",
-        "M",
         "R",
         "Y",
-        "O",
-        "P",
-        "B",
-        "R"
-      ],
-      [
         "M",
-        "Y",
-        "R",
-        "B",
-        "G",
-        "R",
-        "C",
-        "Y"
-      ],
-      [
-        "C",
-        "G",
-        "O",
-        "P",
-        "B",
-        "M",
-        "R",
-        "B"
-      ],
-      [
-        "Y",
-        "R",
-        "M",
-        "G",
-        "C",
-        "O",
-        "P",
-        "R"
-      ],
-      [
-        "G",
-        "C",
-        "Y",
-        "B",
-        "R",
-        "M",
-        "O",
         "C"
       ],
       [
-        "P",
+        "C",
+        "O",
+        "G",
+        "C",
+        "M",
+        "R",
+        "Y",
+        "B"
+      ],
+      [
+        "M",
+        "C",
+        "R",
+        "M",
+        "O",
+        "M",
+        "O",
+        "R"
+      ],
+      [
+        "G",
+        "Y",
+        "M",
+        "R",
+        "B",
+        "R",
+        "C",
+        "G"
+      ],
+      [
+        "C",
+        "M",
         "R",
         "G",
-        "O",
-        "Y",
+        "R",
+        "M",
         "B",
+        "P"
+      ],
+      [
         "C",
-        "M"
+        "M",
+        "O",
+        "M",
+        "Y",
+        "R",
+        "G",
+        "P"
+      ],
+      [
+        "Y",
+        "R",
+        "B",
+        "G",
+        "M",
+        "C",
+        "Y",
+        "C"
+      ],
+      [
+        "C",
+        "O",
+        "O",
+        "B",
+        "P",
+        "B",
+        "G",
+        "O"
       ]
     ],
     "ground_truth": [
@@ -1634,91 +2085,91 @@
     "model": "gpt-5.6-terra",
     "size": "8x8",
     "zoom": 8,
-    "correct_pixels": 14,
+    "correct_pixels": 13,
     "total_pixels": 64,
-    "accuracy": 0.21875,
-    "raw_output": "(zoom \u00d78)\n[[\"R\",\"R\",\"Y\",\"R\",\"C\",\"Y\",\"R\",\"Y\"],[\"R\",\"G\",\"R\",\"R\",\"M\",\"G\",\"R\",\"B\"],[\"C\",\"M\",\"Y\",\"B\",\"R\",\"M\",\"C\",\"Y\"],[\"Y\",\"R\",\"C\",\"R\",\"B\",\"Y\",\"M\",\"R\"],[\"R\",\"C\",\"M\",\"Y\",\"R\",\"B\",\"C\",\"G\"],[\"M\",\"R\",\"Y\",\"C\",\"B\",\"R\",\"Y\",\"M\"],[\"R\",\"Y\",\"C\",\"M\",\"R\",\"G\",\"B\",\"Y\"],[\"C\",\"R\",\"M\",\"Y\",\"B\",\"R\",\"C\",\"M\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.203125,
+    "raw_output": "(zoom \u00d78)\n[[\"O\",\"R\",\"Y\",\"B\",\"M\",\"C\",\"Y\",\"G\"],[\"R\",\"M\",\"R\",\"G\",\"B\",\"Y\",\"B\",\"C\"],[\"C\",\"Y\",\"C\",\"M\",\"G\",\"B\",\"R\",\"O\"],[\"B\",\"G\",\"M\",\"C\",\"R\",\"Y\",\"G\",\"P\"],[\"M\",\"C\",\"G\",\"Y\",\"C\",\"R\",\"Y\",\"P\"],[\"B\",\"O\",\"P\",\"M\",\"Y\",\"B\",\"C\",\"G\"],[\"R\",\"B\",\"G\",\"R\",\"C\",\"Y\",\"M\",\"P\"],[\"Y\",\"M\",\"C\",\"G\",\"B\",\"P\",\"O\",\"R\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
+        "O",
         "R",
-        "R",
-        "Y",
-        "R",
-        "C",
-        "Y",
-        "R",
-        "Y"
-      ],
-      [
-        "R",
-        "G",
-        "R",
-        "R",
-        "M",
-        "G",
-        "R",
-        "B"
-      ],
-      [
-        "C",
-        "M",
         "Y",
         "B",
-        "R",
         "M",
         "C",
-        "Y"
+        "Y",
+        "G"
       ],
       [
-        "Y",
         "R",
-        "C",
+        "M",
         "R",
+        "G",
         "B",
         "Y",
-        "M",
-        "R"
+        "B",
+        "C"
       ],
       [
-        "R",
+        "C",
+        "Y",
         "C",
         "M",
-        "Y",
+        "G",
+        "B",
         "R",
+        "O"
+      ],
+      [
+        "B",
+        "G",
+        "M",
+        "C",
+        "R",
+        "Y",
+        "G",
+        "P"
+      ],
+      [
+        "M",
+        "C",
+        "G",
+        "Y",
+        "C",
+        "R",
+        "Y",
+        "P"
+      ],
+      [
+        "B",
+        "O",
+        "P",
+        "M",
+        "Y",
         "B",
         "C",
         "G"
       ],
       [
-        "M",
         "R",
-        "Y",
-        "C",
         "B",
+        "G",
         "R",
+        "C",
         "Y",
-        "M"
+        "M",
+        "P"
       ],
       [
-        "R",
         "Y",
-        "C",
         "M",
-        "R",
+        "C",
         "G",
         "B",
-        "Y"
-      ],
-      [
-        "C",
-        "R",
-        "M",
-        "Y",
-        "B",
-        "R",
-        "C",
-        "M"
+        "P",
+        "O",
+        "R"
       ]
     ],
     "ground_truth": [
@@ -1809,91 +2260,91 @@
     "model": "gpt-5.6-sol",
     "size": "8x8",
     "zoom": 8,
-    "correct_pixels": 6,
+    "correct_pixels": 8,
     "total_pixels": 64,
-    "accuracy": 0.09375,
-    "raw_output": "(zoom \u00d78)\n[[\"C\",\"C\",\"Y\",\"M\",\"R\",\"R\",\"B\",\"B\"],[\"C\",\"G\",\"G\",\"Y\",\"Y\",\"R\",\"B\",\"G\"],[\"M\",\"M\",\"C\",\"C\",\"G\",\"G\",\"Y\",\"Y\"],[\"M\",\"R\",\"R\",\"C\",\"B\",\"M\",\"M\",\"B\"],[\"M\",\"R\",\"Y\",\"Y\",\"R\",\"R\",\"B\",\"M\"],[\"C\",\"C\",\"Y\",\"Y\",\"M\",\"M\",\"R\",\"R\"],[\"C\",\"C\",\"G\",\"G\",\"M\",\"M\",\"R\",\"R\"],[\"B\",\"C\",\"O\",\"G\",\"G\",\"M\",\"G\",\"G\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.125,
+    "raw_output": "(zoom \u00d78)\n[[\"R\",\"R\",\"Y\",\"G\",\"B\",\"B\",\"Y\",\"Y\"],[\"C\",\"Y\",\"Y\",\"R\",\"R\",\"G\",\"R\",\"B\"],[\"C\",\"C\",\"G\",\"G\",\"B\",\"M\",\"R\",\"B\"],[\"Y\",\"R\",\"B\",\"B\",\"R\",\"M\",\"M\",\"Y\"],[\"M\",\"M\",\"C\",\"M\",\"Y\",\"G\",\"R\",\"O\"],[\"C\",\"C\",\"B\",\"R\",\"R\",\"M\",\"G\",\"O\"],[\"C\",\"G\",\"G\",\"R\",\"M\",\"B\",\"G\",\"O\"],[\"C\",\"C\",\"G\",\"M\",\"M\",\"B\",\"G\",\"O\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
-        "C",
-        "C",
+        "R",
+        "R",
         "Y",
-        "M",
-        "R",
-        "R",
+        "G",
         "B",
-        "B"
-      ],
-      [
-        "C",
-        "G",
-        "G",
-        "Y",
-        "Y",
-        "R",
         "B",
-        "G"
-      ],
-      [
-        "M",
-        "M",
-        "C",
-        "C",
-        "G",
-        "G",
         "Y",
         "Y"
       ],
       [
-        "M",
-        "R",
-        "R",
         "C",
-        "B",
-        "M",
-        "M",
+        "Y",
+        "Y",
+        "R",
+        "R",
+        "G",
+        "R",
         "B"
       ],
       [
+        "C",
+        "C",
+        "G",
+        "G",
+        "B",
         "M",
         "R",
+        "B"
+      ],
+      [
         "Y",
-        "Y",
-        "R",
         "R",
         "B",
-        "M"
-      ],
-      [
-        "C",
-        "C",
-        "Y",
-        "Y",
-        "M",
-        "M",
-        "R",
-        "R"
-      ],
-      [
-        "C",
-        "C",
-        "G",
-        "G",
-        "M",
-        "M",
-        "R",
-        "R"
-      ],
-      [
         "B",
+        "R",
+        "M",
+        "M",
+        "Y"
+      ],
+      [
+        "M",
+        "M",
         "C",
-        "O",
+        "M",
+        "Y",
         "G",
-        "G",
+        "R",
+        "O"
+      ],
+      [
+        "C",
+        "C",
+        "B",
+        "R",
+        "R",
         "M",
         "G",
-        "G"
+        "O"
+      ],
+      [
+        "C",
+        "G",
+        "G",
+        "R",
+        "M",
+        "B",
+        "G",
+        "O"
+      ],
+      [
+        "C",
+        "C",
+        "G",
+        "M",
+        "M",
+        "B",
+        "G",
+        "O"
       ]
     ],
     "ground_truth": [
@@ -1984,19 +2435,19 @@
     "model": "gpt-6-astra",
     "size": "8x8",
     "zoom": 8,
-    "correct_pixels": 20,
+    "correct_pixels": 26,
     "total_pixels": 64,
-    "accuracy": 0.3125,
-    "raw_output": "(zoom \u00d78)\n[\n  [\"O\",\"R\",\"G\",\"Y\",\"Y\",\"C\",\"G\",\"G\"],\n  [\"O\",\"R\",\"M\",\"Y\",\"Y\",\"Y\",\"G\",\"G\"],\n  [\"Y\",\"M\",\"B\",\"Y\",\"Y\",\"B\",\"Y\",\"Y\"],\n  [\"O\",\"Y\",\"C\",\"C\",\"O\",\"G\",\"Y\",\"G\"],\n  [\"M\",\"M\",\"M\",\"O\",\"O\",\"G\",\"Y\",\"G\"],\n  [\"C\",\"M\",\"M\",\"Y\",\"M\",\"C\",\"M\",\"Y\"],\n  [\"Y\",\"Y\",\"R\",\"G\",\"M\",\"B\",\"M\",\"M\"],\n  [\"G\",\"O\",\"R\",\"G\",\"C\",\"B\",\"B\",\"M\"]\n]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.40625,
+    "raw_output": "(zoom \u00d78)\n[\n  [\"O\",\"R\",\"Y\",\"M\",\"M\",\"R\",\"G\",\"G\"],\n  [\"O\",\"R\",\"M\",\"M\",\"M\",\"M\",\"O\",\"G\"],\n  [\"Y\",\"O\",\"C\",\"M\",\"M\",\"R\",\"O\",\"G\"],\n  [\"Y\",\"G\",\"B\",\"M\",\"M\",\"Y\",\"O\",\"G\"],\n  [\"C\",\"C\",\"M\",\"M\",\"M\",\"G\",\"O\",\"Y\"],\n  [\"M\",\"C\",\"M\",\"O\",\"R\",\"G\",\"C\",\"Y\"],\n  [\"Y\",\"G\",\"O\",\"B\",\"P\",\"G\",\"B\",\"C\"],\n  [\"Y\",\"G\",\"Y\",\"B\",\"B\",\"G\",\"B\",\"P\"]\n]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
         "O",
         "R",
-        "G",
         "Y",
-        "Y",
-        "C",
+        "M",
+        "M",
+        "R",
         "G",
         "G"
       ],
@@ -2004,71 +2455,71 @@
         "O",
         "R",
         "M",
-        "Y",
-        "Y",
-        "Y",
-        "G",
+        "M",
+        "M",
+        "M",
+        "O",
         "G"
       ],
       [
         "Y",
+        "O",
+        "C",
         "M",
+        "M",
+        "R",
+        "O",
+        "G"
+      ],
+      [
+        "Y",
+        "G",
         "B",
+        "M",
+        "M",
         "Y",
-        "Y",
-        "B",
-        "Y",
+        "O",
+        "G"
+      ],
+      [
+        "C",
+        "C",
+        "M",
+        "M",
+        "M",
+        "G",
+        "O",
         "Y"
       ],
       [
-        "O",
-        "Y",
+        "M",
         "C",
-        "C",
+        "M",
         "O",
+        "R",
         "G",
-        "Y",
-        "G"
-      ],
-      [
-        "M",
-        "M",
-        "M",
-        "O",
-        "O",
-        "G",
-        "Y",
-        "G"
-      ],
-      [
         "C",
-        "M",
-        "M",
-        "Y",
-        "M",
-        "C",
-        "M",
         "Y"
       ],
       [
         "Y",
-        "Y",
-        "R",
-        "G",
-        "M",
-        "B",
-        "M",
-        "M"
-      ],
-      [
         "G",
         "O",
-        "R",
+        "B",
+        "P",
         "G",
-        "C",
+        "B",
+        "C"
+      ],
+      [
+        "Y",
+        "G",
+        "Y",
         "B",
         "B",
-        "M"
+        "G",
+        "B",
+        "P"
       ]
     ],
     "ground_truth": [
@@ -2159,91 +2610,91 @@
     "model": "claude-haiku-4.5",
     "size": "8x8",
     "zoom": 8,
-    "correct_pixels": 7,
+    "correct_pixels": 8,
     "total_pixels": 64,
-    "accuracy": 0.109375,
-    "raw_output": "(zoom \u00d78)\n```json\n[\n  [\"R\", \"Y\", \"G\", \"R\", \"Y\", \"G\", \"R\", \"Y\"],\n  [\"C\", \"M\", \"B\", \"C\", \"M\", \"B\", \"C\", \"M\"],\n  [\"O\", \"P\", \"R\", \"O\", \"P\", \"R\", \"O\", \"P\"],\n  [\"G\", \"Y\", \"C\", \"G\", \"Y\", \"C\", \"G\", \"Y\"],\n  [\"M\", \"B\", \"O\", \"M\", \"B\", \"O\", \"M\", \"B\"],\n  [\"P\", \"R\", \"G\", \"P\", \"R\", \"G\", \"P\", \"R\"],\n  [\"Y\", \"C\", \"M\", \"Y\", \"C\", \"M\", \"Y\", \"C\"],\n  [\"B\", \"O\", \"P\", \"B\", \"O\", \"P\", \"B\", \"O\"]\n]\n```\nUsing GitHub token from environment variable\u2026\n",
+    "accuracy": 0.125,
+    "raw_output": "(zoom \u00d78)\n```json\n[\n  [\"R\", \"Y\", \"R\", \"G\", \"C\", \"Y\", \"G\", \"C\"],\n  [\"M\", \"B\", \"M\", \"B\", \"M\", \"B\", \"M\", \"B\"],\n  [\"G\", \"R\", \"Y\", \"R\", \"G\", \"Y\", \"R\", \"G\"],\n  [\"B\", \"M\", \"B\", \"M\", \"B\", \"M\", \"B\", \"M\"],\n  [\"C\", \"G\", \"C\", \"Y\", \"C\", \"G\", \"Y\", \"C\"],\n  [\"M\", \"B\", \"M\", \"B\", \"M\", \"B\", \"M\", \"B\"],\n  [\"R\", \"Y\", \"G\", \"R\", \"Y\", \"G\", \"R\", \"Y\"],\n  [\"B\", \"M\", \"B\", \"P\", \"B\", \"M\", \"B\", \"P\"]\n]\n```\nUsing GitHub token from environment variable\u2026\n",
     "error": null,
     "parsed_output": [
       [
         "R",
         "Y",
-        "G",
         "R",
+        "G",
+        "C",
         "Y",
         "G",
-        "R",
-        "Y"
-      ],
-      [
-        "C",
-        "M",
-        "B",
-        "C",
-        "M",
-        "B",
-        "C",
-        "M"
-      ],
-      [
-        "O",
-        "P",
-        "R",
-        "O",
-        "P",
-        "R",
-        "O",
-        "P"
-      ],
-      [
-        "G",
-        "Y",
-        "C",
-        "G",
-        "Y",
-        "C",
-        "G",
-        "Y"
+        "C"
       ],
       [
         "M",
         "B",
-        "O",
         "M",
         "B",
-        "O",
+        "M",
+        "B",
         "M",
         "B"
       ],
       [
-        "P",
+        "G",
+        "R",
+        "Y",
         "R",
         "G",
-        "P",
+        "Y",
         "R",
-        "G",
-        "P",
-        "R"
+        "G"
       ],
       [
+        "B",
+        "M",
+        "B",
+        "M",
+        "B",
+        "M",
+        "B",
+        "M"
+      ],
+      [
+        "C",
+        "G",
+        "C",
         "Y",
         "C",
-        "M",
-        "Y",
-        "C",
-        "M",
+        "G",
         "Y",
         "C"
       ],
       [
+        "M",
         "B",
-        "O",
+        "M",
+        "B",
+        "M",
+        "B",
+        "M",
+        "B"
+      ],
+      [
+        "R",
+        "Y",
+        "G",
+        "R",
+        "Y",
+        "G",
+        "R",
+        "Y"
+      ],
+      [
+        "B",
+        "M",
+        "B",
         "P",
         "B",
-        "O",
-        "P",
+        "M",
         "B",
-        "O"
+        "P"
       ]
     ],
     "ground_truth": [
@@ -2334,91 +2785,91 @@
     "model": "claude-sonnet-5",
     "size": "8x8",
     "zoom": 8,
-    "correct_pixels": 7,
+    "correct_pixels": 8,
     "total_pixels": 64,
-    "accuracy": 0.109375,
-    "raw_output": "(zoom \u00d78)\n```json\n[[\"G\",\"Y\",\"O\",\"P\",\"C\",\"R\",\"Y\",\"P\"],\n[\"P\",\"M\",\"G\",\"Y\",\"C\",\"P\",\"O\",\"R\"],\n[\"Y\",\"R\",\"P\",\"C\",\"G\",\"B\",\"P\",\"Y\"],\n[\"C\",\"G\",\"Y\",\"P\",\"R\",\"O\",\"Y\",\"M\"],\n[\"O\",\"P\",\"B\",\"G\",\"Y\",\"P\",\"C\",\"R\"],\n[\"Y\",\"C\",\"R\",\"O\",\"P\",\"G\",\"B\",\"P\"],\n[\"P\",\"O\",\"Y\",\"B\",\"C\",\"R\",\"P\",\"G\"],\n[\"G\",\"Y\",\"P\",\"R\",\"O\",\"C\",\"Y\",\"P\"]]\n```\nUsing GitHub token from environment variable\u2026\n",
+    "accuracy": 0.125,
+    "raw_output": "(zoom \u00d78)\n```json\n[\n[\"Y\",\"P\",\"M\",\"G\",\"C\",\"P\",\"M\",\"O\"],\n[\"G\",\"M\",\"Y\",\"M\",\"G\",\"Y\",\"R\",\"M\"],\n[\"C\",\"B\",\"Y\",\"B\",\"P\",\"G\",\"R\",\"M\"],\n[\"P\",\"Y\",\"O\",\"B\",\"P\",\"M\",\"Y\",\"C\"],\n[\"G\",\"Y\",\"P\",\"Y\",\"O\",\"B\",\"C\",\"G\"],\n[\"Y\",\"R\",\"B\",\"G\",\"M\",\"R\",\"Y\",\"B\"],\n[\"R\",\"M\",\"Y\",\"C\",\"M\",\"O\",\"G\",\"Y\"],\n[\"C\",\"M\",\"O\",\"P\",\"B\",\"Y\",\"M\",\"G\"]\n]\n```\nUsing GitHub token from environment variable\u2026\n",
     "error": null,
     "parsed_output": [
       [
-        "G",
         "Y",
-        "O",
-        "P",
-        "C",
-        "R",
-        "Y",
-        "P"
-      ],
-      [
         "P",
         "M",
         "G",
-        "Y",
         "C",
         "P",
+        "M",
+        "O"
+      ],
+      [
+        "G",
+        "M",
+        "Y",
+        "M",
+        "G",
+        "Y",
+        "R",
+        "M"
+      ],
+      [
+        "C",
+        "B",
+        "Y",
+        "B",
+        "P",
+        "G",
+        "R",
+        "M"
+      ],
+      [
+        "P",
+        "Y",
         "O",
-        "R"
+        "B",
+        "P",
+        "M",
+        "Y",
+        "C"
+      ],
+      [
+        "G",
+        "Y",
+        "P",
+        "Y",
+        "O",
+        "B",
+        "C",
+        "G"
       ],
       [
         "Y",
         "R",
-        "P",
-        "C",
-        "G",
         "B",
-        "P",
+        "G",
+        "M",
+        "R",
+        "Y",
+        "B"
+      ],
+      [
+        "R",
+        "M",
+        "Y",
+        "C",
+        "M",
+        "O",
+        "G",
         "Y"
       ],
       [
         "C",
-        "G",
-        "Y",
-        "P",
-        "R",
-        "O",
-        "Y",
-        "M"
-      ],
-      [
+        "M",
         "O",
         "P",
         "B",
-        "G",
         "Y",
-        "P",
-        "C",
-        "R"
-      ],
-      [
-        "Y",
-        "C",
-        "R",
-        "O",
-        "P",
-        "G",
-        "B",
-        "P"
-      ],
-      [
-        "P",
-        "O",
-        "Y",
-        "B",
-        "C",
-        "R",
-        "P",
+        "M",
         "G"
-      ],
-      [
-        "G",
-        "Y",
-        "P",
-        "R",
-        "O",
-        "C",
-        "Y",
-        "P"
       ]
     ],
     "ground_truth": [
@@ -2512,88 +2963,88 @@
     "correct_pixels": 8,
     "total_pixels": 64,
     "accuracy": 0.125,
-    "raw_output": "(zoom \u00d78)\n[[\"Y\",\"R\",\"M\",\"C\",\"G\",\"B\",\"Y\",\"M\"],\n[\"B\",\"G\",\"Y\",\"M\",\"R\",\"C\",\"O\",\"G\"],\n[\"M\",\"C\",\"R\",\"G\",\"Y\",\"M\",\"B\",\"R\"],\n[\"G\",\"Y\",\"B\",\"O\",\"M\",\"R\",\"C\",\"Y\"],\n[\"R\",\"M\",\"C\",\"Y\",\"B\",\"G\",\"M\",\"O\"],\n[\"C\",\"B\",\"G\",\"R\",\"O\",\"Y\",\"R\",\"B\"],\n[\"Y\",\"O\",\"M\",\"B\",\"C\",\"M\",\"G\",\"C\"],\n[\"M\",\"R\",\"Y\",\"G\",\"R\",\"B\",\"O\",\"M\"]]\nUsing GitHub token from environment variable\u2026\n",
+    "raw_output": "(zoom \u00d78)\n[[\"R\",\"M\",\"Y\",\"G\",\"C\",\"Y\",\"B\",\"M\"],[\"Y\",\"B\",\"M\",\"R\",\"G\",\"O\",\"Y\",\"C\"],[\"C\",\"G\",\"O\",\"Y\",\"M\",\"B\",\"R\",\"G\"],[\"M\",\"Y\",\"R\",\"C\",\"B\",\"G\",\"O\",\"Y\"],[\"B\",\"O\",\"G\",\"M\",\"Y\",\"R\",\"C\",\"B\"],[\"G\",\"C\",\"Y\",\"B\",\"O\",\"M\",\"G\",\"R\"],[\"Y\",\"R\",\"M\",\"G\",\"C\",\"B\",\"Y\",\"O\"],[\"O\",\"M\",\"B\",\"Y\",\"R\",\"G\",\"M\",\"C\"]]\nUsing GitHub token from environment variable\u2026\n",
     "error": null,
     "parsed_output": [
       [
-        "Y",
         "R",
         "M",
-        "C",
-        "G",
-        "B",
         "Y",
+        "G",
+        "C",
+        "Y",
+        "B",
         "M"
       ],
       [
-        "B",
-        "G",
         "Y",
+        "B",
         "M",
         "R",
-        "C",
+        "G",
         "O",
+        "Y",
+        "C"
+      ],
+      [
+        "C",
+        "G",
+        "O",
+        "Y",
+        "M",
+        "B",
+        "R",
         "G"
       ],
       [
         "M",
-        "C",
+        "Y",
         "R",
-        "G",
-        "Y",
-        "M",
+        "C",
         "B",
-        "R"
-      ],
-      [
         "G",
-        "Y",
-        "B",
         "O",
-        "M",
-        "R",
-        "C",
         "Y"
       ],
       [
-        "R",
-        "M",
-        "C",
-        "Y",
         "B",
-        "G",
-        "M",
-        "O"
-      ],
-      [
-        "C",
-        "B",
-        "G",
-        "R",
         "O",
+        "G",
+        "M",
         "Y",
         "R",
+        "C",
         "B"
       ],
       [
+        "G",
+        "C",
         "Y",
+        "B",
         "O",
         "M",
-        "B",
-        "C",
-        "M",
         "G",
-        "C"
+        "R"
       ],
       [
-        "M",
-        "R",
         "Y",
-        "G",
         "R",
+        "M",
+        "G",
+        "C",
         "B",
+        "Y",
+        "O"
+      ],
+      [
         "O",
-        "M"
+        "M",
+        "B",
+        "Y",
+        "R",
+        "G",
+        "M",
+        "C"
       ]
     ],
     "ground_truth": [
@@ -2784,6 +3235,676 @@
     "raw_output": "(zoom \u00d78)\nUsing GitHub token from environment variable\u2026\nERROR: HTTPSConnectionPool(host='api.enterprise.githubcopilot.com', port=443): Read timed out. (read timeout=60)\n",
     "error": "Failed to parse JSON output",
     "parsed_output": null,
+    "ground_truth": [
+      [
+        "R",
+        "R",
+        "R",
+        "R",
+        "R",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "R",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "R",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W",
+        "W"
+      ],
+      [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W",
+        "W"
+      ]
+    ],
+    "image_name": "willy"
+  },
+  {
+    "model": "gemini-3.6-flash",
+    "size": "8x16",
+    "zoom": 8,
+    "correct_pixels": 104,
+    "total_pixels": 128,
+    "accuracy": 0.8125,
+    "raw_output": "(zoom \u00d78)\n[\n  [\"R\", \"R\", \"R\", \"R\", \"R\", \"W\", \"W\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"R\", \"W\", \"W\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"R\", \"R\", \"W\", \"W\", \"R\", \"R\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"W\", \"W\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\"],\n  [\"W\", \"W\", \"W\", \"W\", \"R\", \"W\", \"W\", \"W\"],\n  [\"W\", \"W\", \"W\", \"W\", \"W\", \"R\", \"W\", \"W\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"R\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"R\", \"W\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"R\", \"W\", \"W\", \"W\"]\n]\nUsing GitHub token from environment variable\u2026\n",
+    "error": null,
+    "parsed_output": [
+      [
+        "R",
+        "R",
+        "R",
+        "R",
+        "R",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "R",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W",
+        "W"
+      ],
+      [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W",
+        "W"
+      ]
+    ],
+    "ground_truth": [
+      [
+        "R",
+        "R",
+        "R",
+        "R",
+        "R",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "R",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "R",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W",
+        "W"
+      ],
+      [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W",
+        "W"
+      ]
+    ],
+    "image_name": "willy"
+  },
+  {
+    "model": "gemini-3.7-flash",
+    "size": "8x16",
+    "zoom": 8,
+    "correct_pixels": 125,
+    "total_pixels": 128,
+    "accuracy": 0.9765625,
+    "raw_output": "(zoom \u00d78)\n[\n  [\"R\", \"R\", \"R\", \"R\", \"R\", \"W\", \"W\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"R\", \"W\", \"R\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"R\", \"R\", \"W\", \"W\", \"R\", \"R\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\"],\n  [\"W\", \"W\", \"W\", \"W\", \"R\", \"W\", \"W\", \"W\"],\n  [\"W\", \"W\", \"W\", \"W\", \"W\", \"R\", \"W\", \"W\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"R\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"R\", \"W\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"R\", \"W\", \"W\", \"W\"]\n]\nUsing GitHub token from environment variable\u2026\n",
+    "error": null,
+    "parsed_output": [
+      [
+        "R",
+        "R",
+        "R",
+        "R",
+        "R",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "R",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "R",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W",
+        "W"
+      ],
+      [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W",
+        "W"
+      ]
+    ],
     "ground_truth": [
       [
         "R",
@@ -3287,10 +4408,10 @@
     "model": "gpt-4o-2024-05-13",
     "size": "8x16",
     "zoom": 8,
-    "correct_pixels": 84,
+    "correct_pixels": 78,
     "total_pixels": 128,
-    "accuracy": 0.65625,
-    "raw_output": "(zoom \u00d78)\n```json\n[\n  [\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\"],\n  [\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"R\",\"W\",\"W\",\"R\",\"R\",\"W\",\"W\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"W\",\"W\",\"W\",\"R\",\"R\",\"W\",\"W\",\"W\"],\n  [\"W\",\"W\",\"W\",\"R\",\"R\",\"W\",\"W\",\"W\"],\n  [\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"W\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"W\"]\n]\n```\nUsing GitHub token from environment variable\u2026\n",
+    "accuracy": 0.609375,
+    "raw_output": "(zoom \u00d78)\n```json\n[\n  [\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"R\",\"W\",\"R\",\"W\",\"W\",\"R\",\"W\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\"],\n  [\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\"],\n  [\"W\",\"W\",\"R\",\"W\",\"W\",\"R\",\"W\",\"W\"],\n  [\"W\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"W\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"R\",\"W\",\"W\",\"R\",\"R\",\"W\",\"W\",\"R\"],\n  [\"R\",\"W\",\"R\",\"W\",\"W\",\"R\",\"W\",\"R\"],\n  [\"R\",\"W\",\"R\",\"W\",\"W\",\"R\",\"W\",\"R\"],\n  [\"R\",\"R\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\"]\n]\n```\nUsing GitHub token from environment variable\u2026\n",
     "error": null,
     "parsed_output": [
       [
@@ -3315,12 +4436,12 @@
       ],
       [
         "R",
-        "R",
         "W",
         "W",
         "W",
         "W",
-        "R",
+        "W",
+        "W",
         "R"
       ],
       [
@@ -3330,6 +4451,16 @@
         "W",
         "W",
         "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "R",
+        "W",
+        "W",
+        "R",
         "W",
         "R"
       ],
@@ -3374,63 +4505,23 @@
         "W"
       ],
       [
-        "R",
         "W",
         "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
         "R",
         "W",
         "W",
         "R",
-        "R",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "W",
-        "W",
-        "W",
-        "R",
-        "R",
-        "W",
         "W",
         "W"
       ],
       [
         "W",
-        "W",
-        "W",
         "R",
         "R",
         "W",
         "W",
-        "W"
-      ],
-      [
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
+        "R",
+        "R",
         "W"
       ],
       [
@@ -3444,14 +4535,44 @@
         "R"
       ],
       [
+        "R",
+        "W",
+        "W",
+        "R",
+        "R",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
         "W",
         "R",
         "W",
         "W",
+        "R",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "R",
         "W",
         "W",
         "R",
-        "W"
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "R",
+        "R",
+        "W",
+        "R",
+        "R"
       ]
     ],
     "ground_truth": [
@@ -3622,10 +4743,10 @@
     "model": "gpt-5.4",
     "size": "8x16",
     "zoom": 8,
-    "correct_pixels": 68,
+    "correct_pixels": 86,
     "total_pixels": 128,
-    "accuracy": 0.53125,
-    "raw_output": "(zoom \u00d78)\n[[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\",\"R\"],[\"W\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\",\"R\"],[\"W\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\",\"R\"],[\"W\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\",\"R\"],[\"W\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\",\"R\"]]\n\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.671875,
+    "raw_output": "(zoom \u00d78)\n[[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"R\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"R\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"R\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"R\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\"]]\n\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
@@ -3634,43 +4755,33 @@
         "W",
         "W",
         "W",
-        "R",
+        "W",
         "R",
         "R"
       ],
       [
         "R",
-        "R",
         "W",
         "W",
         "W",
-        "R",
+        "W",
+        "W",
         "R",
         "R"
       ],
       [
         "R",
-        "R",
         "W",
         "W",
         "W",
-        "R",
+        "W",
+        "W",
         "R",
         "R"
       ],
       [
         "R",
-        "R",
         "W",
-        "W",
-        "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
         "W",
         "W",
         "W",
@@ -3691,6 +4802,16 @@
       [
         "R",
         "R",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
         "R",
         "W",
         "W",
@@ -3702,36 +4823,6 @@
         "R",
         "R",
         "R",
-        "R",
-        "R",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "R",
-        "R",
-        "R",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "R",
-        "R",
-        "R",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "R",
         "W",
         "W",
         "R",
@@ -3740,51 +4831,81 @@
       ],
       [
         "R",
+        "R",
         "W",
         "R",
+        "W",
+        "W",
         "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "R",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "R",
+        "R",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "R",
+        "W",
         "W",
         "R",
         "R",
         "R"
       ],
       [
-        "W",
-        "W",
         "R",
         "R",
+        "W",
+        "W",
         "W",
         "R",
         "R",
         "R"
       ],
       [
-        "W",
-        "W",
-        "R",
         "R",
         "W",
+        "W",
         "R",
+        "W",
+        "W",
         "R",
         "R"
       ],
       [
-        "W",
-        "W",
+        "R",
+        "R",
         "R",
         "R",
         "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
         "W",
-        "W",
-        "R",
-        "R",
-        "W",
-        "R",
         "R",
         "R"
       ]
@@ -3957,13 +5078,83 @@
     "model": "gpt-5.5",
     "size": "8x16",
     "zoom": 8,
-    "correct_pixels": 67,
+    "correct_pixels": 84,
     "total_pixels": 128,
-    "accuracy": 0.5234375,
-    "raw_output": "(zoom \u00d78)\n[\n  [\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n  [\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n  [\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n  [\"W\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n  [\"W\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n  [\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n  [\"R\",\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"]\n]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.65625,
+    "raw_output": "(zoom \u00d78)\n[\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n  [\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n  [\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n  [\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"R\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"W\",\"W\",\"W\",\"R\",\"R\",\"W\",\"W\",\"W\"],\n  [\"W\",\"W\",\"W\",\"R\",\"R\",\"W\",\"W\",\"W\"]\n]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R",
+        "R"
+      ],
+      [
         "W",
         "W",
         "W",
@@ -3984,31 +5175,11 @@
         "R"
       ],
       [
-        "R",
         "W",
         "W",
         "W",
         "R",
         "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
         "R",
         "R",
         "R"
@@ -4024,70 +5195,20 @@
         "R"
       ],
       [
+        "R",
         "W",
         "W",
         "W",
-        "R",
-        "R",
-        "R",
-        "R",
-        "R"
-      ],
-      [
         "W",
-        "W",
-        "R",
-        "R",
-        "R",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "W",
-        "W",
-        "R",
-        "R",
-        "R",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "W",
-        "W",
-        "W",
-        "R",
-        "R",
         "R",
         "R",
         "R"
       ],
       [
         "R",
-        "R",
         "W",
         "W",
         "R",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "R",
-        "W",
-        "R",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
         "W",
         "W",
         "R",
@@ -4104,24 +5225,24 @@
         "R"
       ],
       [
-        "R",
-        "W",
-        "W",
         "W",
         "W",
         "W",
         "R",
-        "R"
+        "R",
+        "W",
+        "W",
+        "W"
       ],
       [
-        "R",
-        "W",
-        "W",
         "W",
         "W",
         "W",
         "R",
-        "R"
+        "R",
+        "W",
+        "W",
+        "W"
       ]
     ],
     "ground_truth": [
@@ -4292,10 +5413,10 @@
     "model": "gpt-5.6-terra",
     "size": "8x16",
     "zoom": 8,
-    "correct_pixels": 90,
+    "correct_pixels": 82,
     "total_pixels": 128,
-    "accuracy": 0.703125,
-    "raw_output": "(zoom \u00d78)\n[[\"R\",\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"R\"],[\"R\",\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"R\"],[\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.640625,
+    "raw_output": "(zoom \u00d78)\n[[\"R\",\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"W\"],[\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"W\",\"R\"],[\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"W\",\"R\"],[\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"W\",\"R\"],[\"R\",\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\"],[\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"W\",\"R\"],[\"R\",\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"W\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
@@ -4306,17 +5427,7 @@
         "R",
         "W",
         "W",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "R",
-        "R",
-        "R",
-        "W",
-        "W",
-        "R"
+        "W"
       ],
       [
         "R",
@@ -4325,7 +5436,7 @@
         "R",
         "W",
         "W",
-        "R",
+        "W",
         "R"
       ],
       [
@@ -4335,7 +5446,17 @@
         "R",
         "W",
         "W",
+        "W",
+        "R"
+      ],
+      [
         "R",
+        "R",
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
         "R"
       ],
       [
@@ -4345,7 +5466,17 @@
         "W",
         "W",
         "W",
+        "W",
+        "R"
+      ],
+      [
         "R",
+        "R",
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
         "R"
       ],
       [
@@ -4355,27 +5486,7 @@
         "W",
         "W",
         "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
         "W",
-        "W",
-        "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R",
         "R"
       ],
       [
@@ -4384,8 +5495,8 @@
         "W",
         "W",
         "W",
-        "R",
-        "R",
+        "W",
+        "W",
         "R"
       ],
       [
@@ -4400,11 +5511,11 @@
       ],
       [
         "R",
+        "W",
+        "W",
+        "W",
+        "W",
         "R",
-        "W",
-        "W",
-        "W",
-        "W",
         "R",
         "R"
       ],
@@ -4421,6 +5532,26 @@
       [
         "R",
         "R",
+        "R",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "R",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
         "W",
         "W",
         "W",
@@ -4430,33 +5561,23 @@
       ],
       [
         "R",
+        "R",
         "W",
         "W",
-        "R",
-        "R",
-        "R",
+        "W",
+        "W",
         "R",
         "R"
       ],
       [
         "R",
-        "W",
-        "W",
         "R",
         "R",
         "R",
         "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
         "R",
         "R",
-        "R",
-        "R",
-        "R"
+        "W"
       ]
     ],
     "ground_truth": [
@@ -4627,10 +5748,10 @@
     "model": "gpt-5.6-sol",
     "size": "8x16",
     "zoom": 8,
-    "correct_pixels": 100,
+    "correct_pixels": 98,
     "total_pixels": 128,
-    "accuracy": 0.78125,
-    "raw_output": "(zoom \u00d78)\n[[\"R\",\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.765625,
+    "raw_output": "(zoom \u00d78)\n[[\"R\",\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],[\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],[\"W\",\"W\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\"],[\"W\",\"W\",\"R\",\"R\",\"R\",\"W\",\"W\",\"R\"],[\"W\",\"W\",\"R\",\"R\",\"R\",\"R\",\"W\",\"R\"]]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
@@ -4686,6 +5807,16 @@
       [
         "R",
         "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
         "R",
         "W",
         "W",
@@ -4705,7 +5836,7 @@
       ],
       [
         "R",
-        "W",
+        "R",
         "W",
         "W",
         "W",
@@ -4724,27 +5855,17 @@
         "R"
       ],
       [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
         "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
         "R",
         "R"
       ],
       [
-        "R",
+        "W",
         "W",
         "W",
         "W",
@@ -4754,28 +5875,8 @@
         "R"
       ],
       [
-        "R",
-        "R",
         "W",
         "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "R",
-        "R",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
         "W",
         "W",
         "W",
@@ -4784,12 +5885,32 @@
         "R"
       ],
       [
+        "W",
+        "W",
+        "W",
         "R",
         "R",
         "W",
+        "R",
+        "R"
+      ],
+      [
         "W",
         "W",
+        "R",
+        "R",
+        "R",
         "W",
+        "W",
+        "R"
+      ],
+      [
+        "W",
+        "W",
+        "R",
+        "R",
+        "R",
+        "R",
         "W",
         "R"
       ]
@@ -4962,10 +6083,10 @@
     "model": "gpt-6-astra",
     "size": "8x16",
     "zoom": 8,
-    "correct_pixels": 98,
+    "correct_pixels": 93,
     "total_pixels": 128,
-    "accuracy": 0.765625,
-    "raw_output": "(zoom \u00d78)\n[\n  [\"R\",\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n  [\"R\",\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\"],\n  [\"W\",\"W\",\"W\",\"W\",\"R\",\"W\",\"W\",\"W\"],\n  [\"W\",\"W\",\"R\",\"R\",\"R\",\"W\",\"W\",\"W\"],\n  [\"W\",\"R\",\"R\",\"W\",\"R\",\"R\",\"W\",\"W\"],\n  [\"W\",\"R\",\"W\",\"R\",\"R\",\"R\",\"W\",\"W\"],\n  [\"W\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"W\"]\n]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.7265625,
+    "raw_output": "(zoom \u00d78)\n[\n  [\"R\",\"R\",\"R\",\"R\",\"R\",\"W\",\"W\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"W\",\"W\",\"W\",\"W\",\"R\",\"W\",\"W\",\"R\"],\n  [\"W\",\"W\",\"R\",\"R\",\"R\",\"W\",\"W\",\"R\"],\n  [\"W\",\"R\",\"R\",\"W\",\"W\",\"R\",\"W\",\"W\"],\n  [\"W\",\"R\",\"R\",\"R\",\"W\",\"R\",\"W\",\"W\"],\n  [\"W\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"W\"]\n]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
@@ -5021,16 +6142,6 @@
       [
         "R",
         "R",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
         "R",
         "W",
         "W",
@@ -5044,7 +6155,7 @@
         "W",
         "W",
         "W",
-        "W",
+        "R",
         "R",
         "R"
       ],
@@ -5065,7 +6176,17 @@
         "W",
         "W",
         "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
         "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
         "R"
       ],
       [
@@ -5076,7 +6197,7 @@
         "W",
         "W",
         "W",
-        "W"
+        "R"
       ],
       [
         "W",
@@ -5086,7 +6207,7 @@
         "R",
         "W",
         "W",
-        "W"
+        "R"
       ],
       [
         "W",
@@ -5096,24 +6217,14 @@
         "R",
         "W",
         "W",
-        "W"
+        "R"
       ],
       [
         "W",
         "R",
         "R",
         "W",
-        "R",
-        "R",
         "W",
-        "W"
-      ],
-      [
-        "W",
-        "R",
-        "W",
-        "R",
-        "R",
         "R",
         "W",
         "W"
@@ -5121,7 +6232,17 @@
       [
         "W",
         "R",
+        "R",
+        "R",
         "W",
+        "R",
+        "W",
+        "W"
+      ],
+      [
+        "W",
+        "R",
+        "R",
         "W",
         "W",
         "R",
@@ -5300,21 +6421,11 @@
     "correct_pixels": 90,
     "total_pixels": 128,
     "accuracy": 0.703125,
-    "raw_output": "(zoom \u00d78)\n```json\n[\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n  [\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n  [\"R\",\"W\",\"W\",\"R\",\"R\",\"W\",\"W\",\"R\"],\n  [\"R\",\"R\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\"],\n  [\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"]\n]\n```\nUsing GitHub token from environment variable\u2026\n",
+    "raw_output": "(zoom \u00d78)\n```json\n[\n  [\"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\"],\n  [\"R\", \"R\", \"R\", \"W\", \"W\", \"R\", \"R\", \"R\"],\n  [\"R\", \"R\", \"R\", \"W\", \"W\", \"R\", \"R\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"W\", \"W\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"R\", \"R\", \"W\", \"W\", \"R\"],\n  [\"R\", \"W\", \"W\", \"R\", \"R\", \"W\", \"W\", \"R\"],\n  [\"R\", \"R\", \"R\", \"R\", \"R\", \"R\", \"R\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"R\", \"W\", \"W\", \"W\", \"W\", \"R\", \"R\"],\n  [\"R\", \"R\", \"R\", \"R\", \"R\", \"R\", \"R\", \"R\"]\n]\n```\nUsing GitHub token from environment variable\u2026\n",
     "error": null,
     "parsed_output": [
       [
         "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
         "W",
         "W",
         "W",
@@ -5336,10 +6447,10 @@
       [
         "R",
         "R",
+        "R",
         "W",
         "W",
-        "W",
-        "W",
+        "R",
         "R",
         "R"
       ],
@@ -5365,12 +6476,32 @@
       ],
       [
         "R",
+        "R",
         "W",
         "W",
         "W",
         "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
         "W",
         "W",
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
         "R"
       ],
       [
@@ -5395,11 +6526,31 @@
       ],
       [
         "R",
+        "W",
+        "W",
+        "R",
         "R",
         "W",
         "W",
+        "R"
+      ],
+      [
+        "R",
         "W",
         "W",
+        "R",
+        "R",
+        "W",
+        "W",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "R",
+        "R",
+        "R",
+        "R",
         "R",
         "R"
       ],
@@ -5416,39 +6567,9 @@
       [
         "R",
         "R",
-        "R",
-        "W",
-        "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
         "W",
         "W",
         "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "R",
-        "R",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "R",
-        "R",
         "W",
         "R",
         "R"
@@ -5632,10 +6753,10 @@
     "model": "claude-sonnet-5",
     "size": "8x16",
     "zoom": 8,
-    "correct_pixels": 77,
+    "correct_pixels": 78,
     "total_pixels": 128,
-    "accuracy": 0.6015625,
-    "raw_output": "(zoom \u00d78)\n```json\n[\n[\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"R\",\"R\",\"W\",\"W\",\"R\"],\n[\"R\",\"W\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n[\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"W\",\"R\"],\n[\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"W\",\"R\"],\n[\"R\",\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"R\"]\n]\n```\nUsing GitHub token from environment variable\u2026\n",
+    "accuracy": 0.609375,
+    "raw_output": "(zoom \u00d78)\n```json\n[\n[\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n[\"R\",\"W\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n[\"R\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"R\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"R\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"R\",\"W\",\"W\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"W\",\"R\"],\n[\"R\",\"R\",\"R\",\"R\",\"R\",\"W\",\"R\",\"R\"]\n]\n```\nUsing GitHub token from environment variable\u2026\n",
     "error": null,
     "parsed_output": [
       [
@@ -5652,46 +6773,6 @@
         "R",
         "R",
         "W",
-        "R",
-        "R",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "R",
-        "R",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "R",
-        "R",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "R",
-        "R",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "R",
         "W",
         "W",
         "R",
@@ -5700,7 +6781,7 @@
       ],
       [
         "R",
-        "R",
+        "W",
         "W",
         "W",
         "W",
@@ -5710,8 +6791,8 @@
       ],
       [
         "R",
-        "R",
         "W",
+        "R",
         "W",
         "W",
         "W",
@@ -5720,9 +6801,9 @@
       ],
       [
         "R",
-        "R",
-        "R",
         "W",
+        "R",
+        "R",
         "W",
         "R",
         "R",
@@ -5731,7 +6812,7 @@
       [
         "R",
         "R",
-        "R",
+        "W",
         "W",
         "W",
         "R",
@@ -5744,6 +6825,56 @@
         "W",
         "W",
         "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "R",
+        "W",
+        "R",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "R",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "R",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "R",
+        "W",
         "W",
         "R",
         "R"
@@ -5781,20 +6912,10 @@
       [
         "R",
         "R",
-        "W",
         "R",
         "R",
         "R",
         "W",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "R",
-        "W",
-        "R",
-        "R",
         "R",
         "R"
       ]
@@ -5967,10 +7088,10 @@
     "model": "claude-opus-5",
     "size": "8x16",
     "zoom": 8,
-    "correct_pixels": 80,
+    "correct_pixels": 72,
     "total_pixels": 128,
-    "accuracy": 0.625,
-    "raw_output": "(zoom \u00d78)\n[[\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n[\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n[\"W\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"]]\nUsing GitHub token from environment variable\u2026\n",
+    "accuracy": 0.5625,
+    "raw_output": "(zoom \u00d78)\n[[\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"W\",\"R\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n[\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"W\",\"R\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n[\"W\",\"W\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"R\",\"R\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"]]\nUsing GitHub token from environment variable\u2026\n",
     "error": null,
     "parsed_output": [
       [
@@ -5985,20 +7106,10 @@
       ],
       [
         "R",
-        "R",
         "W",
         "W",
         "W",
         "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
         "R",
         "R",
         "R"
@@ -6006,49 +7117,9 @@
       [
         "R",
         "W",
-        "W",
-        "R",
-        "R",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
         "R",
         "W",
-        "W",
-        "W",
         "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
         "R",
         "R",
         "R"
@@ -6059,6 +7130,36 @@
         "W",
         "W",
         "R",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "R",
+        "R",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
         "R",
         "R",
         "R"
@@ -6085,16 +7186,6 @@
       ],
       [
         "R",
-        "R",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R",
-        "R"
-      ],
-      [
-        "R",
         "W",
         "W",
         "W",
@@ -6104,10 +7195,10 @@
         "R"
       ],
       [
-        "W",
-        "W",
+        "R",
         "W",
         "R",
+        "W",
         "R",
         "R",
         "R",
@@ -6116,6 +7207,36 @@
       [
         "W",
         "W",
+        "R",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "R",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "R",
+        "R",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
         "R",
         "R",
         "R",
@@ -6302,15 +7423,95 @@
     "model": "grok-4.6",
     "size": "8x16",
     "zoom": 8,
-    "correct_pixels": 85,
+    "correct_pixels": 67,
     "total_pixels": 128,
-    "accuracy": 0.6640625,
-    "raw_output": "(zoom \u00d78)\n[\n[\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"R\",\"W\",\"W\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"R\",\"R\",\"W\",\"R\",\"R\"],\n[\"R\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n[\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n[\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n[\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n[\"R\",\"W\",\"W\",\"W\",\"W\",\"W\",\"W\",\"R\"],\n[\"R\",\"R\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\"]\n]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
+    "accuracy": 0.5234375,
+    "raw_output": "(zoom \u00d78)\n[\n[\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n[\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n[\"W\",\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n[\"W\",\"W\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"W\",\"W\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"],\n[\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\",\"R\"]\n]\nUsing GitHub token from environment variable\u2026\n(using Responses API)\n",
     "error": null,
     "parsed_output": [
       [
         "R",
         "R",
+        "R",
+        "R",
+        "R",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
+        "W",
+        "R",
+        "R",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "W",
+        "W",
+        "W",
+        "R",
+        "R",
+        "R",
+        "R"
+      ],
+      [
+        "R",
+        "R",
         "W",
         "W",
         "R",
@@ -6323,7 +7524,17 @@
         "W",
         "W",
         "W",
+        "R",
+        "R",
+        "R",
+        "R"
+      ],
+      [
         "W",
+        "W",
+        "W",
+        "W",
+        "R",
         "R",
         "R",
         "R"
@@ -6333,16 +7544,6 @@
         "W",
         "W",
         "R",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "R",
-        "W",
-        "W",
         "R",
         "R",
         "R",
@@ -6352,8 +7553,8 @@
         "R",
         "R",
         "R",
-        "W",
-        "W",
+        "R",
+        "R",
         "R",
         "R",
         "R"
@@ -6361,26 +7562,6 @@
       [
         "R",
         "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "R",
-        "R",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
         "R",
         "R",
         "R",
@@ -6400,71 +7581,11 @@
       ],
       [
         "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
-        "R",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
-        "R"
-      ],
-      [
         "R",
         "R",
-        "W",
-        "W",
-        "W",
-        "W",
+        "R",
+        "R",
+        "R",
         "R",
         "R"
       ]
