@@ -21,7 +21,7 @@ pip install Pillow
 python benchmark.py --quick
 
 # Run full benchmark with Willy sprite
-python benchmark.py --willy --zoom 8
+python benchmark.py --willy --zoom 32
 ```
 
 ## cop CLI

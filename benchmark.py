@@ -6,7 +6,7 @@ Tests the ability of various vision models to extract pixel-level color data
 from small images. Uses the Copilot API via the cop CLI tool.
 
 Usage:
-    python benchmark.py [--models MODEL1,MODEL2] [--sizes 4,8,16] [--zoom 8] [--seed 42]
+    python benchmark.py [--models MODEL1,MODEL2] [--sizes 4,8,16] [--zoom 32] [--seed 42]
 """
 
 import argparse
@@ -91,6 +91,7 @@ QUICK_MODELS = ["gemini-3.8-flash", "gpt-6-astra", "claude-sonnet-5"]
 
 # Default image sizes to test (width x height)
 DEFAULT_SIZES = [(4, 4), (8, 8), (8, 16), (16, 16)]
+DEFAULT_CELL_SIZE = 32
 
 
 @dataclass
@@ -618,6 +619,19 @@ def generate_report(results: list[BenchmarkResult], output_path: Path, image_bas
     output_dir = output_path.parent
     images_dir = output_dir / "images"
     images_dir.mkdir(parents=True, exist_ok=True)
+
+    cell_sizes = sorted({result.zoom for result in results})
+    if cell_sizes == [0]:
+        cell_size_description = "Images are sent at their original resolution"
+    elif len(cell_sizes) == 1:
+        cell_size = cell_sizes[0]
+        cell_size_description = (
+            f"Each logical pixel is rendered as a contiguous {cell_size}x{cell_size} pixel cell "
+            "using nearest-neighbor scaling"
+        )
+    else:
+        rendered_sizes = ", ".join("original" if size == 0 else f"{size}px" for size in cell_sizes)
+        cell_size_description = f"Nearest-neighbor logical cell sizes in this report: {rendered_sizes}"
     
     lines = [
         "# Pixel Extraction Benchmark Results",
@@ -637,6 +651,7 @@ def generate_report(results: list[BenchmarkResult], output_path: Path, image_bas
         "",
         "### Methodology",
         "- Random colored images generated with 8 distinct colors (R, G, B, Y, M, C, O, P)",
+        f"- {cell_size_description}",
         "- Models asked to output a JSON 2D array of color letters",
         "- Accuracy measured as percentage of correctly identified pixels",
         "- Cohen's kappa adjusts accuracy for agreement expected by chance: 1 is perfect, 0 is chance-level, and negative values are worse than chance",
@@ -809,7 +824,7 @@ def generate_report(results: list[BenchmarkResult], output_path: Path, image_bas
         "",
         "## Key Findings",
         "",
-        "1. **Zoom significantly improves accuracy** - 8x zoom provides +30-50% improvement for top models",
+        "1. **Fixed cell sizing standardizes visual resolution** - Every model receives the same contiguous nearest-neighbor rendering",
         "2. **Gemini 3.x models excel** - Achieve near-perfect pixel extraction with proper settings",
         "3. **Structured JSON output helps** - 2D array format with individual letters performs best",
         "4. **Image size matters** - Smaller images (4x4) are easier to extract accurately",
@@ -895,8 +910,8 @@ def main():
     parser.add_argument(
         "--zoom",
         type=int,
-        default=8,
-        help="Zoom factor for images (0 for no zoom)"
+        default=DEFAULT_CELL_SIZE,
+        help=f"Logical cell size in pixels (default: {DEFAULT_CELL_SIZE}; 0 for no scaling)"
     )
     parser.add_argument(
         "--seed",

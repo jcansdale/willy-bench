@@ -13,9 +13,9 @@ on:
         required: false
         default: '4x4,8x8'
       zoom:
-        description: 'Zoom factor (0 for no zoom)'
+        description: 'Logical cell size in pixels (0 for no scaling)'
         required: false
-        default: '8'
+        default: '32'
       seed:
         description: 'Random seed for reproducibility'
         required: false
@@ -69,7 +69,7 @@ jobs:
           python benchmark.py \
             --models "${{ github.event.inputs.models || 'gemini-3.5-flash,gemini-3.6-flash,gemini-3.7-flash,gemini-3.8-flash,gpt-4o-2024-05-13,gpt-5.4,gpt-5.5,gpt-5.6-terra,gpt-5.6-sol,gpt-6-astra,claude-haiku-4.5,claude-sonnet-5,claude-opus-5,grok-4.6' }}" \
             --sizes "${{ github.event.inputs.sizes || '4x4,8x8' }}" \
-            --zoom "${{ github.event.inputs.zoom || '8' }}" \
+            --zoom "${{ github.event.inputs.zoom || '32' }}" \
             --seed "${{ github.event.inputs.seed || '42' }}" \
             --willy \
             --output-dir benchmark_results

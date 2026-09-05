@@ -36,7 +36,7 @@ Based on extensive testing:
 
 ### Critical Settings for Best Results
 
-1. **Use 8x zoom** (+30-50% improvement)
+1. **Use contiguous 32px logical cells** for a model-independent visual resolution
 2. **Use 2D JSON array format** (each pixel as separate element)
 3. **Smaller images are easier** (4x4 > 8x8 > 16x16)
 
@@ -63,7 +63,7 @@ python benchmark.py --quick
 # Full benchmark with Willy sprite
 python benchmark.py --models "gemini-3.8-flash,gpt-6-astra,claude-sonnet-5" \
                     --sizes "4x4,8x8" \
-                    --zoom 8 \
+                    --zoom 32 \
                     --willy
 
 # Regenerate report with image URLs (for CI)
@@ -75,10 +75,10 @@ python benchmark.py --regenerate --image-base-url "https://example.com/images"
 The benchmark includes an 8x16 classic retro game sprite challenge:
 
 ```bash
-python benchmark.py --willy --zoom 8
+python benchmark.py --willy --zoom 32
 ```
 
-This tests models on a 2-color (Red/White) Miner Willy sprite — a more complex pixel extraction task.
+This tests models on a 2-color (Red/White) Miner Willy sprite — a more complex pixel extraction task. The `--zoom` value is the rendered size of each original sprite pixel; cells remain contiguous with no added grid lines.
 
 ### Authentication
 
