@@ -33,7 +33,7 @@ A command-line interface for GitHub Copilot with vision model support.
 cop chat "What is the capital of France?"
 
 # Use a specific model
-cop chat -m gemini-3.1-pro-preview "Explain quantum computing"
+cop chat -m gemini-3.5-flash "Explain quantum computing"
 
 # Send an image for analysis
 cop chat -i image.png "Describe this image"
@@ -50,17 +50,14 @@ cop models
 
 ## Supported Models
 
-| Model | API | Best Pixel Accuracy |
-|-------|-----|---------------------|
-| gemini-3.1-pro-preview | Chat Completions | **100%** |
-| gemini-3-pro-preview | Chat Completions | **100%** |
-| gemini-2.5-pro | Chat Completions | ~78% |
-| gpt-4o | Chat Completions | ~62% |
-| gpt-5.4 | Responses | ~63% |
+| Model | API | Latest Average Accuracy |
+|-------|-----|-------------------------|
+| gemini-3.5-flash | Chat Completions | **99.2%** |
+| gpt-4o | Chat Completions | 46.9% |
+| gpt-5-mini | Chat Completions | 24.7% |
+| gpt-5.4 | Responses | 37.0% |
 | gpt-6-astra | Responses | TBD |
-| claude-sonnet-4 | Chat Completions | ~66% |
-| claude-opus-4.6 | Chat Completions | ~66% |
-| claude-opus-4.7 | Chat Completions | TBD |
+| claude-opus-4.7 | Chat Completions | 38.3% |
 
 ## Benchmark Results
 
@@ -74,9 +71,9 @@ The benchmark generates:
 ### Example Output
 
 ```
-Testing gemini-3.1-pro-preview... ✅ 16/16 (100%)
+Testing gemini-3.5-flash... ✅ 16/16 (100%)
 Testing gpt-4o... 🔴 12/16 (75%)
-Testing claude-sonnet-4... 🔴 10/16 (62%)
+Testing claude-opus-4.7... 🔴 6/16 (38%)
 ```
 
 ## Authentication

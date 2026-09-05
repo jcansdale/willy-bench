@@ -6,26 +6,22 @@ A benchmark suite for testing vision models' ability to extract pixel-level colo
 
 This benchmark tests how accurately various AI vision models can identify individual pixel colors in small images (4x4, 8x8, 8x16). It uses the GitHub Copilot API to test multiple models including:
 
-- **Gemini 3.x** (gemini-3.1-pro-preview, gemini-3-pro-preview) — Best performers
-- **Gemini 2.5** (gemini-2.5-pro)
-- **GPT models** (gpt-4o, gpt-5.4, gpt-6-astra) — gpt-5.4 and gpt-6-astra require Responses API
-- **Claude models** (claude-sonnet-4, claude-opus-4.6, claude-opus-4.7)
+- **Gemini models** (gemini-3.5-flash) — Best performer
+- **GPT models** (gpt-4o, gpt-5-mini, gpt-5.4, gpt-6-astra) — gpt-5.4 and gpt-6-astra require Responses API
+- **Claude models** (claude-opus-4.7)
 
 ## Key Findings
 
 Based on extensive testing:
 
-| Model | API | Best Accuracy | Notes |
-|-------|-----|---------------|-------|
-| gemini-3.1-pro-preview | Chat | **100%** | Perfect on 4x4, 8x8 with 8x zoom |
-| gemini-3-pro-preview | Chat | **100%** | Perfect on 4x4, 8x8 with 8x zoom |
-| gemini-2.5-pro | Chat | ~78% | Good but not perfect |
-| claude-sonnet-4 | Chat | ~66% | Improved with proper prompting |
-| claude-opus-4.6 | Chat | ~66% | Similar to sonnet |
-| claude-opus-4.7 | Chat | TBD | Newly added |
+| Model | API | Latest Average Accuracy | Notes |
+|-------|-----|-------------------------|-------|
+| gemini-3.5-flash | Chat | **99.2%** | Near-perfect across the latest benchmark |
+| claude-opus-4.7 | Chat | 38.3% | Current Claude baseline |
 | gpt-6-astra | Responses | TBD | Newly added; requires Responses API |
-| gpt-5.4 | Responses | ~63% | Requires Responses API |
-| gpt-4o | Chat | ~62% | Better on smaller images |
+| gpt-5.4 | Responses | 37.0% | Requires Responses API |
+| gpt-4o | Chat | 46.9% | Better on smaller images |
+| gpt-5-mini | Chat | 24.7% | Lightweight GPT baseline |
 
 ### Critical Settings for Best Results
 
@@ -54,7 +50,7 @@ pip install Pillow
 python benchmark.py --quick
 
 # Full benchmark with Willy sprite
-python benchmark.py --models "gemini-3.1-pro-preview,gpt-4o,claude-sonnet-4" \
+python benchmark.py --models "gemini-3.5-flash,gpt-4o,claude-opus-4.7" \
                     --sizes "4x4,8x8" \
                     --zoom 8 \
                     --willy
