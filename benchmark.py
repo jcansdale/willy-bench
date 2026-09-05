@@ -77,6 +77,7 @@ DEFAULT_MODELS = [
     "gpt-5.1",
     "gpt-5.2",
     "gpt-5.4",
+    "gpt-6-astra",
     "claude-sonnet-4",
     "claude-sonnet-4.5",
     "claude-opus-4.5",
@@ -858,7 +859,7 @@ def main():
     
     # Quick mode overrides
     if args.quick:
-        models = ["gemini-3.5-flash", "gemini-3.1-pro-preview", "gemini-3-flash-preview", "gemini-2.5-pro", "gpt-4o", "gpt-5-mini", "gpt-5.4", "claude-sonnet-4", "claude-sonnet-4.5", "claude-opus-4.6", "claude-opus-4.7"]
+        models = ["gemini-3.5-flash", "gemini-3.1-pro-preview", "gemini-3-flash-preview", "gemini-2.5-pro", "gpt-4o", "gpt-5-mini", "gpt-5.4", "gpt-6-astra", "claude-sonnet-4", "claude-sonnet-4.5", "claude-opus-4.6", "claude-opus-4.7"]
         sizes = [(4, 4)]
         print("Running in quick mode (3 models, 4x4 only)")
     

@@ -57,6 +57,7 @@ cop models
 | gemini-2.5-pro | Chat Completions | ~78% |
 | gpt-4o | Chat Completions | ~62% |
 | gpt-5.4 | Responses | ~63% |
+| gpt-6-astra | Responses | TBD |
 | claude-sonnet-4 | Chat Completions | ~66% |
 | claude-opus-4.6 | Chat Completions | ~66% |
 | claude-opus-4.7 | Chat Completions | TBD |

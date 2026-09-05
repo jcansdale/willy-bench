@@ -8,7 +8,7 @@ This benchmark tests how accurately various AI vision models can identify indivi
 
 - **Gemini 3.x** (gemini-3.1-pro-preview, gemini-3-pro-preview) — Best performers
 - **Gemini 2.5** (gemini-2.5-pro)
-- **GPT models** (gpt-4o, gpt-5.4) — gpt-5.4 requires Responses API
+- **GPT models** (gpt-4o, gpt-5.4, gpt-6-astra) — gpt-5.4 and gpt-6-astra require Responses API
 - **Claude models** (claude-sonnet-4, claude-opus-4.6, claude-opus-4.7)
 
 ## Key Findings
@@ -23,6 +23,7 @@ Based on extensive testing:
 | claude-sonnet-4 | Chat | ~66% | Improved with proper prompting |
 | claude-opus-4.6 | Chat | ~66% | Similar to sonnet |
 | claude-opus-4.7 | Chat | TBD | Newly added |
+| gpt-6-astra | Responses | TBD | Newly added; requires Responses API |
 | gpt-5.4 | Responses | ~63% | Requires Responses API |
 | gpt-4o | Chat | ~62% | Better on smaller images |
 
@@ -120,7 +121,7 @@ The benchmark supports two Copilot APIs:
 | API | Endpoint | Models |
 |-----|----------|--------|
 | Chat Completions | `/chat/completions` | Most models (Gemini, Claude, gpt-4o) |
-| Responses | `/responses` | gpt-5.4, gpt-5.x-codex models |
+| Responses | `/responses` | gpt-6-astra, gpt-5.4, gpt-5.x-codex models |
 
 The `cop` CLI auto-detects which API to use based on model name.
 
