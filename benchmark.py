@@ -92,6 +92,21 @@ QUICK_MODELS = ["gemini-3.8-flash", "gpt-6-astra", "claude-sonnet-5"]
 # Default image sizes to test (width x height)
 DEFAULT_SIZES = [(4, 4), (8, 8), (8, 16), (16, 16)]
 DEFAULT_CELL_SIZE = 32
+DEFAULT_REASONING_EFFORT = "low"
+LOW_REASONING_MODELS = {
+    "gemini-3.5-flash",
+    "gemini-3.6-flash",
+    "gemini-3.7-flash",
+    "gemini-3.8-flash",
+    "gpt-5.4",
+    "gpt-5.5",
+    "gpt-5.6-terra",
+    "gpt-5.6-sol",
+    "gpt-6-astra",
+    "claude-sonnet-5",
+    "claude-opus-5",
+    "grok-4.6",
+}
 
 
 @dataclass
@@ -110,6 +125,7 @@ class BenchmarkResult:
     error: Optional[str] = None
     image_name: str = "random"  # "random" or "willy"
     reasoning_text: Optional[str] = None
+    reasoning_effort: str = "provider-default"
 
 
 def generate_random_image(width: int, height: int, seed: int) -> tuple[Image.Image, list[list[str]]]:
@@ -166,7 +182,22 @@ def load_willy_sprite(image_path: str) -> tuple[Image.Image, list[list[str]]]:
     return img, ground_truth
 
 
-def run_cop_chat(image_path: str, model: str, width: int, height: int, zoom: int = 0, custom_prompt: str = None) -> tuple[str, Optional[str]]:
+def reasoning_effort_for_model(model: str, requested_effort: str) -> Optional[str]:
+    """Return the requested effort when the model advertises support for it."""
+    if requested_effort == "default" or model not in LOW_REASONING_MODELS:
+        return None
+    return requested_effort
+
+
+def run_cop_chat(
+    image_path: str,
+    model: str,
+    width: int,
+    height: int,
+    zoom: int = 0,
+    custom_prompt: str = None,
+    reasoning_effort: Optional[str] = None,
+) -> tuple[str, Optional[str]]:
     """Run the cop CLI tool and return the output."""
     if custom_prompt:
         prompt = custom_prompt
@@ -184,8 +215,8 @@ def run_cop_chat(image_path: str, model: str, width: int, height: int, zoom: int
             "cop", "chat", "-m", model, "-i", image_path,
             "--reasoning-output", str(reasoning_path),
         ]
-        if model.startswith("gemini-"):
-            cmd.extend(["--reasoning-effort", "low"])
+        if reasoning_effort:
+            cmd.extend(["--reasoning-effort", reasoning_effort])
         if zoom > 0:
             cmd.extend(["-z", str(zoom)])
         cmd.append(prompt)
@@ -406,7 +437,8 @@ def run_benchmark(
     sizes: list[tuple[int, int]],
     zoom: int,
     seed: int,
-    output_dir: Path
+    output_dir: Path,
+    requested_reasoning_effort: str = DEFAULT_REASONING_EFFORT,
 ) -> list[BenchmarkResult]:
     """Run the full benchmark suite."""
     results = []
@@ -429,8 +461,10 @@ def run_benchmark(
         
         for model in models:
             print(f"\n  Testing {model}...", end=" ", flush=True)
-            
-            raw_output, reasoning_text = run_cop_chat(str(image_path), model, width, height, zoom)
+            reasoning_effort = reasoning_effort_for_model(model, requested_reasoning_effort)
+            raw_output, reasoning_text = run_cop_chat(
+                str(image_path), model, width, height, zoom, reasoning_effort=reasoning_effort
+            )
             
             if raw_output.startswith("ERROR:"):
                 result = BenchmarkResult(
@@ -446,6 +480,7 @@ def run_benchmark(
                     ground_truth=ground_truth,
                     error=raw_output,
                     reasoning_text=reasoning_text,
+                    reasoning_effort=reasoning_effort or "provider-default",
                 )
             else:
                 parsed = parse_json_output(raw_output, width, height)
@@ -466,6 +501,7 @@ def run_benchmark(
                     ground_truth=ground_truth,
                     error=None if parsed else "Failed to parse JSON output",
                     reasoning_text=reasoning_text,
+                    reasoning_effort=reasoning_effort or "provider-default",
                 )
             
             results.append(result)
@@ -485,7 +521,8 @@ def run_benchmark(
 def run_willy_benchmark(
     models: list[str],
     zoom: int,
-    output_dir: Path
+    output_dir: Path,
+    requested_reasoning_effort: str = DEFAULT_REASONING_EFFORT,
 ) -> list[BenchmarkResult]:
     """Run the Willy sprite benchmark."""
     results = []
@@ -522,8 +559,11 @@ def run_willy_benchmark(
     
     for model in models:
         print(f"\n  Testing {model}...", end=" ", flush=True)
-        
-        raw_output, reasoning_text = run_cop_chat(str(willy_path), model, width, height, zoom, custom_prompt=willy_prompt)
+        reasoning_effort = reasoning_effort_for_model(model, requested_reasoning_effort)
+        raw_output, reasoning_text = run_cop_chat(
+            str(willy_path), model, width, height, zoom,
+            custom_prompt=willy_prompt, reasoning_effort=reasoning_effort,
+        )
         
         if raw_output.startswith("ERROR:"):
             result = BenchmarkResult(
@@ -540,6 +580,7 @@ def run_willy_benchmark(
                 error=raw_output,
                 image_name="willy",
                 reasoning_text=reasoning_text,
+                reasoning_effort=reasoning_effort or "provider-default",
             )
         else:
             parsed = parse_json_output(raw_output, width, height)
@@ -561,6 +602,7 @@ def run_willy_benchmark(
                 error=None if parsed else "Failed to parse JSON output",
                 image_name="willy",
                 reasoning_text=reasoning_text,
+                reasoning_effort=reasoning_effort or "provider-default",
             )
         
         results.append(result)
@@ -652,6 +694,7 @@ def generate_report(results: list[BenchmarkResult], output_path: Path, image_bas
         "### Methodology",
         "- Random colored images generated with 8 distinct colors (R, G, B, Y, M, C, O, P)",
         f"- {cell_size_description}",
+        "- Reasoning effort is low where the model supports it; otherwise the provider default is used",
         "- Models asked to output a JSON 2D array of color letters",
         "- Accuracy measured as percentage of correctly identified pixels",
         "- Cohen's kappa adjusts accuracy for agreement expected by chance: 1 is perfect, 0 is chance-level, and negative values are worse than chance",
@@ -675,14 +718,14 @@ def generate_report(results: list[BenchmarkResult], output_path: Path, image_bas
         
         lines.append(f"### {width}x{height} ({total_pixels} pixels)")
         lines.append("")
-        lines.append("| Model | Zoom | Correct | Accuracy | Kappa |")
-        lines.append("|-------|------|---------|----------|-------|")
+        lines.append("| Model | Cell Size | Reasoning | Correct | Accuracy | Kappa |")
+        lines.append("|-------|-----------|-----------|---------|----------|-------|")
         
         for r in size_results:
             zoom_str = f"{r.zoom}x" if r.zoom > 0 else "none"
             status = "✅" if r.accuracy == 1.0 else "🟡" if r.accuracy >= 0.8 else "🔴"
             kappa_str = f"{r.kappa:.3f}" if r.kappa is not None else "N/A"
-            lines.append(f"| {r.model} | {zoom_str} | {r.correct_pixels}/{r.total_pixels} | {status} {r.accuracy:.1%} | {kappa_str} |")
+            lines.append(f"| {r.model} | {zoom_str} | {r.reasoning_effort} | {r.correct_pixels}/{r.total_pixels} | {status} {r.accuracy:.1%} | {kappa_str} |")
         
         lines.append("")
         
@@ -741,14 +784,14 @@ def generate_report(results: list[BenchmarkResult], output_path: Path, image_bas
         lines.append("")
         lines.append("A classic 2-color retro game sprite (R=Red, W=White).")
         lines.append("")
-        lines.append("| Model | Zoom | Correct | Accuracy | Kappa |")
-        lines.append("|-------|------|---------|----------|-------|")
+        lines.append("| Model | Cell Size | Reasoning | Correct | Accuracy | Kappa |")
+        lines.append("|-------|-----------|-----------|---------|----------|-------|")
         
         for r in willy_results:
             zoom_str = f"{r.zoom}x" if r.zoom > 0 else "none"
             status = "✅" if r.accuracy == 1.0 else "🟡" if r.accuracy >= 0.8 else "🔴"
             kappa_str = f"{r.kappa:.3f}" if r.kappa is not None else "N/A"
-            lines.append(f"| {r.model} | {zoom_str} | {r.correct_pixels}/{r.total_pixels} | {status} {r.accuracy:.1%} | {kappa_str} |")
+            lines.append(f"| {r.model} | {zoom_str} | {r.reasoning_effort} | {r.correct_pixels}/{r.total_pixels} | {status} {r.accuracy:.1%} | {kappa_str} |")
         
         lines.append("")
         
@@ -857,6 +900,7 @@ def save_json_results(results: list[BenchmarkResult], output_path: Path):
             "ground_truth": r.ground_truth,
             "image_name": r.image_name,
             "reasoning_text": r.reasoning_text,
+            "reasoning_effort": r.reasoning_effort,
         })
     
     with open(output_path, "w") as f:
@@ -887,6 +931,10 @@ def load_json_results(input_path: Path) -> list[BenchmarkResult]:
             ground_truth=item.get("ground_truth"),
             image_name=item.get("image_name", "random"),
             reasoning_text=item.get("reasoning_text"),
+            reasoning_effort=item.get(
+                "reasoning_effort",
+                "low" if item["model"].startswith("gemini-") else "provider-default",
+            ),
         ))
     return results
 
@@ -918,6 +966,12 @@ def main():
         type=int,
         default=42,
         help="Random seed for reproducible image generation"
+    )
+    parser.add_argument(
+        "--reasoning-effort",
+        choices=["low", "default"],
+        default=DEFAULT_REASONING_EFFORT,
+        help="Reasoning policy (default: low where supported)"
     )
     parser.add_argument(
         "--output-dir",
@@ -989,15 +1043,20 @@ def main():
     print(f"Models: {', '.join(models)}")
     print(f"Sizes: {', '.join(f'{w}x{h}' for w, h in sizes)}")
     print(f"Zoom: {args.zoom}x" if args.zoom > 0 else "Zoom: disabled")
+    print(f"Reasoning effort: {args.reasoning_effort} where supported")
     print(f"Seed: {args.seed}")
     print(f"Output: {output_dir}")
     
     # Run benchmark
-    results = run_benchmark(models, sizes, args.zoom, args.seed, output_dir)
+    results = run_benchmark(
+        models, sizes, args.zoom, args.seed, output_dir, args.reasoning_effort
+    )
     
     # Run Willy benchmark if requested
     if args.willy:
-        willy_results = run_willy_benchmark(models, args.zoom, output_dir)
+        willy_results = run_willy_benchmark(
+            models, args.zoom, output_dir, args.reasoning_effort
+        )
         results.extend(willy_results)
     
     # Generate reports

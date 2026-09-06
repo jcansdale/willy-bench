@@ -37,8 +37,9 @@ Based on extensive testing:
 ### Critical Settings for Best Results
 
 1. **Use contiguous 32px logical cells** for a model-independent visual resolution
-2. **Use 2D JSON array format** (each pixel as separate element)
-3. **Smaller images are easier** (4x4 > 8x8 > 16x16)
+2. **Use low reasoning effort where supported** to reduce provider-default compute differences
+3. **Use 2D JSON array format** (each pixel as separate element)
+4. **Smaller images are easier** (4x4 > 8x8 > 16x16)
 
 ## Installation
 
@@ -64,6 +65,7 @@ python benchmark.py --quick
 python benchmark.py --models "gemini-3.8-flash,gpt-6-astra,claude-sonnet-5" \
                     --sizes "4x4,8x8" \
                     --zoom 32 \
+                    --reasoning-effort low \
                     --willy
 
 # Regenerate report with image URLs (for CI)
@@ -98,7 +100,7 @@ The benchmark runs as a GitHub Actions workflow:
 2. **Run manually**:
    - Go to Actions → Pixel Extraction Benchmark
    - Click "Run workflow"
-   - Configure models, sizes, zoom, seed
+   - Configure models, sizes, cell size, reasoning effort, and seed
 
 3. **View results**:
    - Job summary shows emoji visual comparison
@@ -137,8 +139,8 @@ The `cop` CLI auto-detects which API to use based on model name.
 1. **Image Generation**: Creates random colored images using 8 distinct colors (R, G, B, Y, M, C, O, P)
 2. **Prompt Engineering**: Asks models to output a JSON 2D array of color letters
 3. **Metrics**: Reports raw pixel accuracy and Cohen's kappa, where 1 is perfect agreement, 0 is chance-level agreement, and negative values are worse than chance
-4. **Reasoning**: Uses low reasoning effort for Gemini models and captures optional reasoning summaries without mixing them into the scored output
-5. **Zoom**: Scales images up (8x) before sending to improve model accuracy
+4. **Reasoning**: Uses low reasoning effort where supported and captures optional reasoning summaries without mixing them into the scored output
+5. **Cell size**: Renders every logical pixel as a contiguous 32x32 block using nearest-neighbor scaling
 6. **Visual Output**: Generates PNG images showing errors
 
 ## License
