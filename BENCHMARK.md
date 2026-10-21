@@ -6,33 +6,25 @@ A benchmark suite for testing vision models' ability to extract pixel-level colo
 
 This benchmark tests how accurately various AI vision models can identify individual pixel colors in small images (4x4, 8x8, 8x16). It uses the GitHub Copilot API to test multiple models including:
 
-- **Gemini models** (gemini-3.5-flash, gemini-3.6-flash, gemini-3.7-flash, gemini-3.8-flash)
-- **GPT models** (gpt-4o-2024-05-13, gpt-5.4, gpt-5.5, gpt-5.6-terra, gpt-5.6-sol, gpt-6-astra)
-- **Claude models** (claude-haiku-4.5, claude-sonnet-5, claude-opus-5)
-- **Grok models** (grok-4.6)
+- **Gemini models** (gemini-3.8-flash, gemini-4-argon)
+- **GPT models** (gpt-4o-2024-05-13, gpt-5.6-terra, gpt-5.6-sol, gpt-6-astra, gpt-6-luna, gpt-6-sol, gpt-6.1-sol)
+- **Claude models** (claude-haiku-4.5, claude-haiku-5.5, claude-sonnet-5, claude-sonnet-5.5, claude-opus-5, claude-opus-5.5)
+- **Grok models** (grok-4.6, grok-4.7)
 
-GPT-5.4 and newer GPT models, plus Grok 4.6, use the Responses API.
+The default GPT-5.6/GPT-6 models and both Grok models use the Responses API.
 
-## Key Findings
+## Model Coverage
 
-Based on extensive testing:
+The 17-model default suite was checked against the Copilot catalog on 2026-10-21.
+See [Supported Models](README.md#supported-models) for the full list and API selection.
 
-| Model | API | Latest Average Accuracy | Notes |
-|-------|-----|-------------------------|-------|
-| gemini-3.5-flash | Chat | **99.2%** | Near-perfect across the latest benchmark |
-| gemini-3.6-flash | Chat | TBD | Gemini version comparison |
-| gemini-3.7-flash | Chat | TBD | Gemini version comparison |
-| gemini-3.8-flash | Chat | TBD | Current Gemini comparison |
-| gpt-5.4 | Responses | 37.0% | Requires Responses API |
-| gpt-5.5 | Responses | TBD | Intermediate GPT generation |
-| gpt-5.6-terra | Responses | TBD | General-purpose GPT-5.6 tier |
-| gpt-5.6-sol | Responses | TBD | Powerful GPT-5.6 tier |
-| gpt-6-astra | Responses | TBD | Frontier GPT model |
-| gpt-4o-2024-05-13 | Chat | 46.9% | Pinned because newer GPT-4o snapshots reject vision input |
-| claude-haiku-4.5 | Chat | TBD | Lightweight Claude baseline |
-| claude-sonnet-5 | Chat | TBD | Balanced Claude model |
-| claude-opus-5 | Chat | TBD | Frontier Claude model |
-| grok-4.6 | Responses | TBD | Current xAI comparison |
+Gemini 3.5/3.6/3.7 Flash and GPT-5.4/5.5 were removed from active runs because
+they are absent from the catalog. Available older models remain as baselines,
+including the pinned vision-capable GPT-4o snapshot.
+
+Historical measurements are preserved in [latest recorded results](results/LATEST.md)
+and [result history](results/history/). Full benchmark results for newly added models
+have not yet been recorded.
 
 ### Critical Settings for Best Results
 
@@ -58,11 +50,11 @@ pip install Pillow
 ### Local Testing
 
 ```bash
-# Quick test (3 top models, 4x4 only)
+# Quick test (3 current models, 4x4 only)
 python benchmark.py --quick
 
 # Full benchmark with Willy sprite
-python benchmark.py --models "gemini-3.8-flash,gpt-6-astra,claude-sonnet-5" \
+python benchmark.py --models "gemini-4-argon,gpt-6.1-sol,claude-sonnet-5.5" \
                     --sizes "4x4,8x8" \
                     --zoom 32 \
                     --reasoning-effort low \
@@ -130,7 +122,7 @@ The benchmark supports two Copilot APIs:
 | API | Endpoint | Models |
 |-----|----------|--------|
 | Chat Completions | `/chat/completions` | Most models (Gemini, Claude, gpt-4o-2024-05-13) |
-| Responses | `/responses` | GPT-5.4+, GPT-6 Astra, Grok 4.6, GPT Codex models |
+| Responses | `/responses` | Default GPT-5.6/GPT-6 models, Grok 4.6/4.7, GPT-5.3 Codex |
 
 The `cop` CLI auto-detects which API to use based on model name.
 

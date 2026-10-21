@@ -33,7 +33,7 @@ A command-line interface for GitHub Copilot with vision model support.
 cop chat "What is the capital of France?"
 
 # Use a specific model
-cop chat -m gemini-3.5-flash "Explain quantum computing"
+cop chat -m gemini-4-argon "Explain quantum computing"
 
 # Send an image for analysis
 cop chat -i image.png "Describe this image"
@@ -41,8 +41,8 @@ cop chat -i image.png "Describe this image"
 # Use zoom for pixel-level extraction  
 cop chat -i sprite.png -z 8 "Extract pixel colors as JSON"
 
-# Force Responses API (for gpt-5.4 etc.)
-cop chat -m gpt-5.4 --api responses "Hello"
+# Force Responses API (for gpt-6.1-sol etc.)
+cop chat -m gpt-6.1-sol --api responses "Hello"
 
 # List available models
 cop models
@@ -50,26 +50,40 @@ cop models
 
 ## Supported Models
 
-| Model | API | Latest Average Accuracy |
-|-------|-----|-------------------------|
-| gemini-3.5-flash | Chat Completions | **99.2%** |
-| gemini-3.6-flash | Chat Completions | TBD |
-| gemini-3.7-flash | Chat Completions | TBD |
-| gemini-3.8-flash | Chat Completions | TBD |
-| gpt-4o-2024-05-13 | Chat Completions | 46.9% |
-| gpt-5.4 | Responses | 37.0% |
-| gpt-5.5 | Responses | TBD |
-| gpt-5.6-terra | Responses | TBD |
-| gpt-5.6-sol | Responses | TBD |
-| gpt-6-astra | Responses | TBD |
-| claude-haiku-4.5 | Chat Completions | TBD |
-| claude-sonnet-5 | Chat Completions | TBD |
-| claude-opus-5 | Chat Completions | TBD |
-| grok-4.6 | Responses | TBD |
+The default suite contains 17 vision models, checked against the Copilot catalog on 2026-10-21:
+
+| Model | API |
+|-------|-----|
+| gemini-3.8-flash | Chat Completions |
+| gemini-4-argon | Chat Completions |
+| gpt-4o-2024-05-13 | Chat Completions |
+| gpt-5.6-terra | Responses |
+| gpt-5.6-sol | Responses |
+| gpt-6-astra | Responses |
+| gpt-6-luna | Responses |
+| gpt-6-sol | Responses |
+| gpt-6.1-sol | Responses |
+| claude-haiku-4.5 | Chat Completions |
+| claude-haiku-5.5 | Chat Completions |
+| claude-sonnet-5 | Chat Completions |
+| claude-sonnet-5.5 | Chat Completions |
+| claude-opus-5 | Chat Completions |
+| claude-opus-5.5 | Chat Completions |
+| grok-4.6 | Responses |
+| grok-4.7 | Responses |
+
+The quick suite uses `gemini-4-argon`, `gpt-6.1-sol`, and `claude-sonnet-5.5`.
+Low reasoning effort is requested for all default models except `gpt-4o-2024-05-13`
+and `claude-haiku-4.5`, which do not advertise that option.
+
+Gemini 3.5/3.6/3.7 Flash and GPT-5.4/5.5 are no longer in the active suite
+because they are absent from the catalog. Their historical results are preserved.
 
 ## Benchmark Results
 
 See latest results: [GitHub Actions](../../actions/workflows/pixel-benchmark.yml)
+and [recorded results](results/LATEST.md). Full benchmark results for new additions
+have not yet been recorded.
 
 The benchmark generates:
 - **Visual comparison** with emoji grids in job summary
@@ -80,8 +94,8 @@ The benchmark generates:
 
 ```
 Testing gemini-3.8-flash... ✅ 16/16 (100%)
-Testing gpt-6-astra... 🔴 4/16 (25%)
-Testing claude-sonnet-5... 🔴 2/16 (12%)
+Testing gpt-6-astra... 🔴 3/16 (19%)
+Testing claude-sonnet-5... ✅ 16/16 (100%)
 ```
 
 ## Authentication
@@ -93,6 +107,14 @@ cop login
 
 ### CI/CD
 Set `COPILOT_GITHUB_TOKEN` environment variable with a GitHub token that has Copilot access.
+
+## Tests
+
+Run configuration and API-routing regression tests without API calls:
+
+```bash
+python -m unittest discover -s tests -v
+```
 
 ## License
 

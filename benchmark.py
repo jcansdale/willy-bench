@@ -71,41 +71,47 @@ COLOR_KEYS = list(COLORS.keys())
 
 # Models to test
 DEFAULT_MODELS = [
-    "gemini-3.5-flash",
-    "gemini-3.6-flash",
-    "gemini-3.7-flash",
     "gemini-3.8-flash",
+    "gemini-4-argon",
     "gpt-4o-2024-05-13",
-    "gpt-5.4",
-    "gpt-5.5",
     "gpt-5.6-terra",
     "gpt-5.6-sol",
     "gpt-6-astra",
+    "gpt-6-luna",
+    "gpt-6-sol",
+    "gpt-6.1-sol",
     "claude-haiku-4.5",
+    "claude-haiku-5.5",
     "claude-sonnet-5",
+    "claude-sonnet-5.5",
     "claude-opus-5",
+    "claude-opus-5.5",
     "grok-4.6",
+    "grok-4.7",
 ]
 
-QUICK_MODELS = ["gemini-3.8-flash", "gpt-6-astra", "claude-sonnet-5"]
+QUICK_MODELS = ["gemini-4-argon", "gpt-6.1-sol", "claude-sonnet-5.5"]
 
 # Default image sizes to test (width x height)
 DEFAULT_SIZES = [(4, 4), (8, 8), (8, 16), (16, 16)]
 DEFAULT_CELL_SIZE = 32
 DEFAULT_REASONING_EFFORT = "low"
 LOW_REASONING_MODELS = {
-    "gemini-3.5-flash",
-    "gemini-3.6-flash",
-    "gemini-3.7-flash",
     "gemini-3.8-flash",
-    "gpt-5.4",
-    "gpt-5.5",
+    "gemini-4-argon",
     "gpt-5.6-terra",
     "gpt-5.6-sol",
     "gpt-6-astra",
+    "gpt-6-luna",
+    "gpt-6-sol",
+    "gpt-6.1-sol",
+    "claude-haiku-5.5",
     "claude-sonnet-5",
+    "claude-sonnet-5.5",
     "claude-opus-5",
+    "claude-opus-5.5",
     "grok-4.6",
+    "grok-4.7",
 }
 
 
